@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { RelatedSymbol } from '../types/related-symbol.type';
@@ -15,12 +15,17 @@ interface DreamSymbolRecord {
 
 @Injectable()
 export class DreamSymbolRepository {
+  private readonly logger = new Logger(DreamSymbolRepository.name);
+
   constructor(@InjectDataSource() private readonly dataSource: DataSource) {}
 
   public async findNearestByEmbedding(
     vector: number[],
     limit: number,
   ): Promise<RelatedSymbol[]> {
+    this.logger.log(
+      `[검색] dream_symbols 임베딩 탐색 (차원=${vector.length}, limit=${limit})`,
+    );
     const vectorLiteral = `[${vector.join(',')}]`;
     const rows: DreamSymbolRecord[] = await this.dataSource.query(
       `
@@ -38,6 +43,7 @@ export class DreamSymbolRepository {
       [vectorLiteral, limit],
     );
 
+    this.logger.log(`[검색] ${rows.length}건 결과 반환`);
     return rows.map((row) => ({
       symbol: row.symbol,
       categories: this.normalizeArray(row.categories),
