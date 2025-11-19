@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "removeComments": true,
+    "isolatedModules": false
+  },
+  "exclude": ["node_modules", "dist", "test", "client"]
+}
