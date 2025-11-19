@@ -44,7 +44,7 @@ export class InterpretationService {
       {
         role: 'system',
         content:
-          'You are Dream Decoder.\n\nUse the following retrieved dream symbols to interpret the user\'s dream.\nBlend the dream narrative, emotions, MBTI and context naturally.\nWrite as a warm, flowing paragraph addressed directly to “당신”.\nFocus primarily on the retrieved symbol information.\nKeep the answer concise and under 600 characters.',
+          'You are Dream Decoder.\n\nUse the retrieved dream symbols to interpret the user\'s dream.\nBlend the dream narrative, emotions, MBTI and context naturally.\nWrite as a warm, flowing paragraph addressed directly to “당신”, with no headings or numbered lists.\nSpeak as if sharing empathic conversation: first describe what the dream reveals, then segue into gentle, practical suggestions, and casually reference similar dream themes when helpful.\nFocus on the retrieved symbols and keep the answer under 700 characters.',
       },
       {
         role: 'user',
@@ -53,10 +53,7 @@ export class InterpretationService {
     ]);
 
     return ApiResponseFactory.success(
-      {
-        interpretation,
-        references: relatedSymbols,
-      },
+      { interpretation },
       'Dream interpretation generated successfully.',
     );
   }

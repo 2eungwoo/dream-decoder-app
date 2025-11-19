@@ -17,17 +17,6 @@ export function printResponse<T>(res: ApiResponse<T>) {
   if (isInterpretationData(data)) {
     console.log(chalk.cyanBright('\n[Dream Interpretation]\n'));
     console.log(data.interpretation);
-
-    if (data.references?.length) {
-      console.log(chalk.gray('\n[Related Symbols]'));
-      data.references.forEach((ref, idx) => {
-        console.log(
-          chalk.gray(
-            `${idx + 1}. ${ref.symbol} | ${ref.categories?.join(', ') || 'N/A'}`,
-          ),
-        );
-      });
-    }
     return;
   }
 
@@ -59,7 +48,6 @@ function isChatData(data: Record<string, unknown>): data is { reply: string } {
 
 function isInterpretationData(data: Record<string, unknown>): data is {
   interpretation: string;
-  references?: Array<{ symbol: string; categories?: string[] }>;
 } {
   return typeof data.interpretation === 'string';
 }

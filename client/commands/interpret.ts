@@ -1,49 +1,49 @@
-import { postApi } from '../api';
-import { printResponse } from '../ui/output';
-import { SessionStore } from '../sessions/session-store';
+import { postApi } from "../api";
+import { printResponse } from "../ui/output";
+import { SessionStore } from "../sessions/session-store";
 
 type QuestionFn = (prompt: string) => Promise<string>;
 
 const EMOTION_OPTIONS = [
-  '기쁨',
-  '설렘',
-  '불안',
-  '무서움',
-  '분노',
-  '슬픔',
-  '당황',
-  '안도',
+  "기쁨",
+  "설렘",
+  "불안",
+  "무서움",
+  "분노",
+  "슬픔",
+  "당황",
+  "안도",
 ];
 
 const MBTI_OPTIONS = [
-  'ISTJ',
-  'ISFJ',
-  'INFJ',
-  'INTJ',
-  'ISTP',
-  'ISFP',
-  'INFP',
-  'INTP',
-  'ESTP',
-  'ESFP',
-  'ENFP',
-  'ENTP',
-  'ESTJ',
-  'ESFJ',
-  'ENFJ',
-  'ENTJ',
+  "ISTJ",
+  "ISFJ",
+  "INFJ",
+  "INTJ",
+  "ISTP",
+  "ISFP",
+  "INFP",
+  "INTP",
+  "ESTP",
+  "ESFP",
+  "ENFP",
+  "ENTP",
+  "ESTJ",
+  "ESFJ",
+  "ENFJ",
+  "ENTJ",
 ];
 
 export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
   const session = sessions.get();
   if (!session) {
-    console.log('먼저 login 명령으로 로그인 해주세요.');
+    console.log("먼저 login 명령으로 로그인 해주세요.");
     return;
   }
 
-  const dream = (await ask('\nDescribe your dream:\n> ')).trim();
+  const dream = (await ask("\n꿈 내용에 대해 자유롭게 입력해주세요.\n> ")).trim();
   if (!dream) {
-    console.log('꿈 내용을 입력해주세요.');
+    console.log("꿈 내용을 입력하지 않았습니다.");
     return;
   }
 
@@ -52,14 +52,14 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
 
   const extraContext = (
     await ask(
-      '최근 겪은 일, 감정 변화, 관계 갈등 등 꿈에 영향을 준 맥락이 있나요? (없으면 Enter)\n> ',
+      "최근 겪은 일, 감정 변화, 관계 갈등 등 꿈에 영향을 준 맥락이 있나요? (없으면 Enter)\n> "
     )
   ).trim();
 
   const data = await postApi<{
     interpretation: string;
     references: unknown[];
-  }>('/interpret', {
+  }>("/interpret", {
     dream,
     emotions,
     mbti,
@@ -70,21 +70,17 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
 }
 
 async function askEmotionSelections(ask: QuestionFn) {
-  const instructions = `
-Select emotions (comma-separated numbers or custom text).
-${formatOptions(EMOTION_OPTIONS)}
-예: 2,4 또는 "기쁨, 긴장" (비워두면 건너뜁니다)
-> `;
+  const instructions = `꿈 당시 감정 혹은 깨어난 직후의 감정을 선택해주세요. (복수 선택 가능)
+                        \n${formatOptions(EMOTION_OPTIONS)} 
+                        \n예시) 2,4 또는 "기쁨, 긴장"`;
   const input = (await ask(instructions)).trim();
   return parseMultiSelection(input, EMOTION_OPTIONS);
 }
 
 async function askMbtiSelection(ask: QuestionFn) {
-  const instructions = `
-Choose your MBTI type (number or text, Enter to skip).
-${formatOptions(MBTI_OPTIONS)}
-예: 11 또는 ENFP
-> `;
+  const instructions = ` AI의 응답 성향을 설정해주세요. MBTI를 기반으로 적절한 성격을 갖게됩니다. 
+                        \n${formatOptions(MBTI_OPTIONS)} 
+                        \n예시) 11 또는 ENFP `;
   const input = (await ask(instructions)).trim();
   if (!input) {
     return undefined;
@@ -93,9 +89,7 @@ ${formatOptions(MBTI_OPTIONS)}
 }
 
 function formatOptions(options: string[]) {
-  return options
-    .map((option, idx) => `${idx + 1}. ${option}`)
-    .join('  ');
+  return options.map((option, idx) => `${idx + 1}. ${option}`).join("  ");
 }
 
 function parseMultiSelection(input: string, options: string[]) {
@@ -103,7 +97,7 @@ function parseMultiSelection(input: string, options: string[]) {
     return [];
   }
   const tokens = input
-    .split(',')
+    .split(",")
     .map((token) => token.trim())
     .filter(Boolean);
 

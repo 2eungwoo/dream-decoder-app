@@ -28,9 +28,9 @@ export class InterpretationPromptBuilder {
       this.optionalLine('Dreamer emotions', request.emotions?.join(', ')),
       this.optionalLine('Dreamer MBTI', normalizedMbti),
       this.optionalLine('Additional context', request.extraContext?.trim()),
-      'Relevant symbol references:',
+      'Symbol insights to weave into the response:',
       formattedSymbols || 'No prior references found.',
-      'Respond as a single conversational paragraph that naturally blends insights with gentle guidance.',
+      'Respond as a single conversational paragraph that blends interpretation with gentle guidance, avoids lists/headings, and can naturally mention similar dream themes.',
     ];
 
     return parts.filter(Boolean).join('\n\n');
