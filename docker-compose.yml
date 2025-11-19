@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  dd-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      dd-postgresql:
+        condition: service_healthy
+      dd-embedding-server:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      PORT: ${APP_PORT:-3000}
+      DB_HOST: dd-postgresql
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_NAME: ${DB_NAME:-dream_decoder}
+      EMBEDDING_API_URL: http://dd-embedding-server:8001/embed
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5-nano}
+    ports:
+      - "${APP_PORT:-3000}:3000"
+
+  dd-embedding-server:
+    build:
+      context: ./embedding-server
+      dockerfile: Dockerfile
+    environment:
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-jhgan/ko-sroberta-nli}
+      MAX_TEXTS: ${EMBEDDING_MAX_TEXTS:-32}
+    ports:
+      - "${EMBEDDING_PORT:-8001}:8001"
+
+  dd-postgresql:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: ${DB_NAME:-dream_decoder}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-dream_decoder}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pg-data:
