@@ -20,6 +20,12 @@ async function main() {
   const sessions = new SessionStore();
   printIntro();
 
+  rl.on('SIGINT', () => {
+    console.log('\nBye!');
+    rl.close();
+    process.exit(0);
+  });
+
   try {
     // eslint-disable-next-line no-constant-condition
     while (true) {
