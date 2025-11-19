@@ -1,1 +1,0 @@
-{"version":3,"file":"embedding.config.js","sourceRoot":"","sources":["../../../../src/external/embedding/embedding.config.ts"],"names":[],"mappings":";;;AAAA,2CAA4C;AAE/B,QAAA,eAAe,GAAG,IAAA,mBAAU,EAAC,WAAW,EAAE,GAAG,EAAE,CAAC,CAAC;IAC5D,MAAM,EAAE,OAAO,CAAC,GAAG,CAAC,iBAAiB,IAAI,6BAA6B;IACtE,SAAS,EAAE,MAAM,CAAC,OAAO,CAAC,GAAG,CAAC,oBAAoB,IAAI,OAAO,CAAC;CAC/D,CAAC,CAAC,CAAC"}
