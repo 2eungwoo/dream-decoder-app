@@ -1,6 +1,7 @@
 import { postApi } from "../api";
 import { printResponse } from "../ui/output";
 import { SessionStore } from "../sessions/session-store";
+import { Spinner } from "../ui/spinner";
 
 type QuestionFn = (prompt: string) => Promise<string>;
 
@@ -41,7 +42,9 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
     return;
   }
 
-  const dream = (await ask("\n꿈 내용에 대해 자유롭게 입력해주세요.\n> ")).trim();
+  const dream = (
+    await ask("\n꿈 내용에 대해 자유롭게 입력해주세요.\n> ")
+  ).trim();
   if (!dream) {
     console.log("꿈 내용을 입력하지 않았습니다.");
     return;
@@ -56,17 +59,25 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
     )
   ).trim();
 
-  const data = await postApi<{
-    interpretation: string;
-    references: unknown[];
-  }>("/interpret", {
-    dream,
-    emotions,
-    mbti,
-    extraContext,
-  });
+  const spinner = new Spinner();
+  spinner.start("해몽을 생성하는 중입니다...");
+  try {
+    const data = await postApi<{
+      interpretation: string;
+      references: unknown[];
+    }>("/interpret", {
+      dream,
+      emotions,
+      mbti,
+      extraContext,
+    });
 
-  printResponse(data);
+    spinner.stop();
+    printResponse(data);
+  } catch (error) {
+    spinner.stop();
+    throw error;
+  }
 }
 
 async function askEmotionSelections(ask: QuestionFn) {
