@@ -70,6 +70,11 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
       emotions,
       mbti,
       extraContext,
+    }, {
+      headers: {
+        "x-username": session.username,
+        "x-password": session.password,
+      },
     });
 
     spinner.stop();
