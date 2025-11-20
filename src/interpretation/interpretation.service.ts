@@ -54,7 +54,7 @@ export class InterpretationService {
 
     return ApiResponseFactory.success(
       { interpretation },
-      'Dream interpretation generated successfully.',
+      '해몽이 완료되었습니다! 아래 내용을 확인해주세요',
     );
   }
 }
