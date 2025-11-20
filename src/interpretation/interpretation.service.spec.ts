@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Test, TestingModule } from "@nestjs/testing";
-import { mock, instance, when, verify, anything } from "ts-mockito";
+import { mock, instance, when, verify, anything, reset } from "ts-mockito";
 import { beforeEach, describe, expect, it } from "@jest/globals";
 
 import { InterpretationService } from "./interpretation.service";
@@ -10,6 +10,7 @@ import { DreamSymbolRepository } from "./datasources/dream-symbol.repository";
 import { InterpretationPromptBuilder } from "./prompts/interpretation-prompt.builder";
 import { OpenAIClient } from "../external/openai/openai.client";
 import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
+import { InterpretationCacheService } from "./services/interpretation-cache.service";
 
 describe("InterpretationService (ts-mockito)", () => {
   let service: InterpretationService;
@@ -19,6 +20,12 @@ describe("InterpretationService (ts-mockito)", () => {
   const symbolRepositoryMock = mock(DreamSymbolRepository);
   const promptBuilderMock = mock(InterpretationPromptBuilder);
   const openAIClientMock = mock(OpenAIClient);
+  const cacheServiceMock = mock(InterpretationCacheService);
+
+  const CACHE_KEY = "cache-key";
+  const FORMATTED_PROMPT = "formatted prompt";
+  const MOCK_EMBEDDING = [[0.1, 0.2, 0.3]];
+  const VECTOR_SEARCH_RESULT = [{ symbol: "끝없는 복도를 걷는 꿈" } as never];
 
   const REQUEST = {
     dream: "이상한 복도를 걸어다녔어요",
@@ -30,9 +37,17 @@ describe("InterpretationService (ts-mockito)", () => {
   const RESPONSE = "해몽 결과는 어쩌구 저쩌구 입니다";
 
   beforeEach(async () => {
+    // 테스트마다 모킹상태를 reset해서 각 테스트마다 독립 컨텍스트로 실행되는 환경으로 해줘야함
+    reset(embeddingInputFactoryMock);
+    reset(embeddingClientMock);
+    reset(symbolRepositoryMock);
+    reset(promptBuilderMock);
+    reset(openAIClientMock);
+    reset(cacheServiceMock);
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        InterpretationService,
+        InterpretationService, // 얘만 실제 객체 하위는 싹다 모킹
         {
           provide: EmbeddingInputFactory,
           useValue: instance(embeddingInputFactoryMock),
@@ -50,6 +65,10 @@ describe("InterpretationService (ts-mockito)", () => {
           useValue: instance(promptBuilderMock),
         },
         { provide: OpenAIClient, useValue: instance(openAIClientMock) },
+        {
+          provide: InterpretationCacheService,
+          useValue: instance(cacheServiceMock),
+        },
       ],
     }).compile();
 
@@ -58,16 +77,21 @@ describe("InterpretationService (ts-mockito)", () => {
 
   it("사용자 요청 embedding + vectordb 검색 + LLM 호출 오케스트레이션이 이루어져야함", async () => {
     // given & when
+    when(cacheServiceMock.createKey(REQUEST as any)).thenReturn(CACHE_KEY);
+    when(cacheServiceMock.get(CACHE_KEY)).thenReturn(null);
+
     when(
       embeddingInputFactoryMock.createFromRequest(REQUEST as any)
-    ).thenReturn("embedding-input"); // embedding 요청 전달
-    when(embeddingClientMock.embed(anything())).thenResolve([[0.1, 0.2, 0.3]]); // 대충 임베딩된 벡터
+    ).thenReturn("embedding-input");
+
+    when(embeddingClientMock.embed(anything())).thenResolve(MOCK_EMBEDDING);
     when(
       symbolRepositoryMock.findNearestByEmbedding(anything(), anything())
-    ).thenResolve([{ symbol: "끝없는 복도를 걷는 꿈" } as never]); // 벡터검색 결과
+    ).thenResolve(VECTOR_SEARCH_RESULT);
+
     when(promptBuilderMock.buildPrompt(anything(), anything())).thenReturn(
-      "formatted prompt"
-    ); // 위 내용으로 formatted prompt 만들었다고 가정
+      FORMATTED_PROMPT
+    );
 
     when(openAIClientMock.generateFromMessages(anything())).thenResolve(
       RESPONSE
@@ -76,6 +100,8 @@ describe("InterpretationService (ts-mockito)", () => {
     // then
     const response = await service.interpret(REQUEST as never);
 
+    verify(cacheServiceMock.createKey(REQUEST as any)).once();
+    verify(cacheServiceMock.get(CACHE_KEY)).once();
     verify(embeddingInputFactoryMock.createFromRequest(REQUEST as any)).once();
     verify(embeddingClientMock.embed(anything())).once();
     verify(
@@ -83,6 +109,7 @@ describe("InterpretationService (ts-mockito)", () => {
     ).once();
     verify(promptBuilderMock.buildPrompt(anything(), anything())).once();
     verify(openAIClientMock.generateFromMessages(anything())).once();
+    verify(cacheServiceMock.set(CACHE_KEY, RESPONSE)).once();
 
     expect(response.success).toBe(true);
     expect(response.data?.interpretation).toBe(RESPONSE);
@@ -96,5 +123,18 @@ describe("InterpretationService (ts-mockito)", () => {
     await expect(
       service.interpret({ dream: BLANK_REQUEST } as never)
     ).rejects.toBeInstanceOf(InvalidDreamException);
+  });
+
+  it("캐시된거 있으면 embed, pgvector, LLM 호출 안나가야함", async () => {
+    // given & when
+    const CACHED = "CACHED!";
+    when(cacheServiceMock.createKey(REQUEST as any)).thenReturn(CACHE_KEY);
+    when(cacheServiceMock.get(CACHE_KEY)).thenReturn(CACHED);
+
+    // then
+    const response = await service.interpret(REQUEST as never);
+
+    expect(response.data?.interpretation).toBe(CACHED);
+    verify(embeddingClientMock.embed(anything())).never();
   });
 });
