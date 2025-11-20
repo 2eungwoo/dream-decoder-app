@@ -2,9 +2,14 @@ import chalk from "chalk";
 import { ApiResponse } from "../../src/shared/dto/api-response.dto";
 
 export function printResponse<T>(res: ApiResponse<T>) {
+  const CLIENT_ERROR = 400;
+  const SERVER_ERROR = 500;
   if (!res.success) {
-    const color = res.code >= 400 && res.code < 500 ? chalk.yellow : chalk.red;
-    console.error(color(`Error (${res.code}): ${res.message}`));
+    const color =
+      res.code >= CLIENT_ERROR && res.code < SERVER_ERROR
+        ? chalk.yellow
+        : chalk.red;
+    console.error(color(`<!> Error (${res.code}): ${res.message}`));
     return;
   }
 
