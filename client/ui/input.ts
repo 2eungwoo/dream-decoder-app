@@ -30,7 +30,7 @@ export async function promptMbtiSelection(ask: QuestionFn) {
 
 export async function promptExtraContext(ask: QuestionFn) {
   const context = await ask(
-    "최근 겪은 일, 감정 변화, 관계 갈등 등 꿈에 영향을 준 맥락이 있나요? (없으면 Enter)\n> "
+    "최근 겪은 일, 감정 변화, 관계 갈등 등 꿈에 영향을 준 최근 경험이 있나요? (없으면 Enter)\n> "
   );
   return context.trim();
 }
