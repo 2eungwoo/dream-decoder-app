@@ -10,6 +10,7 @@ import { InterpretationPromptBuilder } from './prompts/interpretation-prompt.bui
 import { InterpretAuthGuard } from './guards/interpret-auth.guard';
 import { User } from '../users/user.entity';
 import { AuthModule } from '../auth/auth.module';
+import { InterpretationCacheService } from './services/interpretation-cache.service';
 
 @Module({
   imports: [EmbeddingModule, OpenAIModule, AuthModule, TypeOrmModule.forFeature([User])],
@@ -20,6 +21,7 @@ import { AuthModule } from '../auth/auth.module';
     DreamSymbolRepository,
     InterpretationPromptBuilder,
     InterpretAuthGuard,
+    InterpretationCacheService,
   ],
 })
 export class InterpretationModule {}
