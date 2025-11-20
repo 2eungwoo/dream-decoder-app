@@ -1,6 +1,6 @@
 import readline from 'node:readline/promises';
 import chalk from 'chalk';
-import { ASCII_LOGO, COMMANDS_BOX } from './ui/banner';
+import { ASCII_LOGO, COMMANDS_BOX } from './constants/banner';
 import { printUsage } from './ui/output';
 import { SessionStore } from './sessions/session-store';
 import { handleRegister } from './commands/register';
