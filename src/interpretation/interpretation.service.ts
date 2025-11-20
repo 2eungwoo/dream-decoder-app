@@ -10,6 +10,7 @@ import { EmbeddingInputFactory } from './factories/embedding-input.factory';
 import { DreamSymbolRepository } from './datasources/dream-symbol.repository';
 import { InterpretationPromptBuilder } from './prompts/interpretation-prompt.builder';
 import { InvalidDreamException } from './exceptions/invalid-dream.exception';
+import { InterpretationCacheService } from './services/interpretation-cache.service';
 
 @Injectable()
 export class InterpretationService {
@@ -19,11 +20,21 @@ export class InterpretationService {
     private readonly symbolRepository: DreamSymbolRepository,
     private readonly promptBuilder: InterpretationPromptBuilder,
     private readonly openAIClient: OpenAIClient,
+    private readonly cacheService: InterpretationCacheService,
   ) {}
 
   public async interpret(request: InterpretDreamRequestDto) {
     if (!request?.dream?.trim()) {
       throw new InvalidDreamException();
+    }
+
+    const cacheKey = this.cacheService.createKey(request);
+    const cached = this.cacheService.get(cacheKey);
+    if (cached) {
+      return ApiResponseFactory.success(
+        { interpretation: cached },
+        '해몽 결과가 캐시에서 불러와졌습니다.',
+      );
     }
 
     const embeddingInput = this.embeddingInputFactory.createFromRequest(request);
@@ -52,9 +63,11 @@ export class InterpretationService {
       },
     ]);
 
-    return ApiResponseFactory.success(
+    const response = ApiResponseFactory.success(
       { interpretation },
       '해몽이 완료되었습니다! 아래 내용을 확인해주세요',
     );
+    this.cacheService.set(cacheKey, interpretation);
+    return response;
   }
 }
