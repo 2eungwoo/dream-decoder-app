@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from "@nestjs/common";
 
 interface CacheEntry {
   value: string;
@@ -9,7 +9,9 @@ interface CacheEntry {
 export class InterpretationCacheService {
   private readonly logger = new Logger(InterpretationCacheService.name);
   private readonly store = new Map<string, CacheEntry>();
-  private readonly ttlMs = Number(process.env.INTERPRET_CACHE_TTL_MS ?? '300000');
+  private readonly ttlMs = Number(
+    process.env.INTERPRET_CACHE_TTL_MS ?? "300000"
+  );
 
   public get(key: string) {
     const cached = this.store.get(key);
@@ -18,12 +20,12 @@ export class InterpretationCacheService {
     }
 
     if (cached.expiresAt < Date.now()) {
-      this.logger.debug(`Cache expired for key=${key}`);
+      this.logger.debug(`[Cache] Cache expired for key=${key}`);
       this.store.delete(key);
       return null;
     }
 
-    this.logger.debug(`Cache hit for key=${key}`);
+    this.logger.debug(`[Cache] Cache hit for key=${key}`);
     return cached.value;
   }
 
