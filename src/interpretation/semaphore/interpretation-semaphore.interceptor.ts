@@ -11,15 +11,14 @@ import { InterpretationThrottleException } from "../exceptions/interpretation-th
 
 const SEMAPHORE_KEY = "interpretation:semaphore";
 const SEMAPHORE_LIMIT = Number(process.env.INTERPRET_SEMAPHORE_LIMIT ?? "5");
+const SEMAPHORE_TTL = Number(process.env.INTERPRET_SEMAPHORE_TTL ?? "10");
 
 @Injectable()
 export class InterpretationSemaphoreInterceptor implements NestInterceptor {
   constructor(private readonly redisService: RedisService) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const client = this.redisService.getClient();
-
-    return from(this.acquireSlot(client)).pipe(
+    return from(this.acquireSlot()).pipe(
       switchMap((acquired) => {
         if (!acquired) {
           throw new InterpretationThrottleException();
@@ -27,25 +26,18 @@ export class InterpretationSemaphoreInterceptor implements NestInterceptor {
 
         return next.handle().pipe(
           finalize(async () => {
-            await client.decr(SEMAPHORE_KEY);
+            await this.redisService.releaseSemaphore(SEMAPHORE_KEY);
           })
         );
       })
     );
   }
 
-  private async acquireSlot(client: ReturnType<RedisService["getClient"]>) {
-    const current = await client.incr(SEMAPHORE_KEY);
-    if (current === 1) {
-      await client.expire(
-        SEMAPHORE_KEY,
-        Number(process.env.INTERPRET_SEMAPHORE_TTL ?? "10")
-      );
-    }
-    if (current > SEMAPHORE_LIMIT) {
-      await client.decr(SEMAPHORE_KEY);
-      return false;
-    }
-    return true;
+  private acquireSlot() {
+    return this.redisService.acquireSemaphore(
+      SEMAPHORE_KEY,
+      SEMAPHORE_LIMIT,
+      SEMAPHORE_TTL
+    );
   }
 }
