@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
-import { RelatedSymbol } from "../types/related-symbol.type";
+import { DreamSymbolDto } from "../types/dream-symbol.dto";
 
 @Injectable()
 export class InterpretationPromptBuilder {
   public buildPrompt(
     request: InterpretDreamRequestDto,
-    symbols: RelatedSymbol[]
+    symbols: DreamSymbolDto[]
   ) {
     const normalizedMbti = request.mbti?.toUpperCase();
 
@@ -37,7 +37,7 @@ export class InterpretationPromptBuilder {
 
   // 심볼 하나마다 갖고있는 모든 정보를 보기좋게 문자열로 정리
   private formatSymbol(
-    symbol: RelatedSymbol,
+    symbol: DreamSymbolDto,
     index: number,
     mbti?: string
   ): string {
@@ -60,7 +60,7 @@ export class InterpretationPromptBuilder {
   }
 
   // mbti 톤 선택값/기본값으로 초기화
-  private resolveTone(symbol: RelatedSymbol, mbti?: string): string | null {
+  private resolveTone(symbol: DreamSymbolDto, mbti?: string): string | null {
     if (!symbol.mbtiTone) return null;
 
     if (mbti && symbol.mbtiTone[mbti]) {

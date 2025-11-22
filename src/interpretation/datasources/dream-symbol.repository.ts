@@ -1,17 +1,7 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { InjectDataSource } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
-import { RelatedSymbol } from '../types/related-symbol.type';
-
-interface DreamSymbolRecord {
-  symbol: string;
-  categories: string[] | null;
-  description: string | null;
-  emotions: string[] | null;
-  mbti_tone: Record<string, string> | null;
-  interpretations: string[] | null;
-  advice: string | null;
-}
+import { Injectable, Logger } from "@nestjs/common";
+import { InjectDataSource } from "@nestjs/typeorm";
+import { DataSource } from "typeorm";
+import { DreamSymbolDto } from "../types/dream-symbol.dto";
 
 @Injectable()
 export class DreamSymbolRepository {
@@ -21,13 +11,13 @@ export class DreamSymbolRepository {
 
   public async findNearestByEmbedding(
     vector: number[],
-    limit: number,
-  ): Promise<RelatedSymbol[]> {
+    limit: number
+  ): Promise<DreamSymbolDto[]> {
     this.logger.log(
-      `[검색] dream_symbols 임베딩 탐색 (차원=${vector.length}, limit=${limit})`,
+      `[검색] dream_symbols 임베딩 탐색 (차원=${vector.length}, limit=${limit})`
     );
-    const vectorLiteral = `[${vector.join(',')}]`;
-    const rows: DreamSymbolRecord[] = await this.dataSource.query(
+    const vectorLiteral = `[${vector.join(",")}]`;
+    const rows: DreamSymbolDto[] = await this.dataSource.query(
       `
         SELECT symbol,
                categories,
@@ -40,7 +30,7 @@ export class DreamSymbolRepository {
         ORDER BY embedding <=> $1::vector
         LIMIT $2;
       `,
-      [vectorLiteral, limit],
+      [vectorLiteral, limit]
     );
 
     this.logger.log(`[검색] ${rows.length}건 결과 반환`);
@@ -49,7 +39,7 @@ export class DreamSymbolRepository {
       categories: this.normalizeArray(row.categories),
       description: row.description,
       emotions: this.normalizeArray(row.emotions),
-      mbtiTone: this.normalizeObject(row.mbti_tone),
+      mbtiTone: this.normalizeObject(row.mbtiTone),
       interpretations: this.normalizeArray(row.interpretations),
       advice: row.advice,
     }));
@@ -62,7 +52,7 @@ export class DreamSymbolRepository {
     if (Array.isArray(value)) {
       return value;
     }
-    if (typeof value === 'string') {
+    if (typeof value === "string") {
       try {
         const parsed = JSON.parse(value);
         return Array.isArray(parsed) ? parsed : [];
@@ -77,13 +67,13 @@ export class DreamSymbolRepository {
     if (!value) {
       return {};
     }
-    if (typeof value === 'object') {
+    if (typeof value === "object") {
       return value as Record<string, string>;
     }
-    if (typeof value === 'string') {
+    if (typeof value === "string") {
       try {
         const parsed = JSON.parse(value);
-        return typeof parsed === 'object' && parsed !== null ? parsed : {};
+        return typeof parsed === "object" && parsed !== null ? parsed : {};
       } catch {
         return {};
       }

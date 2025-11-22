@@ -8,6 +8,7 @@ import { DreamSymbolRepository } from "./datasources/dream-symbol.repository";
 import { InterpretationPromptBuilder } from "./prompts/interpretation-prompt.builder";
 import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
 import { InterpretationCacheService } from "./cache/interpretation-cache.service";
+import { DreamSymbolDto } from "./types/dream-symbol.dto";
 
 @Injectable()
 export class InterpretationService {
@@ -42,10 +43,11 @@ export class InterpretationService {
       throw new InternalServerErrorException("<!> 임베딩 생성에 실패했습니다.");
     }
 
-    const relatedSymbols = await this.symbolRepository.findNearestByEmbedding(
-      embeddings[0],
-      this.TOP_N
-    );
+    const relatedSymbols: DreamSymbolDto[] =
+      await this.symbolRepository.findNearestByEmbedding(
+        embeddings[0],
+        this.TOP_N
+      );
 
     const prompt = this.promptBuilder.buildPrompt(request, relatedSymbols);
     const interpretation = await this.openAIClient.generateFromMessages([
