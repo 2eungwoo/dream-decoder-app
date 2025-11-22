@@ -35,7 +35,7 @@ describe("DreamSymbolRepository", () => {
         categories: ["자존감"],
         description: "자존감/표현 상징",
         emotions: ["불안"],
-        mbti_tone: { ENFP: "감정을 표현하세요" },
+        mbtiTone: { ENFP: "감정을 표현하세요" },
         interpretations: ["자신감 흔들림"],
         advice: "거울 앞 연습",
       },
@@ -54,8 +54,16 @@ describe("DreamSymbolRepository", () => {
     verify(
       dataSourceMock.query(anything(), deepEqual(["[0.1,0.2]", 3]))
     ).once();
+
+    const row = results[0];
+
     expect(results).toHaveLength(1);
-    expect(results[0].symbol).toBe("이빨이 빠지는 꿈");
-    expect(results[0].categories).toEqual(["자존감"]);
+    expect(row.symbol).toBe("이빨이 빠지는 꿈");
+    expect(row.categories).toEqual(["자존감"]);
+    expect(row.description).toBe("자존감/표현 상징");
+    expect(row.emotions).toEqual(["불안"]);
+    expect(row.mbtiTone).toEqual({ ENFP: "감정을 표현하세요" });
+    expect(row.interpretations).toEqual(["자신감 흔들림"]);
+    expect(row.advice).toBe("거울 앞 연습");
   });
 });
