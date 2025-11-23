@@ -11,6 +11,7 @@ import { InterpretationPromptBuilder } from "./prompts/interpretation-prompt.bui
 import { OpenAIClient } from "../external/openai/openai.client";
 import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
 import { InterpretationCacheService } from "./cache/interpretation-cache.service";
+import { InterpretationSimilarityEvaluator } from "./rankings/interpretation-similarity.evaluator";
 
 describe("InterpretationService (ts-mockito)", () => {
   let service: InterpretationService;
@@ -21,6 +22,7 @@ describe("InterpretationService (ts-mockito)", () => {
   const promptBuilderMock = mock(InterpretationPromptBuilder);
   const openAIClientMock = mock(OpenAIClient);
   const cacheServiceMock = mock(InterpretationCacheService);
+  const similarityEvaluatorMock = mock(InterpretationSimilarityEvaluator);
 
   const CACHE_KEY = "cache-key";
   const FORMATTED_PROMPT = "formatted prompt";
@@ -44,6 +46,7 @@ describe("InterpretationService (ts-mockito)", () => {
     reset(promptBuilderMock);
     reset(openAIClientMock);
     reset(cacheServiceMock);
+    reset(similarityEvaluatorMock);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -69,6 +72,10 @@ describe("InterpretationService (ts-mockito)", () => {
           provide: InterpretationCacheService,
           useValue: instance(cacheServiceMock),
         },
+        {
+          provide: InterpretationSimilarityEvaluator,
+          useValue: instance(similarityEvaluatorMock),
+        },
       ],
     }).compile();
 
@@ -88,6 +95,9 @@ describe("InterpretationService (ts-mockito)", () => {
     when(
       symbolRepositoryMock.findNearestByEmbedding(anything(), anything())
     ).thenResolve(VECTOR_SEARCH_RESULT);
+    when(
+      similarityEvaluatorMock.rank(anything(), anything())
+    ).thenReturn(VECTOR_SEARCH_RESULT);
 
     when(promptBuilderMock.buildPrompt(anything(), anything())).thenReturn(
       FORMATTED_PROMPT
@@ -107,6 +117,7 @@ describe("InterpretationService (ts-mockito)", () => {
     verify(
       symbolRepositoryMock.findNearestByEmbedding(anything(), anything())
     ).once();
+    verify(similarityEvaluatorMock.rank(anything(), anything())).once();
     verify(promptBuilderMock.buildPrompt(anything(), anything())).once();
     verify(openAIClientMock.generateFromMessages(anything())).once();
     verify(cacheServiceMock.set(CACHE_KEY, RESPONSE)).once();

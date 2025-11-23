@@ -9,6 +9,7 @@ import { InterpretationPromptBuilder } from "./prompts/interpretation-prompt.bui
 import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
 import { InterpretationCacheService } from "./cache/interpretation-cache.service";
 import { DreamSymbolDto } from "./types/dream-symbol.dto";
+import { InterpretationSimilarityEvaluator } from "./rankings/interpretation-similarity.evaluator";
 
 @Injectable()
 export class InterpretationService {
@@ -18,7 +19,8 @@ export class InterpretationService {
     private readonly symbolRepository: DreamSymbolRepository,
     private readonly promptBuilder: InterpretationPromptBuilder,
     private readonly openAIClient: OpenAIClient,
-    private readonly cacheService: InterpretationCacheService
+    private readonly cacheService: InterpretationCacheService,
+    private readonly similarityEvaluator: InterpretationSimilarityEvaluator
   ) {}
 
   TOP_N = 5;
@@ -48,8 +50,9 @@ export class InterpretationService {
         embeddings[0],
         this.TOP_N
       );
+    const ranked = this.similarityEvaluator.rank(request, relatedSymbols);
 
-    const prompt = this.promptBuilder.buildPrompt(request, relatedSymbols);
+    const prompt = this.promptBuilder.buildPrompt(request, ranked);
     const interpretation = await this.openAIClient.generateFromMessages([
       {
         role: "system",
