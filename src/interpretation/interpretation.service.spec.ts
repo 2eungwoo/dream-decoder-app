@@ -7,7 +7,7 @@ import { InterpretationService } from "./interpretation.service";
 import { EmbeddingInputFactory } from "./factories/embedding-input.factory";
 import { EmbeddingClient } from "../external/embedding/embedding.client";
 import { DreamSymbolRepository } from "./datasources/dream-symbol.repository";
-import { InterpretationPromptBuilder } from "./prompts/interpretation-prompt.builder";
+import { InterpretationUserPromptBuilder } from "./prompts/interpretation-user-prompt.builder";
 import { OpenAIClient } from "../external/openai/openai.client";
 import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
 import { InterpretationCacheService } from "./cache/interpretation-cache.service";
@@ -19,7 +19,7 @@ describe("InterpretationService (ts-mockito)", () => {
   const embeddingInputFactoryMock = mock(EmbeddingInputFactory);
   const embeddingClientMock = mock(EmbeddingClient);
   const symbolRepositoryMock = mock(DreamSymbolRepository);
-  const promptBuilderMock = mock(InterpretationPromptBuilder);
+  const promptBuilderMock = mock(InterpretationUserPromptBuilder);
   const openAIClientMock = mock(OpenAIClient);
   const cacheServiceMock = mock(InterpretationCacheService);
   const similarityEvaluatorMock = mock(InterpretationSimilarityEvaluator);
@@ -64,7 +64,7 @@ describe("InterpretationService (ts-mockito)", () => {
           useValue: instance(symbolRepositoryMock),
         },
         {
-          provide: InterpretationPromptBuilder,
+          provide: InterpretationUserPromptBuilder,
           useValue: instance(promptBuilderMock),
         },
         { provide: OpenAIClient, useValue: instance(openAIClientMock) },
@@ -99,7 +99,7 @@ describe("InterpretationService (ts-mockito)", () => {
       similarityEvaluatorMock.rank(anything(), anything())
     ).thenReturn(VECTOR_SEARCH_RESULT);
 
-    when(promptBuilderMock.buildPrompt(anything(), anything())).thenReturn(
+    when(promptBuilderMock.buildUserPrompt(anything(), anything())).thenReturn(
       FORMATTED_PROMPT
     );
 
@@ -118,7 +118,7 @@ describe("InterpretationService (ts-mockito)", () => {
       symbolRepositoryMock.findNearestByEmbedding(anything(), anything())
     ).once();
     verify(similarityEvaluatorMock.rank(anything(), anything())).once();
-    verify(promptBuilderMock.buildPrompt(anything(), anything())).once();
+    verify(promptBuilderMock.buildUserPrompt(anything(), anything())).once();
     verify(openAIClientMock.generateFromMessages(anything())).once();
     verify(cacheServiceMock.set(CACHE_KEY, RESPONSE)).once();
 
