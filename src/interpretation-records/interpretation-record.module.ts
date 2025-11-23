@@ -6,9 +6,10 @@ import { InterpretationRecordController } from "./interpretation-record.controll
 import { AuthModule } from "../auth/auth.module";
 import { InterpretAuthGuard } from "../interpretation/guards/interpret-auth.guard";
 import { InterpretationRecordValidator } from "./exceptions/interpretation-record.validator";
+import { User } from "../users/user.entity";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([InterpretationRecord]), AuthModule],
+  imports: [TypeOrmModule.forFeature([InterpretationRecord, User]), AuthModule],
   controllers: [InterpretationRecordController],
   providers: [
     InterpretationRecordService,
