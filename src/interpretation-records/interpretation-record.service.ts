@@ -26,6 +26,7 @@ export class InterpretationRecordService {
       userPrompt: payload.userPrompt,
     });
 
-    return this.recordsRepository.save(record);
+    this.recordsRepository.save(record);
+    return record.id;
   }
 }

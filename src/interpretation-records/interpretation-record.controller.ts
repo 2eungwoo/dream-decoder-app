@@ -28,13 +28,12 @@ export class InterpretationRecordController {
       throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
     }
 
-    const record = await this.interpretationRecordService.saveRecord(
+    const savedId = await this.interpretationRecordService.saveRecord(
       req.user.id,
       payload
     );
-
     return ApiResponseFactory.success(
-      { id: record.id },
+      { id: savedId },
       "해몽 기록이 저장되었습니다."
     );
   }
