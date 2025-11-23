@@ -5,40 +5,45 @@
  */
 export class DreamSymbolDto {
   /**
-   * 꿈 내용의 전반적인 상징 문장
+   * @embeddingField 꿈 내용의 전반적인 상징 문장
+   * LLM/RAG에서 벡터 검색 시 주된 텍스트 신호로 사용
    * @example "맑은 바다를 헤엄치는 꿈"
    */
   symbol!: string;
 
   /**
-   * 위의 상징의 표상 분석을 위한 관련 카테고리 목록
-   * @example ["물", "감정", "자유"]
+   * @metadata 대표 상징 요소 (ex. 물, 자유 등)
+   * 벡터 검색 보조 신호나 필터링 용도로 사용
    */
   categories!: string[];
 
   /**
-   * 상징에 대한 기본 설명
+   * @embeddingField 상징에 대한 기본 의미 설명
+   * dream 본문과 유사도 비교 시 함께 벡터화해서 의미적 연결성을 높인다
    */
   description!: string;
 
   /**
-   * 상징과 주로 관련된 감정 목록
-   * @example ["평온", "기대"]
+   * @metadata 통상적으로 동반되는 감정 목록
+   * 사용자 입력 감정과의 교집합, 가중치 계산 등에 활용
    */
   emotions!: string[];
 
   /**
-   * MBTI 유형별 응답 톤
+   * @metadata MBTI 유형별 응답 톤
+   * 해석 결과를 사용자 선호 톤에 맞게 보정할 때 사용
    */
   mbtiTone!: Record<string, string>;
 
   /**
-   * 해몽 응답 본문에 영향을 주는 설명
+   * @embeddingField 해몽 응답 본문에 참고할 문장 목록
+   * 벡터 검색과 프롬프트 RAG 컨텍스트에 포함
    */
   interpretations!: string[];
 
   /**
-   * 이후 사용자의 행동 조언에 쓸 문장
+   * @embeddingField + @metadata 사용자 행동 조언
+   * 응답 보강 및 RAG 컨텍스트로 활용
    */
   advice!: string;
 
