@@ -21,6 +21,7 @@ export const COMMANDS_BOX = `
 │ /deail    <id>                  │ View a saved interpretation detail.             │
 │ /list                           │ View saved interpretation IDs and previews.     │
 │ /chat                           │ Enter dream/emotions/MBTI for a full decoding.  │
+│ /status   <requestId>           │ Check the status/result of a dream request.     │
 │ /help                           │ Display this command summary again.             │
 │ /quit                           │ Exit the Dream Decoder CLI.                     │
 └───────────────────────────────────────────────────────────────────────────────────┘

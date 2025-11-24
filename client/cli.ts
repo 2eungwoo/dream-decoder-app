@@ -10,6 +10,7 @@ import { handleChat } from "./commands/chat";
 import { handleInterpret } from "./commands/interpret";
 import { handleShowDetails } from "./commands/show-details";
 import { handleShowList } from "./commands/show-list";
+import { handleStatus } from "./commands/status";
 
 type PromptFn = (message: string) => Promise<string>;
 
@@ -87,6 +88,8 @@ async function dispatchCommand(
       return handleShowDetails(args, sessions);
     case "/list":
       return handleShowList(args, sessions);
+    case "/status":
+      return handleStatus(args, sessions);
     case "/help":
       return printUsage();
     default:

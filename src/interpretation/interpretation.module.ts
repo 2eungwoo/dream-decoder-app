@@ -14,12 +14,17 @@ import { InterpretationCacheService } from "./cache/interpretation-cache.service
 import { InterpretationSemaphoreService } from "./semaphore/interpretation-semaphore.service";
 import { InterpretationSemaphoreInterceptor } from "./semaphore/interpretation-semaphore.interceptor";
 import { InterpretationSimilarityEvaluator } from "./rankings/interpretation-similarity.evaluator";
+import { PipelineModule } from "../pipeline/pipeline.module";
+import { InterpretationProcessor } from "../pipeline/interpretation/workers/processor.service";
+import { InterpretationConsumer } from "../pipeline/interpretation/workers/consumer.service";
+import { InterpretationMessageHandler } from "../pipeline/interpretation/workers/message.handler";
 @Module({
   imports: [
     EmbeddingModule,
     OpenAIModule,
     AuthModule,
     TypeOrmModule.forFeature([User]),
+    PipelineModule,
   ],
   controllers: [InterpretationController],
   providers: [
@@ -32,6 +37,9 @@ import { InterpretationSimilarityEvaluator } from "./rankings/interpretation-sim
     InterpretationSemaphoreService,
     InterpretationSemaphoreInterceptor,
     InterpretationSimilarityEvaluator,
+    InterpretationProcessor,
+    InterpretationMessageHandler,
+    InterpretationConsumer,
   ],
 })
 export class InterpretationModule {}
