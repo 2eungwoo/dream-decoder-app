@@ -1,6 +1,13 @@
 import chalk from "chalk";
 import { getApi } from "../api";
 import { SessionStore } from "../sessions/session-store";
+import {
+  dim,
+  formatBullet,
+  highlight,
+  printPanel,
+  truncateText,
+} from "../ui/layout";
 
 interface InterpretationListItem {
   id: string;
@@ -30,19 +37,31 @@ export async function handleShowList(args: string[], sessions: SessionStore) {
   }
 
   if (!response.data.length) {
-    console.log("<!> 저장된 해몽 기록이 없습니다.");
+    printPanel("Saved Interpretation List", [
+      {
+        title: "해몽 기록",
+        lines: ["<!> 저장된 해몽 기록이 없습니다."],
+      },
+    ]);
     return;
   }
 
-  console.log(chalk.cyanBright("\n[Saved Interpretation List]"));
-  response.data.forEach((item) => {
+  const lines = response.data.map((item) => {
     const date = new Date(item.createdAt);
-    const formatted = `${date.getFullYear()}/${(date.getMonth() + 1)
+    const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1)
       .toString()
       .padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")}`;
-    console.log(
-      chalk.gray(`${formatted} | ${chalk.white(item.id)} | ${item.dream}`)
+
+    const preview = truncateText(item.dream.replace(/\s+/g, " "), 60);
+    return formatBullet(
+      `${highlight(item.id)} ${dim("·")} ${formattedDate} ${dim("·")} ${preview}`
     );
   });
-  console.log();
+
+  printPanel("Saved Interpretation List", [
+    {
+      title: `총 ${response.data.length}개의 해몽 기록이 있습니다.`,
+      lines,
+    },
+  ]);
 }

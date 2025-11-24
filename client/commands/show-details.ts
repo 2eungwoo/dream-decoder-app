@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import { getApi } from "../api";
 import { SessionStore } from "../sessions/session-store";
+import { BoxSection, formatKeyValue, printPanel } from "../ui/layout";
 
 interface InterpretationDetailResponse {
   id: string;
@@ -46,23 +47,51 @@ export async function handleShowDetails(
   }
 
   const detail = response.data;
-  console.log(chalk.cyanBright(`\n[Saved Interpretation] ${detail.id}`));
-  console.log(chalk.gray(`Created: ${new Date(detail.createdAt).toString()}`));
-  console.log();
-  console.log(chalk.magentaBright("Dream"));
-  console.log(detail.dream);
+  const createdAt = new Date(detail.createdAt);
+  const timestamp = `${createdAt.getFullYear()}-${(createdAt.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${createdAt.getDate().toString().padStart(2, "0")} ${createdAt
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${createdAt.getMinutes().toString().padStart(2, "0")}`;
+
+  const metadata = [
+    formatKeyValue("ID", detail.id),
+    formatKeyValue("생성 시각", timestamp),
+  ];
+
+  if (detail.mbti) {
+    metadata.push(formatKeyValue("MBTI", detail.mbti));
+  }
+
   if (detail.emotions?.length) {
-    console.log();
-    console.log(chalk.magentaBright("Emotions"));
-    console.log(detail.emotions.join(", "));
+    metadata.push(formatKeyValue("감정", detail.emotions.join(", ")));
   }
-  if (detail.extraContext) {
-    console.log();
-    console.log(chalk.magentaBright("Extra Context"));
-    console.log(detail.extraContext);
-  }
-  console.log();
-  console.log(chalk.greenBright("Interpretation"));
-  console.log(detail.interpretation);
-  console.log();
+
+  const sections: Array<BoxSection | undefined> = [
+    {
+      title: "요청 정보",
+      lines: metadata,
+    },
+    {
+      title: "꿈 내용",
+      lines: [detail.dream],
+    },
+    detail.extraContext
+      ? {
+          title: "추가 맥락",
+          lines: [detail.extraContext],
+        }
+      : undefined,
+    {
+      title: "해몽 결과",
+      lines: [detail.interpretation],
+    },
+  ];
+
+  const compactSections = sections.filter(
+    (section): section is BoxSection => Boolean(section)
+  );
+
+  printPanel("Saved Interpretation Detail", compactSections);
 }
