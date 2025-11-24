@@ -28,9 +28,15 @@ export async function handleStatus(args: string[], sessions: SessionStore) {
   );
 
   if (!response.success || !response.data) {
+    const friendlyMessage = extractMessage(response);
+    if (isStatusClearedMessage(friendlyMessage)) {
+      printStatusClearedNotice(requestId, friendlyMessage);
+      return;
+    }
     console.error(
       chalk.red(
-        response.message ?? "<!> 해몽 상태를 불러오지 못했습니다. 다시 시도해주세요."
+        friendlyMessage ??
+          "<!> 해몽 상태를 불러오지 못했습니다. 다시 시도해주세요."
       )
     );
     return;
@@ -46,7 +52,9 @@ export async function handleStatus(args: string[], sessions: SessionStore) {
   if (status.interpretation) {
     lines.push(
       "",
-      formatBullet("해몽 결과가 준비되었습니다. 아래 detail 명령으로 확인하거나 CLI가 이미 표시했는지 확인하세요.")
+      formatBullet(
+        "해몽 결과가 준비되었습니다. 아래 detail 명령으로 확인하거나 CLI가 이미 표시했는지 확인하세요."
+      )
     );
   }
 
@@ -54,18 +62,23 @@ export async function handleStatus(args: string[], sessions: SessionStore) {
     lines.push("", chalk.red(status.errorMessage));
   }
 
-  printPanel("해몽 요청 상태", [
-    {
-      title: "요청 정보",
-      lines,
-    },
-    status.interpretation
-      ? {
-          title: "해몽 결과",
-          lines: [status.interpretation],
-        }
-      : undefined,
-  ].filter((section): section is NonNullable<typeof section> => Boolean(section)));
+  printPanel(
+    "해몽 요청 상태",
+    [
+      {
+        title: "요청 정보",
+        lines,
+      },
+      status.interpretation
+        ? {
+            title: "해몽 결과",
+            lines: [status.interpretation],
+          }
+        : undefined,
+    ].filter((section): section is NonNullable<typeof section> =>
+      Boolean(section)
+    )
+  );
 }
 
 function translateStatus(status: InterpretationStatusResponse["status"]) {
@@ -81,4 +94,46 @@ function translateStatus(status: InterpretationStatusResponse["status"]) {
     default:
       return status;
   }
+}
+
+function extractMessage(response: unknown) {
+  if (!response || typeof response !== "object") {
+    return undefined;
+  }
+
+  const message = (response as { message?: string | string[] }).message;
+  if (Array.isArray(message)) {
+    return message.join(" ");
+  }
+  return message;
+}
+
+function isStatusClearedMessage(message?: string) {
+  if (!message) {
+    return false;
+  }
+  return ( // 이거 포함돼있으면 cleared 처리
+    message.includes("기록이 사라졌") ||
+    message.includes("이미 저장되어") ||
+    message.includes("찾을 수 없습니다")
+  );
+}
+
+function printStatusClearedNotice(requestId: string, message?: string) {
+  printPanel("해몽 요청 상태", [
+    {
+      title: "요청 정보",
+      lines: [
+        formatKeyValue("Request ID", requestId),
+        formatKeyValue("상태", "완료"),
+      ],
+    },
+    {
+      title: "안내",
+      lines: [
+        message ??
+          "이 해몽은 이미 저장되어 상태 기록이 사라졌어요. /list 또는 /detail 명령으로 다시 확인해 보세요.",
+      ],
+    },
+  ]);
 }

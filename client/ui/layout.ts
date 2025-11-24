@@ -45,7 +45,12 @@ export function truncateText(text: string, maxLength: number) {
     return text;
   }
 
-  return `${text.slice(0, Math.max(0, maxLength - 1))}…`;
+  const limit = Math.max(1, maxLength - 1);
+  const sliced = text.slice(0, limit).trimEnd();
+  const lastSpace = sliced.lastIndexOf(" ");
+  const trimmed =
+    lastSpace > 0 ? sliced.slice(0, lastSpace).trimEnd() : sliced;
+  return `${trimmed}…`;
 }
 
 function buildPanelLines(
