@@ -3,9 +3,7 @@ import { InterpretationStatusStore } from "../status/status.store";
 import { InterpretationProcessor } from "./processor.service";
 import { InterpretationStreamWriter } from "../streams/stream.writer";
 import { InterpretationDlqWriter } from "../dlq/dlq.writer";
-import {
-  InterpretationMessage,
-} from "../messages/message.types";
+import { InterpretationMessage } from "../messages/message.types";
 import { InterpretationMessageFactory } from "../messages/message.factory";
 import { INTERPRETATION_WORKER_MAX_RETRY } from "../config/worker.config";
 
@@ -23,17 +21,20 @@ export class InterpretationMessageHandler {
 
   public async handle(message: InterpretationMessage) {
     await this.statusStore.markRunning(message.requestId);
+    this.logger.log(
+      `[Stream : MessageHandler]해몽 요청 ${message.requestId} 실행 시작`
+    );
     try {
       await this.processor.process(message.requestId, message.payload);
+      this.logger.log(
+        `[Stream : MessageHandler] 해몽 요청 ${message.requestId} 처리 완료`
+      );
     } catch (error) {
       await this.handleFailure(message, error as Error);
     }
   }
 
-  private async handleFailure(
-    message: InterpretationMessage,
-    error: Error
-  ) {
+  private async handleFailure(message: InterpretationMessage, error: Error) {
     const reason =
       error?.message ??
       "<!> 해몽 생성 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.";
@@ -43,7 +44,7 @@ export class InterpretationMessageHandler {
       await this.statusStore.markFailed(message.requestId, reason);
       await this.dlqWriter.write(message, reason);
       this.logger.error(
-        `Request ${message.requestId} moved to DLQ after ${nextRetry} attempts.`
+        `<!> [Stream : MessageHandler]  ${message.requestId} 요청은  ${nextRetry} 시도 후 최종 실패하여 DLQ로 넘어감`
       );
       return;
     }
@@ -52,5 +53,8 @@ export class InterpretationMessageHandler {
     await this.statusStore.markPending(message.requestId, reason);
     const retryMessage = this.messageFactory.withRetry(message, nextRetry);
     await this.streamWriter.write(retryMessage);
+    this.logger.warn(
+      `[Stream : MessageHandler] 현재 해몽 ID: ${message.requestId} 의 요청, 재시도 ${nextRetry}회 (사유: ${reason})`
+    );
   }
 }

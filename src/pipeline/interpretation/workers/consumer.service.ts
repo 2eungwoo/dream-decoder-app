@@ -92,7 +92,7 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
           break;
         }
         this.logger.warn(
-          `Interpretation worker loop error: ${(error as Error)?.message}`
+          `[Stream - Consumer(Worker)] worker 루프 에러 메세지 : ${(error as Error)?.message}`
         );
         await this.delay(1000);
       }
@@ -107,13 +107,13 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
       }
     } catch (error) {
       this.logger.warn(
-        `Failed to claim interpretation messages: ${(error as Error)?.message}`
+        `[Stream - Consumer] claim idle 에러 메세지: ${(error as Error)?.message}`
       );
     }
   }
 
   private async handleEntry(id: string, fields: string[]) {
-    const message = this.serializer.parseFromStreamFields(fields);
+    const message = this.serializer.fromStreamFields(fields);
     if (!message) {
       await this.client.xack(
         INTERPRETATION_STREAM_KEY,
@@ -123,11 +123,17 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
       return;
     }
 
+    this.logger.log(
+      `[Stream - Consumer] 요청ID : ${message.requestId} 가 stream에 들어갔음`
+    );
     try {
       await this.messageHandler.handle(message);
+      this.logger.log(
+        `[Stream - Consumer] 요청ID ${message.requestId} 담당 컨슈머 : [${this.consumerName}] `
+      );
     } catch (error) {
       this.logger.error(
-        `Failed to handle interpretation message ${message.requestId}: ${
+        `[Stream - Consumer] 요청 메세지 컨슈밍 중 에러 발생, 요청ID: ${message.requestId}: ${
           (error as Error)?.message
         }`
       );

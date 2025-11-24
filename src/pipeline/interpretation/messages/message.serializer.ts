@@ -3,7 +3,7 @@ import { InterpretationMessage, InterpretationPayload } from "./message.types";
 
 @Injectable()
 export class InterpretationMessageSerializer {
-  public parseFromStreamFields(fields: string[]): InterpretationMessage | null {
+  public fromStreamFields(fields: string[]): InterpretationMessage | null {
     if (!fields?.length) {
       return null;
     }
