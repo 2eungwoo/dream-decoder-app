@@ -66,7 +66,11 @@ function chunkWord(word: string, width: number) {
   }
 
   const chunks: string[] = [];
-  const { prefix, suffix } = extractAnsiWrap(word);
+  const { prefix, suffix, innerHasAnsi } = extractAnsiWrap(word);
+  if (innerHasAnsi) {
+    return [word];
+  }
+
   for (let i = 0; i < plain.length; i += width) {
     const chunk = plain.slice(i, i + width);
     chunks.push(`${prefix}${chunk}${suffix}`);
@@ -79,7 +83,11 @@ function extractAnsiWrap(text: string) {
   const suffixMatch = text.match(/((?:\u001B\[[0-?]*[ -/]*[@-~])+)\s*$/);
   const prefix = prefixMatch?.[0] ?? "";
   const suffix = suffixMatch?.[0] ?? "";
-  return { prefix, suffix };
+  const start = prefix.length;
+  const end = Math.max(start, text.length - suffix.length);
+  const inner = text.slice(start, end);
+  const innerHasAnsi = inner.includes("\u001b");
+  return { prefix, suffix, innerHasAnsi };
 }
 
 export function visibleLength(text: string) {
