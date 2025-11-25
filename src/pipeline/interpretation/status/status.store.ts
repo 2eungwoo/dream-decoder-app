@@ -6,12 +6,13 @@ import {
   InterpretationStatus,
   InterpretationStatusRecord,
   InterpretationUserContext,
-} from "../messages/message.types";
+} from "../messages/types/message.types";
 import {
   INTERPRETATION_STATUS_TTL_SECONDS,
   interpretationStatusKey,
 } from "../config/storage.config";
 import { InterpretationStatusClearedException } from "./exceptions/status-cleared.exception";
+import { InterpretationPayloadParser } from "../messages/helpers/interpretation-payload.parser";
 
 interface StatusUpdate {
   status?: InterpretationStatus;
@@ -23,6 +24,8 @@ interface StatusUpdate {
 
 @Injectable()
 export class InterpretationStatusStore {
+  private readonly payloadParser = new InterpretationPayloadParser();
+
   constructor(private readonly redisService: RedisService) {}
 
   private get client(): Redis {
@@ -152,7 +155,7 @@ export class InterpretationStatusStore {
       requestId: raw.requestId,
       userId: raw.userId,
       username: raw.username,
-      payload: this.parsePayload(raw.payload),
+      payload: this.payloadParser.parse(raw.payload),
       status: (raw.status ??
         InterpretationStatus.Pending) as InterpretationStatus,
       interpretation: raw.interpretation || undefined,
@@ -162,29 +165,5 @@ export class InterpretationStatusStore {
       updatedAt: raw.updatedAt,
       fromCache: raw.fromCache === "true",
     };
-  }
-
-  // payload -> JSON
-  // 없거나 손상되면 기본값
-  private parsePayload(rawPayload?: string) {
-    if (!rawPayload) {
-      return {
-        dream: "",
-        emotions: [],
-        mbti: undefined,
-        extraContext: undefined,
-      };
-    }
-
-    try {
-      return JSON.parse(rawPayload) as InterpretationPayload;
-    } catch {
-      return {
-        dream: "",
-        emotions: [],
-        mbti: undefined,
-        extraContext: undefined,
-      };
-    }
   }
 }

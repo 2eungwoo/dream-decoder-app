@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Redis } from "ioredis";
 import { RedisService } from "../../../infra/redis/redis.service";
-import { InterpretationMessage } from "../messages/message.types";
+import { InterpretationMessage } from "../messages/types/message.types";
 import {
   INTERPRETATION_STREAM_KEY,
   interpretationStatusKey,

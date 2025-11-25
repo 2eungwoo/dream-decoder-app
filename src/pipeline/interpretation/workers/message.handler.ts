@@ -3,7 +3,7 @@ import { InterpretationStatusStore } from "../status/status.store";
 import { InterpretationProcessor } from "./processor.service";
 import { InterpretationStreamWriter } from "../streams/stream.writer";
 import { InterpretationDlqWriter } from "../dlq/dlq.writer";
-import { InterpretationMessage } from "../messages/message.types";
+import { InterpretationMessage } from "../messages/types/message.types";
 import { InterpretationMessageFactory } from "../messages/message.factory";
 import { INTERPRETATION_WORKER_MAX_RETRY } from "../config/worker.config";
 

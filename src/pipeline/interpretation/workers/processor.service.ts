@@ -1,7 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { InterpretationService } from "../../../interpretation/interpretation.service";
 import { InterpretationStatusStore } from "../status/status.store";
-import { InterpretationPayload } from "../messages/message.types";
+import { InterpretationPayload } from "../messages/types/message.types";
 
 @Injectable()
 export class InterpretationProcessor {

@@ -4,7 +4,7 @@ import {
   InterpretationMessage,
   InterpretationPayload,
   InterpretationUserContext,
-} from "./message.types";
+} from "./types/message.types";
 
 @Injectable()
 export class InterpretationMessageFactory {

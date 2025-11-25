@@ -1,8 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { InterpretationMessage, InterpretationPayload } from "./message.types";
+import { InterpretationMessage } from "./types/message.types";
+import { InterpretationPayloadParser } from "./helpers/interpretation-payload.parser";
 
 @Injectable()
 export class InterpretationMessageSerializer {
+  private readonly payloadParser = new InterpretationPayloadParser();
+
   public fromStreamFields(fields: string[]): InterpretationMessage | null {
     if (!fields?.length) {
       return null;
@@ -21,24 +24,11 @@ export class InterpretationMessageSerializer {
 
     return {
       requestId: record.requestId,
-      payload: this.parsePayload(record.payload),
+      payload: this.payloadParser.parse(record.payload),
       userId: record.userId,
       username: record.username,
       retryCount: Number(record.retryCount ?? "0"),
       createdAt: record.createdAt ?? new Date().toISOString(),
     };
-  }
-
-  private parsePayload(raw: string): InterpretationPayload {
-    try {
-      return JSON.parse(raw) as InterpretationPayload;
-    } catch {
-      return {
-        dream: "",
-        emotions: [],
-        mbti: undefined,
-        extraContext: undefined,
-      };
-    }
   }
 }
