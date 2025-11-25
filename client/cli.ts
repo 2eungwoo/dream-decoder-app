@@ -6,7 +6,7 @@ import { SessionStore } from "./sessions/session-store";
 import { handleRegister } from "./commands/register";
 import { handleLogin } from "./commands/login";
 import { handleLogout } from "./commands/logout";
-import { handleChat } from "./commands/chat";
+import { handleNoRag } from "./commands/no-rag";
 import { handleInterpret } from "./commands/interpret";
 import { handleShowDetails } from "./commands/show-details";
 import { handleShowList } from "./commands/show-list";
@@ -79,8 +79,8 @@ async function dispatchCommand(
       return handleLogin(args, sessions);
     case "/logout":
       return handleLogout(args, sessions);
-    // case "/chat":
-    //   return handleChat(args, sessions);
+    case "/no-rag":
+      return handleNoRag(args, sessions);
     case "/chat":
       return handleInterpret(async (prompt) => {
         const response = await ask(chalk.hex("#C792EA")(prompt));

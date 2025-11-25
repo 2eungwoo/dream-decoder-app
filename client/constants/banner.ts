@@ -28,4 +28,4 @@ export const COMMANDS_BOX = `
 │ /quit                           │ Exit the Dream Decoder CLI.                     │
 └───────────────────────────────────────────────────────────────────────────────────┘
 `;
-// │ /chat     <message>             │ Chat with the AI once logged in.                │
+// │ /no-rag     <message>             │ Chat with the AI once logged in.                │
