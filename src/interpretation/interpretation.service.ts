@@ -23,7 +23,7 @@ export class InterpretationService {
     private readonly similarityEvaluator: InterpretationSimilarityEvaluator
   ) {}
 
-  TOP_N = 5;
+  TOP_N = Number(process.env.INTERPRET_TOP_N ?? "2");
   public async generateInterpretation(request: InterpretDreamRequestDto) {
     if (!request?.dream?.trim()) {
       throw new InvalidDreamException();
