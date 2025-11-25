@@ -31,13 +31,15 @@ describe("DreamSymbolRepository", () => {
     // given & when
     when(dataSourceMock.query(anything(), anything())).thenResolve([
       {
-        symbol: "이빨이 빠지는 꿈",
-        categories: ["자존감"],
-        description: "자존감/표현 상징",
-        emotions: ["불안"],
-        mbtiTone: { ENFP: "감정을 표현하세요" },
-        interpretations: ["자신감 흔들림"],
-        advice: "거울 앞 연습",
+        archetypeId: "FRUIT",
+        archetypeName: "과일",
+        coreMeanings: '["성숙","풍요"]',
+        symbolExamples: ["사과", "배"],
+        symbol: "사과",
+        symbolMeanings: ["선택", "건강"],
+        scenarioTitle: "사과를 따는 꿈",
+        scenarioDerivedMeanings: '["결실","선택 임박"]',
+        advice: "주저했던 선택을 정리하세요",
       },
     ]);
 
@@ -58,12 +60,14 @@ describe("DreamSymbolRepository", () => {
     const row = results[0];
 
     expect(results).toHaveLength(1);
-    expect(row.symbol).toBe("이빨이 빠지는 꿈");
-    expect(row.categories).toEqual(["자존감"]);
-    expect(row.description).toBe("자존감/표현 상징");
-    expect(row.emotions).toEqual(["불안"]);
-    expect(row.mbtiTone).toEqual({ ENFP: "감정을 표현하세요" });
-    expect(row.interpretations).toEqual(["자신감 흔들림"]);
-    expect(row.advice).toBe("거울 앞 연습");
+    expect(row.archetypeId).toBe("FRUIT");
+    expect(row.archetypeName).toBe("과일");
+    expect(row.coreMeanings).toEqual(["성숙", "풍요"]);
+    expect(row.symbolExamples).toEqual(["사과", "배"]);
+    expect(row.symbol).toBe("사과");
+    expect(row.symbolMeanings).toEqual(["선택", "건강"]);
+    expect(row.scenarioTitle).toBe("사과를 따는 꿈");
+    expect(row.scenarioDerivedMeanings).toEqual(["결실", "선택 임박"]);
+    expect(row.advice).toBe("주저했던 선택을 정리하세요");
   });
 });
