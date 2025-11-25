@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { InterpretationMessage } from "./types/message.types";
+import { InterpretationMessage } from "./interfaces/message.types";
 import { InterpretationPayloadParser } from "./helpers/interpretation-payload.parser";
 
 @Injectable()
 export class InterpretationMessageSerializer {
-  private readonly payloadParser = new InterpretationPayloadParser();
+  constructor(private readonly payloadParser: InterpretationPayloadParser) {}
 
   public fromStreamFields(fields: string[]): InterpretationMessage | null {
     if (!fields?.length) {

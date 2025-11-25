@@ -1,4 +1,4 @@
-import { InterpretationPayload } from "../../messages/types/message.types";
+import { InterpretationPayload } from "../../messages/interfaces/message.types";
 
 export interface FailedEntry {
   streamId: string;

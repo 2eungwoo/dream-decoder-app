@@ -1,18 +1,19 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { Redis } from "ioredis";
 import { RedisService } from "../../../infra/redis/redis.service";
+
+import {
+  INTERPRETATION_STATUS_TTL_SECONDS,
+  interpretationStatusKey,
+} from "../config/storage.config";
+import { InterpretationPayloadParser } from "../messages/helpers/interpretation-payload.parser";
+import { InterpretationStatusValidator } from "./validation/status.validator";
 import {
   InterpretationPayload,
   InterpretationStatus,
   InterpretationStatusRecord,
   InterpretationUserContext,
-} from "../messages/types/message.types";
-import {
-  INTERPRETATION_STATUS_TTL_SECONDS,
-  interpretationStatusKey,
-} from "../config/storage.config";
-import { InterpretationStatusClearedException } from "./exceptions/status-cleared.exception";
-import { InterpretationPayloadParser } from "../messages/helpers/interpretation-payload.parser";
+} from "../messages/interfaces/message.types";
 
 interface StatusUpdate {
   status?: InterpretationStatus;
@@ -24,9 +25,11 @@ interface StatusUpdate {
 
 @Injectable()
 export class InterpretationStatusStore {
-  private readonly payloadParser = new InterpretationPayloadParser();
-
-  constructor(private readonly redisService: RedisService) {}
+  constructor(
+    private readonly redisService: RedisService,
+    private readonly validator: InterpretationStatusValidator,
+    private readonly payloadParser: InterpretationPayloadParser
+  ) {}
 
   private get client(): Redis {
     return this.redisService.getClient();
@@ -105,16 +108,10 @@ export class InterpretationStatusStore {
   ): Promise<InterpretationStatusRecord> {
     const key = interpretationStatusKey(requestId);
     const raw = await this.client.hgetall(key);
-
-    if (!raw || Object.keys(raw).length === 0) {
-      throw new InterpretationStatusClearedException();
-    }
-
-    if (raw.userId !== userId) {
-      throw new NotFoundException("<!> 요청 ID를 찾을 수 없습니다.");
-    }
-
-    return this.toRecord(raw);
+    this.validator.validateRawExists(raw);
+    const record = this.toRecord(raw);
+    this.validator.validateOwner(record, userId);
+    return record;
   }
 
   // Redis Hash에 필드값 update

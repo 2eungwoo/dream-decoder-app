@@ -2,7 +2,7 @@ import { Injectable, InternalServerErrorException } from "@nestjs/common";
 import {
   InterpretationPayload,
   InterpretationUserContext,
-} from "../messages/types/message.types";
+} from "../messages/interfaces/message.types";
 import { InterpretationStatusStore } from "../status/status.store";
 import { InterpretationStreamWriter } from "../streams/stream.writer";
 import { InterpretationMessageFactory } from "../messages/message.factory";

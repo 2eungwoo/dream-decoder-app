@@ -1,8 +1,10 @@
+import { Injectable } from "@nestjs/common";
 import { InterpretationPayloadParser } from "../../messages/helpers/interpretation-payload.parser";
 import { FailedEntry } from "../interfaces/failed-entry.interface";
 
+@Injectable()
 export class DlqEntryParser {
-  private readonly payloadParser = new InterpretationPayloadParser();
+  constructor(private readonly payloadParser: InterpretationPayloadParser) {}
 
   public parse(streamId: string, fields: string[]): FailedEntry | null {
     if (!fields?.length) {
