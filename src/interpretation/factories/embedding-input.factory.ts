@@ -19,12 +19,10 @@ export class EmbeddingInputFactory {
         "Archetype",
         `${symbol.archetypeName} (${symbol.archetypeId})`
       ),
-      this.formatList("Core Meanings", symbol.coreMeanings),
-      this.formatList("Symbol Examples", symbol.symbolExamples),
       this.formatLine("Symbol", symbol.symbol),
       this.formatList("Symbol Meanings", symbol.symbolMeanings),
-      this.formatLine("Scenario", symbol.scenarioTitle),
-      this.formatList("Derived Meanings", symbol.scenarioDerivedMeanings),
+      this.formatLine("Action", symbol.action),
+      this.formatList("Derived Meanings", symbol.derivedMeanings),
       this.formatLine("Advice", symbol.advice),
     ].filter((line): line is string => Boolean(line));
 
