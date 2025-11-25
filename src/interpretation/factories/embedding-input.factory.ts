@@ -15,9 +15,16 @@ export class EmbeddingInputFactory {
 
   public createFromSymbol(symbol: DreamSymbolDto) {
     const parts = [
+      this.formatLine(
+        "Archetype",
+        `${symbol.archetypeName} (${symbol.archetypeId})`
+      ),
+      this.formatList("Core Meanings", symbol.coreMeanings),
+      this.formatList("Symbol Examples", symbol.symbolExamples),
       this.formatLine("Symbol", symbol.symbol),
-      this.formatLine("Description", symbol.description),
-      this.formatList("Interpretations", symbol.interpretations),
+      this.formatList("Symbol Meanings", symbol.symbolMeanings),
+      this.formatLine("Scenario", symbol.scenarioTitle),
+      this.formatList("Derived Meanings", symbol.scenarioDerivedMeanings),
       this.formatLine("Advice", symbol.advice),
     ].filter((line): line is string => Boolean(line));
 
