@@ -11,6 +11,8 @@ import { handleInterpret } from "./commands/interpret";
 import { handleShowDetails } from "./commands/show-details";
 import { handleShowList } from "./commands/show-list";
 import { handleStatus } from "./commands/status";
+import { handleShowFailed } from "./commands/failed";
+import { handleRetryFailed } from "./commands/retry";
 
 type PromptFn = (message: string) => Promise<string>;
 
@@ -90,6 +92,10 @@ async function dispatchCommand(
       return handleShowList(args, sessions);
     case "/status":
       return handleStatus(args, sessions);
+    case "/failed":
+      return handleShowFailed(args, sessions);
+    case "/retry":
+      return handleRetryFailed(args, sessions);
     case "/help":
       return printUsage();
     default:

@@ -15,6 +15,7 @@ import { UseInterpretationSemaphore } from "./semaphore/InterpretationSemaphore.
 import { ApiResponseFactory } from "../shared/dto/api-response.dto";
 import { InterpretationRequestPublisher } from "../pipeline/interpretation/publisher/request.publisher";
 import { InterpretationStatusStore } from "../pipeline/interpretation/status/status.store";
+import { InterpretationDlqService } from "../pipeline/interpretation/dlq/dlq.service";
 
 @Controller()
 @UseGuards(InterpretAuthGuard)
@@ -22,7 +23,8 @@ import { InterpretationStatusStore } from "../pipeline/interpretation/status/sta
 export class InterpretationController {
   constructor(
     private readonly requestPublisher: InterpretationRequestPublisher,
-    private readonly statusStore: InterpretationStatusStore
+    private readonly statusStore: InterpretationStatusStore,
+    private readonly dlqService: InterpretationDlqService
   ) {}
 
   @Post("interpret")
@@ -69,5 +71,40 @@ export class InterpretationController {
       createdAt: status.createdAt,
       fromCache: status.fromCache,
     });
+  }
+
+  @Get("interpret/failed")
+  public async getFailed(@Req() req: Request) {
+    if (!req.user) {
+      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
+    }
+    const entries = await this.dlqService.listByUser(req.user.id);
+    const data = entries.map((entry) => ({
+      requestId: entry.requestId,
+      failedAt: entry.failedAt,
+      errorMessage: entry.errorMessage,
+      dream: entry.payload.dream,
+    }));
+    return ApiResponseFactory.success(data);
+  }
+
+  @Post("interpret/failed/:requestId/retry")
+  public async retryFailed(
+    @Param("requestId") requestId: string,
+    @Req() req: Request
+  ) {
+    if (!req.user) {
+      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
+    }
+
+    const newRequestId = await this.dlqService.retryEntry(
+      { id: req.user.id, username: req.user.username },
+      requestId
+    );
+
+    return ApiResponseFactory.success(
+      { requestId: newRequestId },
+      "실패한 요청을 다시 처리하기 시작했습니다. /status 명령으로 진행 상황을 확인할 수 있습니다."
+    );
   }
 }
