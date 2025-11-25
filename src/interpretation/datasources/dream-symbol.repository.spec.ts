@@ -33,12 +33,10 @@ describe("DreamSymbolRepository", () => {
       {
         archetypeId: "FRUIT",
         archetypeName: "과일",
-        coreMeanings: '["성숙","풍요"]',
-        symbolExamples: ["사과", "배"],
         symbol: "사과",
         symbolMeanings: ["선택", "건강"],
-        scenarioTitle: "사과를 따는 꿈",
-        scenarioDerivedMeanings: '["결실","선택 임박"]',
+        action: "먹는다",
+        derivedMeanings: '["결실","선택 임박"]',
         advice: "주저했던 선택을 정리하세요",
       },
     ]);
@@ -62,12 +60,10 @@ describe("DreamSymbolRepository", () => {
     expect(results).toHaveLength(1);
     expect(row.archetypeId).toBe("FRUIT");
     expect(row.archetypeName).toBe("과일");
-    expect(row.coreMeanings).toEqual(["성숙", "풍요"]);
-    expect(row.symbolExamples).toEqual(["사과", "배"]);
     expect(row.symbol).toBe("사과");
     expect(row.symbolMeanings).toEqual(["선택", "건강"]);
-    expect(row.scenarioTitle).toBe("사과를 따는 꿈");
-    expect(row.scenarioDerivedMeanings).toEqual(["결실", "선택 임박"]);
+    expect(row.action).toBe("먹는다");
+    expect(row.derivedMeanings).toEqual(["결실", "선택 임박"]);
     expect(row.advice).toBe("주저했던 선택을 정리하세요");
   });
 });

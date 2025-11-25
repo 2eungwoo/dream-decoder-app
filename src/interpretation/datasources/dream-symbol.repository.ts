@@ -21,12 +21,10 @@ export class DreamSymbolRepository {
       `
         SELECT archetype_id AS "archetypeId",
                archetype_name AS "archetypeName",
-               core_meanings AS "coreMeanings",
-               symbol_examples AS "symbolExamples",
                symbol,
                symbol_meanings AS "symbolMeanings",
-               scenario_title AS "scenarioTitle",
-               scenario_derived_meanings AS "scenarioDerivedMeanings",
+               action,
+               derived_meanings AS "derivedMeanings",
                advice
         FROM dream_symbols
         ORDER BY embedding <=> $1::vector
@@ -39,12 +37,10 @@ export class DreamSymbolRepository {
     return rows.map((row) => ({
       archetypeId: row.archetypeId,
       archetypeName: row.archetypeName,
-      coreMeanings: this.normalizeArray(row.coreMeanings),
-      symbolExamples: this.normalizeArray(row.symbolExamples),
       symbol: row.symbol,
       symbolMeanings: this.normalizeArray(row.symbolMeanings),
-      scenarioTitle: row.scenarioTitle,
-      scenarioDerivedMeanings: this.normalizeArray(row.scenarioDerivedMeanings),
+      action: row.action,
+      derivedMeanings: this.normalizeArray(row.derivedMeanings),
       advice: row.advice,
     }));
   }
