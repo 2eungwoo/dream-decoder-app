@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
 import { DreamSymbolDto } from "../types/dream-symbol.dto";
 import { INTERPRETATION_USER_GUIDANCE } from "./interpretation-user-prompt.guidance";
+import { PROMPT_LIMITS } from "./interpretation-user-prompt.limits";
 
 @Injectable()
 export class InterpretationUserPromptBuilder {
@@ -28,21 +29,35 @@ export class InterpretationUserPromptBuilder {
   }
 
   private formatSymbol(symbol: DreamSymbolDto): string {
+    const coreMeanings = this.limitList(
+      symbol.coreMeanings,
+      PROMPT_LIMITS.coreMeanings
+    );
+    const symbolExamples = this.limitList(
+      symbol.symbolExamples,
+      PROMPT_LIMITS.symbolExamples
+    );
+    const symbolMeanings = this.limitList(
+      symbol.symbolMeanings,
+      PROMPT_LIMITS.symbolMeanings
+    );
+    const derivedMeanings = this.limitList(
+      symbol.scenarioDerivedMeanings,
+      PROMPT_LIMITS.derivedMeanings
+    );
+
     const lines = [
       `Archetype: ${symbol.archetypeName} (${symbol.archetypeId})`,
-      this.optionalLine("Core Meanings", this.joinList(symbol.coreMeanings)),
-      this.optionalLine(
-        "Symbol Examples",
-        this.joinList(symbol.symbolExamples)
-      ),
+      this.optionalLine("Core Meanings", this.joinList(coreMeanings)),
+      this.optionalLine("Symbol Examples", this.joinList(symbolExamples)),
       `Focus Symbol: ${symbol.symbol}`,
-      this.optionalLine(
-        "Symbol Meanings",
-        this.joinList(symbol.symbolMeanings)
-      ),
+      this.optionalLine("Symbol Meanings", this.joinList(symbolMeanings)),
       this.optionalLine("Scenario", symbol.scenarioTitle),
-      this.formatList("Derived Meanings", symbol.scenarioDerivedMeanings),
-      this.optionalLine("Advice", symbol.advice),
+      this.formatList("Derived Meanings", derivedMeanings),
+      this.optionalLine(
+        "Advice",
+        this.truncateText(symbol.advice, PROMPT_LIMITS.adviceLength)
+      ),
     ];
 
     return lines.filter(Boolean).join("\n");
@@ -66,5 +81,23 @@ export class InterpretationUserPromptBuilder {
       return null;
     }
     return values.join(", ");
+  }
+
+  private limitList(values?: string[], limit?: number) {
+    if (!values?.length || !limit || limit <= 0) {
+      return values;
+    }
+    const trimmed = values.filter(Boolean).slice(0, limit);
+    return trimmed.length ? trimmed : undefined;
+  }
+
+  private truncateText(value?: string | null, maxLength?: number): string | null {
+    if (!value?.trim()) {
+      return null;
+    }
+    if (!maxLength || maxLength <= 0 || value.length <= maxLength) {
+      return value.trim();
+    }
+    return `${value.trim().slice(0, maxLength).trim()}…`;
   }
 }
