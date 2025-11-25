@@ -8,12 +8,10 @@ CREATE TABLE IF NOT EXISTS dream_symbols (
   id UUID PRIMARY KEY,
   archetype_id TEXT,
   archetype_name TEXT,
-  core_meanings JSONB,
-  symbol_examples JSONB,
   symbol TEXT,
   symbol_meanings JSONB,
-  scenario_title TEXT,
-  scenario_derived_meanings JSONB,
+  action TEXT,
+  derived_meanings JSONB,
   advice TEXT,
   embedding VECTOR(768)
 );

@@ -22,8 +22,6 @@ export class DreamSymbolDto {
    */
   archetypeId!: string;
   archetypeName!: string;
-  coreMeanings!: string[]; // 해당 아키타입이 가진 공통/추상적 상징 의미
-  symbolExamples!: string[]; // 아키타입 내 대표 심볼 예시로 줌
 
   /**
    * Symbol metadata
@@ -34,12 +32,12 @@ export class DreamSymbolDto {
   symbolMeanings!: string[];
 
   /**
-   * Scenario metadata
-   *   현실적인 꿈 묘사(“사과를 따는 꿈”) 같은 상황 기반 의미 확장
+   * Action 기반 시나리오 의미
+   *   “먹는다 / 본다 / 만진다” 같은 초 포괄적 동작 단위
    * @embeddingField
    */
-  scenarioTitle!: string;
-  scenarioDerivedMeanings!: string[];
+  action!: string;
+  derivedMeanings!: string[];
 
   /**
    * 사용자 행동 조언

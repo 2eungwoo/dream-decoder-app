@@ -5,12 +5,10 @@
 # 임베딩 생성에 쓰는 필드명
 TEXT_FIELDS_FOR_EMBEDDING = [
     "archetypeName",
-    "coreMeanings",
-    "symbolExamples",
     "symbol",
     "symbolMeanings",
-    "scenarioTitle",
-    "scenarioDerivedMeanings",
+    "action",
+    "derivedMeanings",
     "advice",
 ]
 
@@ -19,12 +17,10 @@ ALL_DB_FIELDS = [
     "id",
     "archetype_id",
     "archetype_name",
-    "core_meanings",
-    "symbol_examples",
     "symbol",
     "symbol_meanings",
-    "scenario_title",
-    "scenario_derived_meanings",
+    "action",
+    "derived_meanings",
     "advice",
     "embedding",
 ]
@@ -33,11 +29,9 @@ ALL_DB_FIELDS = [
 DOCUMENT_TO_DB_MAP = {
     "archetype_id": ("archetypeId", None),
     "archetype_name": ("archetypeName", None),
-    "core_meanings": ("coreMeanings", []),
-    "symbol_examples": ("symbolExamples", []),
     "symbol": ("symbol", None),
     "symbol_meanings": ("symbolMeanings", []),
-    "scenario_title": ("scenarioTitle", None),
-    "scenario_derived_meanings": ("scenarioDerivedMeanings", []),
+    "action": ("action", None),
+    "derived_meanings": ("derivedMeanings", []),
     "advice": ("advice", None),
 }

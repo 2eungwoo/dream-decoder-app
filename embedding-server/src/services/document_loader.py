@@ -21,31 +21,16 @@ class DocumentLoader:
 
     def _expand_documents(self, raw_docs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         expanded: List[Dict[str, Any]] = []
-        for entry in raw_docs:
-            archetype = entry.get("archetype") or {}
-            symbol_lookup = {
-                (symbol.get("symbol") or "").strip(): symbol
-                for symbol in entry.get("symbols") or []
-                if symbol.get("symbol")
-            }
-            for scenario in entry.get("scenarios") or []:
-                symbol_name = (
-                    (scenario.get("symbol") or "").strip()
-                    or (scenario.get("title") or "").strip()
-                )
-                symbol_info = symbol_lookup.get(symbol_name, {})
-                expanded.append(
-                    {
-                        "archetypeId": archetype.get("id"),
-                        "archetypeName": archetype.get("name"),
-                        "coreMeanings": archetype.get("coreMeaning") or [],
-                        "symbolExamples": archetype.get("symbolExamples") or [],
-                        "symbol": symbol_name,
-                        "symbolMeanings": symbol_info.get("meanings") or [],
-                        "scenarioTitle": scenario.get("title"),
-                        "scenarioDerivedMeanings": scenario.get("derivedMeanings")
-                        or [],
-                        "advice": scenario.get("advice"),
-                    }
-                )
+        for doc in raw_docs:
+            expanded.append(
+                {
+                    "archetypeId": doc.get("archetypeId"),
+                    "archetypeName": doc.get("archetypeName"),
+                    "symbol": doc.get("symbol"),
+                    "symbolMeanings": doc.get("symbolMeanings") or [],
+                    "action": doc.get("action"),
+                    "derivedMeanings": doc.get("derivedMeanings") or [],
+                    "advice": doc.get("advice"),
+                }
+            )
         return expanded
