@@ -19,12 +19,14 @@ export class DreamSymbolRepository {
     const vectorLiteral = `[${vector.join(",")}]`;
     const rows: DreamSymbolDto[] = await this.dataSource.query(
       `
-        SELECT symbol,
-               categories,
-               description,
-               emotions,
-               mbti_tone AS "mbtiTone",
-               interpretations,
+        SELECT archetype_id AS "archetypeId",
+               archetype_name AS "archetypeName",
+               core_meanings AS "coreMeanings",
+               symbol_examples AS "symbolExamples",
+               symbol,
+               symbol_meanings AS "symbolMeanings",
+               scenario_title AS "scenarioTitle",
+               scenario_derived_meanings AS "scenarioDerivedMeanings",
                advice
         FROM dream_symbols
         ORDER BY embedding <=> $1::vector
@@ -35,12 +37,14 @@ export class DreamSymbolRepository {
 
     this.logger.log(`[검색] ${rows.length}건 결과 반환`);
     return rows.map((row) => ({
+      archetypeId: row.archetypeId,
+      archetypeName: row.archetypeName,
+      coreMeanings: this.normalizeArray(row.coreMeanings),
+      symbolExamples: this.normalizeArray(row.symbolExamples),
       symbol: row.symbol,
-      categories: this.normalizeArray(row.categories),
-      description: row.description,
-      emotions: this.normalizeArray(row.emotions),
-      mbtiTone: this.normalizeObject((row as any).mbtiTone),
-      interpretations: this.normalizeArray(row.interpretations),
+      symbolMeanings: this.normalizeArray(row.symbolMeanings),
+      scenarioTitle: row.scenarioTitle,
+      scenarioDerivedMeanings: this.normalizeArray(row.scenarioDerivedMeanings),
       advice: row.advice,
     }));
   }
@@ -63,21 +67,4 @@ export class DreamSymbolRepository {
     return [];
   }
 
-  private normalizeObject(value: unknown) {
-    if (!value) {
-      return {};
-    }
-    if (typeof value === "object") {
-      return value as Record<string, string>;
-    }
-    if (typeof value === "string") {
-      try {
-        const parsed = JSON.parse(value);
-        return typeof parsed === "object" && parsed !== null ? parsed : {};
-      } catch {
-        return {};
-      }
-    }
-    return {};
-  }
 }
