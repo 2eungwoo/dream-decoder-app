@@ -19,3 +19,11 @@ export const interpretationConfig = registerAs("interpretation", () => ({
   promptLimits: { ...DEFAULT_INTERPRETATION_CONFIG.promptLimits },
   similarityWeights: { ...DEFAULT_INTERPRETATION_CONFIG.similarityWeights },
 }));
+
+export type InterpretationPromptLimits =
+  typeof DEFAULT_INTERPRETATION_CONFIG.promptLimits;
+
+export type InterpretationSimilarityWeights =
+  typeof DEFAULT_INTERPRETATION_CONFIG.similarityWeights;
+
+export type InterpretationConfigValues = typeof DEFAULT_INTERPRETATION_CONFIG;
