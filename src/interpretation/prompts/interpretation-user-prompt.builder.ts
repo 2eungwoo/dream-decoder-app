@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, Logger } from "@nestjs/common";
 import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
 import { DreamSymbolDto } from "../types/dream-symbol.dto";
 import { INTERPRETATION_USER_GUIDANCE } from "./interpretation-user-prompt.guidance";
@@ -12,9 +12,13 @@ import { InterpretationSymbolFormatter } from "./helpers/interpretation-symbol-f
 
 @Injectable()
 export class InterpretationUserPromptBuilder {
+  private readonly logger = new Logger(InterpretationUserPromptBuilder.name);
+
   constructor(
     @Inject(interpretationConfig.KEY)
-    private readonly config: ConfigType<typeof interpretationConfig> = DEFAULT_INTERPRETATION_CONFIG
+    private readonly config: ConfigType<
+      typeof interpretationConfig
+    > = DEFAULT_INTERPRETATION_CONFIG
   ) {
     const limits =
       this.config?.promptLimits ?? DEFAULT_INTERPRETATION_CONFIG.promptLimits;
@@ -44,7 +48,13 @@ export class InterpretationUserPromptBuilder {
       INTERPRETATION_USER_GUIDANCE,
     ];
 
-    return parts.filter(Boolean).join("\n\n");
+    const prompt = parts.filter(Boolean).join("\n\n");
+
+    this.logger.debug(
+      `[Prompt] symbols=${symbols.length}, length=${prompt.length}`
+    );
+
+    return prompt;
   }
 
   private formatSymbol(symbol: DreamSymbolDto): string {
