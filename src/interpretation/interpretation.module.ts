@@ -14,7 +14,7 @@ import { InterpretationCacheService } from "./cache/interpretation-cache.service
 import { InterpretationSemaphoreService } from "./semaphore/interpretation-semaphore.service";
 import { InterpretationSemaphoreInterceptor } from "./semaphore/interpretation-semaphore.interceptor";
 import { InterpretationSimilarityEvaluator } from "./rankings/interpretation-similarity.evaluator";
-import { PipelineModule } from "../pipeline/pipeline.module";
+import { RedisStreamModule } from "../pipeline/redis-stream.module";
 import { InterpretationProcessor } from "../pipeline/interpretation/workers/processor.service";
 import { InterpretationConsumer } from "../pipeline/interpretation/workers/consumer.service";
 import { InterpretationMessageHandler } from "../pipeline/interpretation/workers/message.handler";
@@ -24,7 +24,7 @@ import { InterpretationMessageHandler } from "../pipeline/interpretation/workers
     OpenAIModule,
     AuthModule,
     TypeOrmModule.forFeature([User]),
-    PipelineModule,
+    RedisStreamModule,
   ],
   controllers: [InterpretationController],
   providers: [
