@@ -12,10 +12,12 @@ import { InterpretationDlqWriter } from "./interpretation/dlq/dlq.writer";
 import { InterpretationDlqService } from "./interpretation/dlq/dlq.service";
 import { DlqValidator } from "./interpretation/dlq/validation/dlq.validator";
 import { DlqEntryParser } from "./interpretation/dlq/helpers/dlq-entry.parser";
+import { RedisStreamService } from "./redis-stream.service";
 
 @Module({
   imports: [RedisModule],
   providers: [
+    RedisStreamService,
     InterpretationStreamWriter,
     InterpretationStreamReader,
     InterpretationStatusStore,
@@ -31,6 +33,7 @@ import { DlqEntryParser } from "./interpretation/dlq/helpers/dlq-entry.parser";
     DlqEntryParser,
   ],
   exports: [
+    RedisStreamService,
     InterpretationStreamWriter,
     InterpretationStreamReader,
     InterpretationStatusStore,
