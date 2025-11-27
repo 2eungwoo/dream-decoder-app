@@ -12,13 +12,19 @@
     "advice": "결정 전 비교 기준을 하나만 정해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "만진다",
     "derivedMeanings": ["현실성을 확인하고 싶음", "조건을 점검하는 단계"],
     "advice": "중요 조건 두 가지만 명확히 하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "먹는다",
     "derivedMeanings": [
       "에너지를 흡수하고 싶음",
@@ -27,7 +33,10 @@
     "advice": "끌리는 아이디어를 작은 단위로 실행해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "고른다",
     "derivedMeanings": [
       "선택의 기준을 정립 중",
@@ -36,31 +45,46 @@
     "advice": "지금 가장 중요한 우선순위 한 가지를 적어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "떨어뜨린다",
     "derivedMeanings": ["실수 또는 불안정한 상황", "결정을 망설이는 신호"],
     "advice": "실수를 탓하지 말고 즉시 리커버리 행동을 취하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "깎는다",
     "derivedMeanings": ["본질만 남기려는 마음", "복잡함을 단순화하려는 의지"],
     "advice": "문제에서 진짜 핵심 1가지만 남겨보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "나눈다",
     "derivedMeanings": ["성과를 공유하려는 마음", "관계에서 신뢰를 쌓는 과정"],
     "advice": "작은 성취라도 주변과 나눠보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "버린다",
     "derivedMeanings": ["불필요한 것을 제거하려는 시도", "정리 욕구 상승"],
     "advice": "지금 덜어내야 할 것 1개를 선택하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "냄새 맡는다",
     "derivedMeanings": [
       "상황의 분위기를 파악하려는 마음",
@@ -69,7 +93,10 @@
     "advice": "느낌이 이상한 부분이 있다면 다시 확인하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "닦는다",
     "derivedMeanings": [
       "문제를 깨끗하게 정리하려는 마음",
@@ -78,13 +105,19 @@
     "advice": "최근 불편한 대화를 부드럽게 정리해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "씻는다",
     "derivedMeanings": ["새로운 시작을 준비", "잡음을 제거하려는 마음"],
     "advice": "목표를 위해 불필요한 습관을 하나 줄여보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "포장한다",
     "derivedMeanings": [
       "준비가 거의 끝난 상태",
@@ -93,19 +126,28 @@
     "advice": "완료 직전의 일을 마무리 지어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "사고 싶다",
     "derivedMeanings": ["새로운 시작에 대한 욕구", "자기 보상 심리"],
     "advice": "지금 당신에게 꼭 필요한 동기부여를 찾으세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "잃어버린다",
     "derivedMeanings": ["기회를 놓칠까 두려움", "중요한 선택이 흔들림"],
     "advice": "불안의 원인을 단 한 줄로 정리해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
     "action": "발견한다",
     "derivedMeanings": ["새 가능성을 보게 됨", "원래 알고 있던 답을 재발견"],
     "advice": "최근 떠올랐던 영감을 기록해두세요."
@@ -124,7 +166,10 @@
     "advice": "지켜보고 있는 선택지의 장단점을 간단히 정리해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "만진다",
     "derivedMeanings": [
       "관계를 직접 확인하고 싶음",
@@ -133,7 +178,10 @@
     "advice": "확인이 필요한 대화를 짧게라도 시도해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "먹는다",
     "derivedMeanings": [
       "회복과 안정감을 채우고 싶은 마음",
@@ -142,7 +190,10 @@
     "advice": "오늘 자신에게 작은 위로 행동을 하나 허용하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "고른다",
     "derivedMeanings": [
       "섬세한 기준으로 선택하려는 마음",
@@ -151,7 +202,10 @@
     "advice": "지금 가장 중요한 기준 하나만 선택하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "떨어뜨린다",
     "derivedMeanings": [
       "불안정한 감정 상태",
@@ -160,13 +214,19 @@
     "advice": "실수의 원인을 부드럽게 기록하고 감정 정리를 해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "깎는다",
     "derivedMeanings": ["본질을 찾고 싶음", "겉치레를 벗겨내는 과정"],
     "advice": "문제에서 필요 없는 요소를 과감히 제거하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "나눈다",
     "derivedMeanings": [
       "따뜻한 마음을 나누고 싶음",
@@ -175,7 +235,10 @@
     "advice": "가까운 사람에게 감사 메시지를 보내보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "버린다",
     "derivedMeanings": [
       "부드러운 인연을 놓아주려는 과정",
@@ -184,7 +247,10 @@
     "advice": "지금 내려놓아야 할 생각 하나를 적어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "냄새 맡는다",
     "derivedMeanings": [
       "상황을 세심하게 파악하려는 태도",
@@ -193,7 +259,10 @@
     "advice": "주변 기류에서 불편한 요소를 찾아보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "닦는다",
     "derivedMeanings": [
       "정리 정돈 욕구 증가",
@@ -202,7 +271,10 @@
     "advice": "작은 청소나 대화 정리로 마음을 비워보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "씻는다",
     "derivedMeanings": [
       "부드러운 새 출발 준비",
@@ -211,7 +283,10 @@
     "advice": "걱정거리 하나를 물 흐르듯 흘려보내세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "포장한다",
     "derivedMeanings": [
       "결정을 예쁘게 마무리하려는 마음",
@@ -220,13 +295,19 @@
     "advice": "정리해야 하는 이메일 또는 메시지를 작성해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "사고 싶다",
     "derivedMeanings": ["따뜻한 안정감을 원함", "스스로를 챙기고 싶은 욕구"],
     "advice": "당신을 편안하게 해줄 아이템 하나를 고민해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "잃어버린다",
     "derivedMeanings": [
       "편안함을 잃을까 불안",
@@ -235,7 +316,10 @@
     "advice": "불안한 감정의 정확한 이유를 한 줄로 적어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "배",
+    "symbolMeanings": ["온화함", "풍요", "섬세한 균형"],
     "action": "발견한다",
     "derivedMeanings": [
       "새로운 안정감 혹은 따뜻한 인연 발견",
@@ -257,7 +341,10 @@
     "advice": "지금 진행 중인 협업의 상태를 점검하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "만진다",
     "derivedMeanings": [
       "결과물의 실체를 확인하고 싶은 마음",
@@ -266,7 +353,10 @@
     "advice": "협력 관계에서 직접 확인이 필요한 부분을 점검하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "먹는다",
     "derivedMeanings": [
       "작은 기쁨의 축적을 원함",
@@ -275,7 +365,10 @@
     "advice": "오늘의 작은 성취 3개를 적어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "고른다",
     "derivedMeanings": [
       "여러 선택지 중 협력 가치가 높은 것을 선택",
@@ -284,7 +377,10 @@
     "advice": "지금 선택에서 가장 중요한 ‘연결 요소’를 생각하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "떨어뜨린다",
     "derivedMeanings": [
       "작은 실수들이 연속되는 흐름",
@@ -293,7 +389,10 @@
     "advice": "흐트러진 루틴을 바로잡는 작은 행동을 취하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "깎는다",
     "derivedMeanings": [
       "불필요한 연결을 정리하려는 마음",
@@ -302,7 +401,10 @@
     "advice": "과도한 관계나 업무를 하나 줄여보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "나눈다",
     "derivedMeanings": [
       "성과 공유 욕구",
@@ -311,13 +413,19 @@
     "advice": "동료와 성취를 공유해 긍정적인 흐름을 만들세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "버린다",
     "derivedMeanings": ["축적된 피로를 내려놓고 싶음", "관계 피로 누적"],
     "advice": "의무감으로 이어진 관계를 점검해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "냄새 맡는다",
     "derivedMeanings": [
       "분위기를 신중히 파악하는 시점",
@@ -326,19 +434,19 @@
     "advice": "주변의 미세한 변화에 반응하지 말고 먼저 관찰하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "닦는다",
     "derivedMeanings": ["관계의 오해 해소", "프로젝트 디테일을 정리하는 시기"],
     "advice": "협업에서 불분명한 조항을 명확히 하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
-    "action": "씻는다",
-    "derivedMeanings": ["관계 피로를 세척하려는 마음", "초심 회복 욕구"],
-    "advice": "지금 협업의 핵심 목적을 다시 적어보세요."
-  },
-  {
-    "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "포장한다",
     "derivedMeanings": [
       "여러 성과를 하나로 모아 정리하려는 상태",
@@ -347,19 +455,28 @@
     "advice": "마무리 단계의 프로젝트 문서를 업데이트하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "사고 싶다",
     "derivedMeanings": ["새로운 연결을 만들고 싶음", "협업 참여 욕구 상승"],
     "advice": "새 협력 기회를 탐색해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "잃어버린다",
     "derivedMeanings": ["작은 성취를 놓친 느낌", "협력의 균형이 흔들림"],
     "advice": "놓친 성취보다 남아있는 자원을 살펴보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "포도",
+    "symbolMeanings": ["협력", "축적", "연결"],
     "action": "발견한다",
     "derivedMeanings": [
       "작은 성과가 모여 큰 흐름을 파악함",
@@ -378,37 +495,55 @@
     "advice": "마음이 향하는 사람이나 일을 기록하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "만진다",
     "derivedMeanings": ["감정적 친밀감 욕구", "관계를 실제로 확인하고 싶음"],
     "advice": "가까워지고 싶은 사람에게 작은 신호를 보내보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "먹는다",
     "derivedMeanings": ["감정 회복 욕구", "따뜻함을 스스로에게 채우려는 마음"],
     "advice": "오늘 당신을 부드럽게 해줄 행동 하나를 해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "고른다",
     "derivedMeanings": ["따뜻한 선택을 하고 싶은 마음", "감정적 우선순위 정리"],
     "advice": "당신에게 가장 부드러운 선택지를 선택하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "떨어뜨린다",
     "derivedMeanings": ["감정적 불안정", "관계에서의 작은 실수"],
     "advice": "감정이 흔들렸던 순간을 기록하고 스스로를 위로하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "깎는다",
     "derivedMeanings": ["속마음을 드러내고 싶음", "부드러움을 보호하려는 욕구"],
     "advice": "너무 복잡한 감정은 한 문장으로 단순화하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "나눈다",
     "derivedMeanings": [
       "감정을 공유하고 싶은 마음",
@@ -417,13 +552,19 @@
     "advice": "가까운 사람에게 진심 어린 말을 한 줄 건네보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "버린다",
     "derivedMeanings": ["부드러운 감정의 손실", "감정적 방어 심리"],
     "advice": "지금 버리고 싶은 감정 하나를 명확히 써보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "냄새 맡는다",
     "derivedMeanings": [
       "감정의 분위기를 느끼는 단계",
@@ -432,7 +573,10 @@
     "advice": "상대의 작은 신호를 섣불리 해석하지 말고 관찰하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "닦는다",
     "derivedMeanings": [
       "감정적 오해를 바로잡음",
@@ -441,13 +585,19 @@
     "advice": "꼬여 있는 대화를 부드럽게 정리해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "씻는다",
     "derivedMeanings": ["감정을 새로 정리하려는 시도", "회복 단계에 진입"],
     "advice": "감정 정리를 위한 글쓰기나 산책을 시도해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "포장한다",
     "derivedMeanings": [
       "감정을 예쁘게 담아 전달하려는 마음",
@@ -456,19 +606,28 @@
     "advice": "중요한 메시지를 정성 있게 정리해 전달해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "사고 싶다",
     "derivedMeanings": ["따뜻함을 원함", "스스로를 돌보고 싶은 마음"],
     "advice": "마음을 포근하게 해줄 작은 선물을 떠올려보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "잃어버린다",
     "derivedMeanings": ["감정적 거리감", "따뜻함을 잃을까 두려움"],
     "advice": "멀어진 감정이 있다면 원인을 부드럽게 탐색하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "복숭아",
+    "symbolMeanings": ["애정", "회복", "부드러움"],
     "action": "발견한다",
     "derivedMeanings": ["새로운 감정적 연결 발견", "회복과 치유의 조짐"],
     "advice": "당신에게 위로가 되었던 최근 사건을 기록하세요."
@@ -487,13 +646,19 @@
     "advice": "당신이 성숙해졌다고 느낀 최근 순간을 기록하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "만진다",
     "derivedMeanings": ["현실적 가능성을 점검", "성숙한 판단을 준비"],
     "advice": "지금 점검해야 할 조건을 두 가지 뽑아보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "먹는다",
     "derivedMeanings": [
       "안정감을 스스로에게 주려는 마음",
@@ -502,55 +667,82 @@
     "advice": "오늘 안정감을 주는 활동을 계획하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "고른다",
     "derivedMeanings": ["성숙한 선택을 하려는 시도", "경험 기반 판단"],
     "advice": "당신의 경험이 말하는 기준을 떠올려보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "떨어뜨린다",
     "derivedMeanings": ["내면 균형이 흔들림", "성숙한 태도 안에서의 작은 실수"],
     "advice": "실수의 원인을 기록하고 다시 균형을 잡아보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "깎는다",
     "derivedMeanings": ["본질에 집중", "겉의 거친 요소 제거"],
     "advice": "현재 문제에서 핵심만 남기세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "나눈다",
     "derivedMeanings": ["경험을 공유하고 싶음", "성숙한 조언을 나누는 시기"],
     "advice": "도움이 필요한 사람에게 경험 기반의 한마디를 건네보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "버린다",
     "derivedMeanings": ["내면에 쌓인 부담을 내려놓음", "성숙한 결단 준비"],
     "advice": "더 이상 도움이 되지 않는 습관을 하나 정리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "냄새 맡는다",
     "derivedMeanings": ["상황의 깊이를 파악", "조용히 본질을 읽어내려는 시기"],
     "advice": "피상적인 정보보다 본질을 먼저 관찰하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "닦는다",
     "derivedMeanings": ["관계를 차분히 정리", "문제의 작은 불순물 제거"],
     "advice": "지저분해진 감정 요소를 정리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "씻는다",
     "derivedMeanings": ["새로운 균형을 찾는 과정", "감정 정화"],
     "advice": "가벼운 산책으로 마음을 리셋하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "포장한다",
     "derivedMeanings": [
       "정리된 결론을 마무리",
@@ -559,19 +751,28 @@
     "advice": "완료 직전의 일을 책임감 있게 마무리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "사고 싶다",
     "derivedMeanings": ["차분함을 원함", "내면 안정 욕구"],
     "advice": "당신을 차분하게 만들 작은 루틴을 만들어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "잃어버린다",
     "derivedMeanings": ["내면의 안정이 흔들림", "균형 재정비 필요"],
     "advice": "불안 신호를 느꼈던 사건을 명확하게 기록하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "감",
+    "symbolMeanings": ["성숙", "내면의 단단함", "차분함"],
     "action": "발견한다",
     "derivedMeanings": ["성숙해진 자신 발견", "새로운 단단함 확인"],
     "advice": "성장했던 순간을 찾아 글로 남겨보세요."
@@ -586,7 +787,10 @@
     "advice": "지금 마음이 향하는 작은 욕구를 기록해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "만진다",
     "derivedMeanings": [
       "즉각적인 변화를 체감하고 싶음",
@@ -595,13 +799,19 @@
     "advice": "하루 루틴에서 한 가지를 직접 재조정해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "먹는다",
     "derivedMeanings": ["빠른 활력 회복 욕구", "짧은 만족감을 원함"],
     "advice": "5분만 집중해서 에너지를 회복할 활동을 해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "고른다",
     "derivedMeanings": [
       "작은 선택들의 중요성을 인식",
@@ -610,19 +820,28 @@
     "advice": "지금 가장 효과적인 선택 한 가지를 골라보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "떨어뜨린다",
     "derivedMeanings": ["바쁜 리듬 속 작은 혼란", "집중력의 잠시 흐트러짐"],
     "advice": "흐트러진 루틴을 1분 체크리스트로 정리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "깎는다",
     "derivedMeanings": ["겉의 번잡함 제거", "핵심만 남기고 싶은 심리"],
     "advice": "지금 하고 있는 일에서 꼭 필요한 2가지만 남겨보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "나눈다",
     "derivedMeanings": [
       "가벼운 에너지 공유 욕구",
@@ -631,7 +850,10 @@
     "advice": "지금 떠오르는 사람에게 짧은 긍정 메시지를 보내보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "버린다",
     "derivedMeanings": [
       "가볍게 정리하고 싶은 욕구",
@@ -640,7 +862,10 @@
     "advice": "작은 짐 하나를 눈에 보이게 정리해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "냄새 맡는다",
     "derivedMeanings": [
       "새로운 분위기를 감지",
@@ -649,7 +874,10 @@
     "advice": "지금 느껴지는 공기 변화의 원인을 기록해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "닦는다",
     "derivedMeanings": [
       "사소한 불편함을 정리하려는 마음",
@@ -658,31 +886,46 @@
     "advice": "바로 해결 가능한 문제 한 가지를 밀어내세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "씻는다",
     "derivedMeanings": ["리프레시 필요성", "부정적 잔여감을 털어내려는 단계"],
     "advice": "감정 찌꺼기를 종이에 한 줄 적고 버려보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "포장한다",
     "derivedMeanings": ["작은 선물 같은 마음 전달", "기분 좋은 마무리 욕구"],
     "advice": "오늘의 작은 성취를 예쁘게 기록해 남기세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "사고 싶다",
     "derivedMeanings": ["즉각적 기분전환 욕구", "스스로를 달래려는 마음"],
     "advice": "5천원 이하 작은 보상 아이템을 정해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "잃어버린다",
     "derivedMeanings": ["가벼운 즐거움을 놓친 느낌", "활력 감소 신호"],
     "advice": "지금 활력을 높일 가장 간단한 행동을 생각해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "귤",
+    "symbolMeanings": ["활력", "가벼움", "즉각적 회복"],
     "action": "발견한다",
     "derivedMeanings": [
       "예상치 못한 작은 기쁨 발견",
@@ -701,67 +944,100 @@
     "advice": "지금 시야를 흐리는 요소를 한 가지 적어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "만진다",
     "derivedMeanings": ["상황을 직접 다루고 싶음", "정확한 판단 필요"],
     "advice": "중요한 결정을 내리기 전 핵심 조건을 점검하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "먹는다",
     "derivedMeanings": ["정화 욕구", "강한 자극으로 각성하려는 마음"],
     "advice": "강한 감정이 올라왔다면 깊은 호흡으로 균형을 잡으세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "고른다",
     "derivedMeanings": ["날카로운 기준 설정", "선명한 선택 필요"],
     "advice": "지금 선택 기준을 단 하나로 좁혀보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "떨어뜨린다",
     "derivedMeanings": ["예민함의 순간적 흔들림", "집중력 손실"],
     "advice": "흩어진 생각을 메모로 정리해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "깎는다",
     "derivedMeanings": ["불필요한 감정 제거", "핵심만 남기려는 마음"],
     "advice": "지금 감정에서 중요하지 않은 층위를 제거해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "나눈다",
     "derivedMeanings": ["자극적 진실을 공유하고 싶음", "명확한 의사소통 욕구"],
     "advice": "말해야 하는 진실 한 가지를 차분하게 전달하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "버린다",
     "derivedMeanings": ["불필요한 불안 제거", "예민함을 내려놓고 싶은 심리"],
     "advice": "당장 제거할 수 있는 불편 요소 하나를 정리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "냄새 맡는다",
     "derivedMeanings": ["상황의 날카로운 신호 포착", "민감한 직감 상승"],
     "advice": "지금 감지되는 신호가 실제인지 분별해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "닦는다",
     "derivedMeanings": ["불순물 제거", "상황을 더 선명하게 보려는 의지"],
     "advice": "목표를 흐리게 하는 장애물을 정리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "씻는다",
     "derivedMeanings": ["불편한 감정 정화", "새로운 집중력을 얻는 과정"],
     "advice": "짧은 마음 정돈 루틴을 실행하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "포장한다",
     "derivedMeanings": [
       "날카로운 메시지를 부드럽게 전달하려 함",
@@ -770,19 +1046,28 @@
     "advice": "말하고 싶은 내용을 완곡하게 다듬어보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "사고 싶다",
     "derivedMeanings": ["정화 필요", "각성과 리프레시 욕구"],
     "advice": "지금 필요한 건 ‘정리’인지 ‘자극’인지 먼저 구분하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "잃어버린다",
     "derivedMeanings": ["집중력 상실", "분명해야 할 것이 흐려지는 시기"],
     "advice": "흐려진 목표를 다시 한 문장으로 정리하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "레몬",
+    "symbolMeanings": ["정화", "각성", "Sharp한 집중"],
     "action": "발견한다",
     "derivedMeanings": ["선명한 해답 발견", "새로운 각성"],
     "advice": "방금 떠오른 통찰을 바로 기록해두세요."
@@ -798,13 +1083,19 @@
     "advice": "지금 당신을 즐겁게 하는 작은 요소를 관찰해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "만진다",
     "derivedMeanings": ["감각적 만족 추구", "기쁨을 가까이 두고 싶은 마음"],
     "advice": "당신이 좋아하는 감각적인 활동을 짧게 실행하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "먹는다",
     "derivedMeanings": [
       "즉각적 만족감 필요",
@@ -813,7 +1104,10 @@
     "advice": "스스로에게 오늘의 작은 보상을 허용하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "고른다",
     "derivedMeanings": [
       "즐거움과 효율의 균형을 찾는 선택",
@@ -822,7 +1116,10 @@
     "advice": "당신을 가장 기쁘게 할 선택을 하나 골라보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "떨어뜨린다",
     "derivedMeanings": [
       "사소한 실수로 기쁨이 흐려진 상태",
@@ -831,31 +1128,46 @@
     "advice": "너무 큰 의미를 부여하지 말고 바로 리셋하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "깎는다",
     "derivedMeanings": ["과도한 감정 제거", "진짜 즐거움만 남기려는 욕구"],
     "advice": "지금 기쁨을 방해하는 요소를 하나 제거하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "나눈다",
     "derivedMeanings": ["작은 행복을 공유하고 싶음", "따뜻한 관계 강화"],
     "advice": "누군가와 작은 기쁨 하나를 나눠보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "버린다",
     "derivedMeanings": ["빠르게 흥미가 식음", "감각적 만족이 줄어드는 시기"],
     "advice": "지금 당신에게 진짜 필요한 즐거움이 무엇인지 점검하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "냄새 맡는다",
     "derivedMeanings": ["새로운 즐거움을 예감", "호기심이 살아남"],
     "advice": "지금 끌리는 것의 이유를 기록해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "닦는다",
     "derivedMeanings": [
       "작은 불편을 제거하고 즐거움을 정돈",
@@ -864,13 +1176,19 @@
     "advice": "작은 문제를 해결해 마음의 노이즈를 없애보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "씻는다",
     "derivedMeanings": ["감정의 묵은 찌꺼기를 제거", "새로운 감각 준비"],
     "advice": "책상 정리나 샤워 같은 리셋 루틴을 실행하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "포장한다",
     "derivedMeanings": [
       "기쁨을 오래 유지하고 싶음",
@@ -879,19 +1197,28 @@
     "advice": "오늘 기뻤던 순간을 기록해보세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "사고 싶다",
     "derivedMeanings": ["감각적 보상 욕구 상승", "자기기쁨 충족 필요"],
     "advice": "당신에게 기쁨 주는 간단한 선물을 고려하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "잃어버린다",
     "derivedMeanings": ["즐거움 상실감", "감각적 에너지 저하"],
     "advice": "최근 즐거웠던 일을 떠올려 감정을 회복하세요."
   },
   {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
     "symbol": "딸기",
+    "symbolMeanings": ["순간적 기쁨", "감각적 집중", "사소한 보상"],
     "action": "발견한다",
     "derivedMeanings": ["새로운 기쁨 발견", "감각적 영감 상승"],
     "advice": "오늘 새롭게 즐거웠던 순간을 기록해두세요."
@@ -909,7 +1236,10 @@
     "advice": "지금 눈에 띄는 작은 신호 한 가지를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "마주친다",
     "derivedMeanings": [
       "예상치 못한 선택지 등장",
@@ -918,7 +1248,10 @@
     "advice": "지금 갑자기 들어온 이슈 하나를 점검하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "쫓아간다",
     "derivedMeanings": [
       "기회를 놓치지 않으려는 마음",
@@ -927,13 +1260,19 @@
     "advice": "지금 가장 붙잡고 싶은 목표를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "도망친다",
     "derivedMeanings": ["불안 또는 부담 회피", "마주하기 어려운 감정이 있음"],
     "advice": "지금 피하고 있는 일을 한 줄로 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "키운다",
     "derivedMeanings": [
       "새로운 가능성을 키우는 중",
@@ -942,7 +1281,10 @@
     "advice": "지금 성장시키고 싶은 능력이나 프로젝트 하나를 적으세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "먹을 걸 준다",
     "derivedMeanings": [
       "돌봄·배려 욕구",
@@ -951,7 +1293,10 @@
     "advice": "지금 더 에너지를 주고 싶은 대상이 무엇인지 확인해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "물을 준다",
     "derivedMeanings": [
       "유지·관리가 필요한 시기",
@@ -960,19 +1305,28 @@
     "advice": "꾸준히 챙겨야 하는 일 하나를 떠올리세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "쓰다듬는다",
     "derivedMeanings": ["감정적 안정 욕구", "부드럽게 관계를 유지하려는 마음"],
     "advice": "요즘 부드럽게 다뤄야 하는 상황을 떠올려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "안아준다",
     "derivedMeanings": ["친밀감과 보호 본능", "감정을 회복하려는 신호"],
     "advice": "지금 위로가 필요한 감정을 하나 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "싸운다",
     "derivedMeanings": [
       "현재 갈등 혹은 경쟁",
@@ -981,7 +1335,10 @@
     "advice": "지금 맞서야 하는 문제를 명확히 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "나를 따라온다",
     "derivedMeanings": [
       "책임감이 증가한 상황",
@@ -990,7 +1347,10 @@
     "advice": "계속 신경 쓰이는 일을 하나 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "집에 들어온다",
     "derivedMeanings": [
       "개인적인 영역에 영향을 주는 변화",
@@ -999,7 +1359,10 @@
     "advice": "최근 내 생활에 스며든 새로운 변화를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "사라진다",
     "derivedMeanings": [
       "문제가 자연스럽게 정리됨",
@@ -1008,13 +1371,19 @@
     "advice": "더 이상 중요하지 않은 걱정을 하나 내려놓으세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "울음소리를 낸다",
     "derivedMeanings": ["무언가에 대한 경고 신호", "감정 표현 욕구"],
     "advice": "지금 표현하지 못한 감정 한 가지를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "쥐",
+    "symbolMeanings": ["민첩함", "기회 포착", "예민함", "생존감각"],
     "action": "놀라게 한다",
     "derivedMeanings": [
       "예상치 못한 변수 등장",
@@ -1035,7 +1404,10 @@
     "advice": "지금 꾸준히 해야 하는 일을 하나 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "마주친다",
     "derivedMeanings": [
       "중요한 책임 또는 과제가 눈앞에 나타남",
@@ -1044,7 +1416,10 @@
     "advice": "지금 당장 다뤄야 하는 문제를 명확히 하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "쫓아간다",
     "derivedMeanings": [
       "목표를 향한 묵직한 추진력",
@@ -1053,7 +1428,10 @@
     "advice": "지금 붙잡아야 할 장기 목표를 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "도망친다",
     "derivedMeanings": [
       "부담이 큰 책임을 잠시 회피하려는 마음",
@@ -1062,7 +1440,10 @@
     "advice": "지금 버거운 영역을 한 줄로 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "키운다",
     "derivedMeanings": [
       "장기적인 프로젝트나 관계를 투자하는 시기",
@@ -1071,7 +1452,10 @@
     "advice": "시간이 걸리더라도 끝까지 가져갈 목표를 생각해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "먹을 걸 준다",
     "derivedMeanings": [
       "책임을 잘 돌보고 있는 상태",
@@ -1080,7 +1464,10 @@
     "advice": "지금 더 보살펴야 하는 관계나 업무를 점검하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "물을 준다",
     "derivedMeanings": [
       "유지·관리의 중요성이 높아진 시기",
@@ -1089,13 +1476,19 @@
     "advice": "하루 5분이라도 관리해야 하는 루틴을 만들세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "쓰다듬는다",
     "derivedMeanings": ["안정감 추구", "감정적 균형을 되찾고 싶은 마음"],
     "advice": "당신을 안정시키는 작은 행동을 지금 실행해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "안아준다",
     "derivedMeanings": [
       "정서적 보호 욕구",
@@ -1104,13 +1497,19 @@
     "advice": "스스로에게 따뜻한 메시지를 한 줄 써보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "싸운다",
     "derivedMeanings": ["현실적인 문제와 직접 충돌", "책임·의무와의 갈등"],
     "advice": "지금 맞서고 있는 가장 큰 압박을 명확히 하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "나를 따라온다",
     "derivedMeanings": [
       "지속적인 책임이 계속 따라다님",
@@ -1119,7 +1518,10 @@
     "advice": "계속 신경 쓰이는 책임 한 가지를 다뤄보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "집에 들어온다",
     "derivedMeanings": [
       "개인적인 영역에 영향 주는 중요한 변화",
@@ -1128,19 +1530,28 @@
     "advice": "최근 생활에 들어온 새로운 변화를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "사라진다",
     "derivedMeanings": ["압박이 줄어들기 시작", "부담에서의 해방 기운"],
     "advice": "더 이상 붙잡지 않아도 되는 일을 하나 정리하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "울음소리를 낸다",
     "derivedMeanings": ["내면의 경고 신호", "참고 있던 감정이 표현되려는 시점"],
     "advice": "지금 억눌린 감정을 한 줄로 표현해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "소",
+    "symbolMeanings": ["안정", "인내", "노력", "성실함"],
     "action": "놀라게 한다",
     "derivedMeanings": [
       "예상치 못한 책임 증가",
@@ -1153,7 +1564,6 @@
     "archetypeName": "동물",
     "symbol": "호랑이",
     "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "강한 에너지 앞에서 상황을 신중히 파악하는 단계",
@@ -1162,7 +1572,10 @@
     "advice": "당신에게 큰 영향을 주는 요소를 하나 골라 자세히 관찰해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "마주친다",
     "derivedMeanings": [
       "중요한 문제 또는 강력한 감정과 직면하는 시기",
@@ -1171,7 +1584,10 @@
     "advice": "지금 직면한 이슈를 ‘거부’가 아닌 ‘직시’로 다뤄보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "쫓아온다",
     "derivedMeanings": [
       "압박감과 스트레스가 증가한 상태",
@@ -1180,7 +1596,10 @@
     "advice": "지금 가장 당신을 부담스럽게 하는 요소를 구체적으로 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "쫓아간다",
     "derivedMeanings": [
       "도전 의지 상승",
@@ -1189,13 +1608,19 @@
     "advice": "도전하고 싶은 목표를 한 문장으로 선언해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "공격한다",
     "derivedMeanings": ["억눌린 감정의 폭발", "위험 신호 또는 갈등 심화"],
     "advice": "최근 격해졌던 감정을 되돌아보고 원인을 분리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "도망친다",
     "derivedMeanings": [
       "부담 회피 심리",
@@ -1204,7 +1629,10 @@
     "advice": "피하고 있는 문제를 작게 쪼개서 한 가지만 해결해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "따라온다",
     "derivedMeanings": [
       "강한 영향력을 가진 사람 or 일이 지속적으로 영향을 줌",
@@ -1213,7 +1641,10 @@
     "advice": "지속적으로 떠오르는 욕구나 생각을 적어보고 의미를 찾아보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "쓰다듬는다",
     "derivedMeanings": [
       "강한 감정이나 상황을 통제하기 시작한 단계",
@@ -1222,7 +1653,10 @@
     "advice": "두려움을 통제했던 경험을 떠올려 자신감을 강화하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "보호한다",
     "derivedMeanings": [
       "자기 힘을 인정하기 시작함",
@@ -1231,7 +1665,10 @@
     "advice": "당신이 지키고 싶은 소중한 가치 1가지를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "잠든다",
     "derivedMeanings": [
       "강한 에너지가 일시적으로 잠잠해진 상태",
@@ -1240,7 +1677,10 @@
     "advice": "지금은 강한 결정보다 휴식과 회복이 우선입니다."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "사라진다",
     "derivedMeanings": [
       "압박 요소가 줄어들어가는 흐름",
@@ -1249,7 +1689,10 @@
     "advice": "지나가고 있는 문제를 억지로 붙잡지 말고 자연스럽게 흘려보내세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "집에 들어온다",
     "derivedMeanings": [
       "강한 변화가 삶 깊숙이 영향을 미침",
@@ -1258,7 +1701,10 @@
     "advice": "최근 일상에서 갑작스러운 변화가 있었는지 점검해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "눈을 마주친다",
     "derivedMeanings": [
       "대담함과 진심을 요구하는 시기",
@@ -1267,7 +1713,10 @@
     "advice": "현재 가장 용기가 필요한 분야를 선정해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "울부짖는다",
     "derivedMeanings": [
       "경고 신호, 감정 폭발 직전",
@@ -1276,7 +1725,10 @@
     "advice": "당신을 불안하게 만든 최근 신호를 정확히 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "호랑이",
+    "symbolMeanings": ["권위", "대담함", "위험", "강한 존재감"],
     "action": "길을 막는다",
     "derivedMeanings": [
       "진행 방향에서 큰 장애물이 등장",
@@ -1289,7 +1741,6 @@
     "archetypeName": "동물",
     "symbol": "토끼",
     "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "섬세한 변화에 민감해진 상태",
@@ -1298,7 +1749,10 @@
     "advice": "지금 마음을 건드리는 미세한 변화 하나를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "마주친다",
     "derivedMeanings": [
       "예상치 못한 기회 또는 불안 요소와 직면",
@@ -1307,7 +1761,10 @@
     "advice": "마주친 상황에서 당신이 가장 먼저 느낀 감정을 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "도망친다",
     "derivedMeanings": [
       "스트레스나 부담에서 벗어나고 싶은 마음",
@@ -1316,7 +1773,10 @@
     "advice": "지금 회피하고 있는 작은 문제 하나를 선정해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "다가온다",
     "derivedMeanings": [
       "기회 또는 새로운 관계가 조심스레 접근",
@@ -1325,7 +1785,10 @@
     "advice": "최근 다가온 변화나 사람 중 마음이 가장 쓰인 존재를 떠올려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "따라간다",
     "derivedMeanings": [
       "호기심이 높아진 상태",
@@ -1334,7 +1797,10 @@
     "advice": "끌리는 길을 한 번 더 탐색해보는 행동을 해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "쓰다듬는다",
     "derivedMeanings": [
       "민감한 감정을 안정시키려는 흐름",
@@ -1343,7 +1809,10 @@
     "advice": "지금 마음을 편안하게 해주는 활동을 하나 선택해 실행하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "먹을걸 준다",
     "derivedMeanings": [
       "보살핌과 배려 욕구",
@@ -1352,7 +1821,10 @@
     "advice": "도움을 주고 싶은 상대에게 작은 친절을 실천해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "마실걸 준다",
     "derivedMeanings": [
       "감정적 교류와 정서적 안정 제공",
@@ -1361,7 +1833,10 @@
     "advice": "지금 떠오르는 사람에게 차 한 잔 같은 짧은 연락을 보내보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "품에 안는다",
     "derivedMeanings": [
       "내면의 불안감을 안정시키려는 행동",
@@ -1370,7 +1845,10 @@
     "advice": "스스로를 위로할 문장 하나를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "숨는다",
     "derivedMeanings": [
       "예민한 감정 또는 스트레스로부터 자신을 보호",
@@ -1379,7 +1857,10 @@
     "advice": "잠시 고요함을 보장해줄 공간 또는 시간 5분이라도 확보해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "뛰어다닌다",
     "derivedMeanings": [
       "에너지와 불안이 동시에 증가된 상태",
@@ -1388,7 +1869,10 @@
     "advice": "지금 가장 신속하게 처리해야 할 일을 한 가지 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "사라진다",
     "derivedMeanings": [
       "기회가 흐릿해짐",
@@ -1397,7 +1881,10 @@
     "advice": "지나간 감정에 과도하게 의미를 두지 말고 흐름을 인정하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "집으로 들어온다",
     "derivedMeanings": [
       "감정적 변화가 생활 속 깊은 부분에 영향을 주는 시점",
@@ -1406,7 +1893,10 @@
     "advice": "최근 일상에서 생긴 작은 고민을 한 줄로 요약해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "토끼",
+    "symbolMeanings": ["민감함", "순발력", "직감", "불안과 희망의 공존"],
     "action": "눈을 마주친다",
     "derivedMeanings": [
       "감정적 진심을 확인하는 순간",
@@ -1419,7 +1909,6 @@
     "archetypeName": "동물",
     "symbol": "용",
     "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "중대한 변화나 기회의 전조를 감지하는 시기",
@@ -1428,7 +1917,10 @@
     "advice": "최근 삶에서 커다른 변화의 조짐을 떠올려 보고 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "마주친다",
     "derivedMeanings": [
       "도전적이거나 강력한 기운과 직면한 상태",
@@ -1437,7 +1929,10 @@
     "advice": "지금 마주한 큰 문제 혹은 기회 하나를 명확히 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "하늘을 난다",
     "derivedMeanings": [
       "성취 가능성이 빠르게 상승 중",
@@ -1446,7 +1941,10 @@
     "advice": "지금 떠오르는 가장 큰 목표를 구체적으로 한 줄로 적으세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "포효한다",
     "derivedMeanings": [
       "내적 힘이 크게 요동치는 시기",
@@ -1455,13 +1953,19 @@
     "advice": "지금 표현해야 할 감정이나 의견이 있다면 안전하게 표출해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "날개를 펼친다",
     "derivedMeanings": ["잠재력이 열리는 시점", "새로운 국면으로 진입할 준비"],
     "advice": "지금 준비 중인 일의 시작 조건을 한 가지 점검해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "뒤에서 등장한다",
     "derivedMeanings": [
       "예상치 못한 변화나 압력의 등장",
@@ -1470,7 +1974,10 @@
     "advice": "최근 갑작스럽게 떠오른 걱정이나 가능성을 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "몸이 커진다",
     "derivedMeanings": [
       "자신의 영향력 또는 책임이 확장되는 시기",
@@ -1479,7 +1986,10 @@
     "advice": "당신의 성장에 필요한 한 가지 조건을 찾아보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "작아진다",
     "derivedMeanings": [
       "자신감 저하 또는 대업에 대한 두려움",
@@ -1488,7 +1998,10 @@
     "advice": "지금 불안한 이유를 짧게 정리하고 객관적으로 바라보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "손을 뻗는다",
     "derivedMeanings": [
       "도움을 주거나 받는 관계의 변화",
@@ -1497,7 +2010,10 @@
     "advice": "지금 손을 먼저 내밀고 싶은 사람을 떠올려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "불을 뿜는다",
     "derivedMeanings": [
       "강한 의지·감정 폭발",
@@ -1506,7 +2022,10 @@
     "advice": "열망을 구체적 행동으로 이어질 수 있는 작은 단계 하나를 정하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "물속에서 나온다",
     "derivedMeanings": [
       "내면 깊은 곳의 힘이 깨어나는 시기",
@@ -1515,7 +2034,10 @@
     "advice": "최근 마음속에 조용히 꿈틀거린 아이디어를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "사라진다",
     "derivedMeanings": [
       "기회가 잠시 흐려지거나 준비 부족",
@@ -1524,7 +2046,10 @@
     "advice": "놓친 기회보다 지금 준비할 수 있는 부분에 집중하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "집 안으로 들어온다",
     "derivedMeanings": [
       "외부의 큰 변화가 개인적인 삶에 직접 영향",
@@ -1533,7 +2058,10 @@
     "advice": "당장 생활 속에서 변화시킬 수 있는 항목을 하나 선택하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "용",
+    "symbolMeanings": ["권위", "강력한 기운", "대업의 징조", "변화의 흐름"],
     "action": "눈을 마주친다",
     "derivedMeanings": [
       "자신의 진짜 힘·목표와 마주하는 순간",
@@ -1546,7 +2074,6 @@
     "archetypeName": "동물",
     "symbol": "뱀",
     "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "잠재된 위험 또는 기회를 조심스레 파악하는 시기",
@@ -1555,7 +2082,10 @@
     "advice": "지금 마음속에서 계속 신호를 보내는 문제를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "마주친다",
     "derivedMeanings": [
       "압박감·감정·문제를 정면으로 마주한 상태",
@@ -1564,7 +2094,10 @@
     "advice": "최근 부담을 준 대상이나 상황을 한 줄로 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "다가온다",
     "derivedMeanings": [
       "은밀한 스트레스 또는 관계의 압력이 가까워짐",
@@ -1573,7 +2106,10 @@
     "advice": "지금 피하지 말고 직면해야 할 한 가지 문제를 선택하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "피한다",
     "derivedMeanings": [
       "감정적 불안 또는 회피 심리",
@@ -1582,7 +2118,10 @@
     "advice": "피하고 있는 마음의 이유를 짧게 적고, 다음 행동을 정하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "몸을 감는다",
     "derivedMeanings": [
       "감정·관계·문제에 얽매이는 느낌",
@@ -1591,7 +2130,10 @@
     "advice": "지금 너무 얽혀 있다고 느끼는 관계나 생각을 하나 정해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "물려고 한다",
     "derivedMeanings": [
       "현실 스트레스 또는 감정적 공격을 예감하는 상태",
@@ -1600,7 +2142,10 @@
     "advice": "불편했던 대화나 갈등 요소를 사전에 정리하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "물린다",
     "derivedMeanings": [
       "실제 감정적 상처 혹은 스트레스 발생",
@@ -1609,7 +2154,10 @@
     "advice": "최근 마음이 다쳤던 순간을 세 문장으로 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "도망친다",
     "derivedMeanings": [
       "불안 또는 위협에서 벗어나고 싶은 마음",
@@ -1618,7 +2166,10 @@
     "advice": "당신을 압박하는 요인을 하나 선택해 거리두기를 시도하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "키운다",
     "derivedMeanings": [
       "자신 안의 직감·지혜·통찰이 성장하는 시기",
@@ -1627,7 +2178,10 @@
     "advice": "지금 키우고 있는 능력 하나를 구체적으로 정리하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "먹이를 준다",
     "derivedMeanings": [
       "자신의 감정이나 직감을 강화하는 행동",
@@ -1636,7 +2190,10 @@
     "advice": "당신이 너무 많은 에너지를 주고 있는 대상이 누구인지 확인해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "집 안에 들어온다",
     "derivedMeanings": [
       "내면 깊은 곳의 감정 문제 또는 불안이 일상에 영향을 미침",
@@ -1645,7 +2202,10 @@
     "advice": "반복적으로 떠오르는 걱정거리를 하나만 골라 해결 시도를 해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "벗겨진 허물을 본다",
     "derivedMeanings": [
       "변화·성장·재출발의 중요한 신호",
@@ -1654,7 +2214,10 @@
     "advice": "지금 버려야 할 낡은 습관이나 마음을 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "뱀",
+    "symbolMeanings": ["지혜", "직감", "변화", "재생", "은밀한 영향력"],
     "action": "사라진다",
     "derivedMeanings": [
       "불안 요인이 약해짐",
@@ -1667,7 +2230,6 @@
     "archetypeName": "동물",
     "symbol": "말",
     "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "당신의 진로·목표·추진력 상태를 점검하는 시기",
@@ -1676,7 +2238,10 @@
     "advice": "지금 추진력을 떨어뜨리는 요소를 하나 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "마주친다",
     "derivedMeanings": [
       "새로운 기회·도전이 눈앞에 다가온 상태",
@@ -1685,7 +2250,10 @@
     "advice": "당신 앞에 열린 선택지 중 가장 끌리는 것을 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "달린다",
     "derivedMeanings": [
       "강한 추진력, 목표를 향해 빠르게 나아가는 상태",
@@ -1694,7 +2262,10 @@
     "advice": "지금 속도를 내야 할 일 하나를 명확히 하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "폭주한다",
     "derivedMeanings": [
       "감정 또는 현실이 통제 범위를 넘어선 상태",
@@ -1703,7 +2274,10 @@
     "advice": "지금 속도를 줄여야 할 부분을 하나 정리하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "도망친다",
     "derivedMeanings": [
       "기회를 놓칠까 두려움",
@@ -1712,7 +2286,10 @@
     "advice": "당신이 ‘잃을까 두려운 것’을 한 줄로 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "타고 달린다",
     "derivedMeanings": [
       "성공을 향한 주도권 확보",
@@ -1721,7 +2298,10 @@
     "advice": "지금 주도권을 가져야 하는 상황을 정해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "떨어진다(말에서)",
     "derivedMeanings": [
       "계획 실패 또는 실수에 대한 불안",
@@ -1730,7 +2310,10 @@
     "advice": "최근 실패를 두려워한 이유를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "쓰다듬는다",
     "derivedMeanings": [
       "에너지·감정·목표를 안정적으로 조율하는 과정",
@@ -1739,7 +2322,10 @@
     "advice": "당신의 에너지를 안정시키는 루틴 하나를 정하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "먹이를 준다",
     "derivedMeanings": [
       "목표와 꿈에 에너지를 투자하는 시기",
@@ -1748,7 +2334,10 @@
     "advice": "지금 성장시키고 싶은 목표 하나를 적고 작은 행동을 하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "집 안에 들어온다",
     "derivedMeanings": [
       "빠른 변화가 일상에 영향을 주기 시작함",
@@ -1757,13 +2346,19 @@
     "advice": "지금 일상에서 가장 큰 변화가 무엇인지 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "길을 잃는다",
     "derivedMeanings": ["방향성·목표 혼란", "무리한 속도 또는 컨디션 저하"],
     "advice": "지금 가장 확신하지 못하는 목표를 하나 골라 점검하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "말",
+    "symbolMeanings": ["기세", "진취성", "자유", "명예", "성공운"],
     "action": "사라진다",
     "derivedMeanings": [
       "기회 또는 추진력의 일시적 감소",
@@ -1776,7 +2371,6 @@
     "archetypeName": "동물",
     "symbol": "양",
     "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "관계나 감정의 부드러운 흐름을 바라보는 상태",
@@ -1785,7 +2379,10 @@
     "advice": "당신의 삶에서 평온을 해치는 요소 한 가지를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "마주친다",
     "derivedMeanings": [
       "따뜻한 인연 또는 안정적인 기회가 다가오는 신호",
@@ -1794,7 +2391,10 @@
     "advice": "지금 마음이 가는 사람에게 가벼운 관심 표현을 해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "따라온다",
     "derivedMeanings": [
       "누군가 당신에게 의지하거나 도움을 기대하는 상황",
@@ -1803,7 +2403,10 @@
     "advice": "최근 누가 당신에게 기대고 있는지 떠올려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "쓰다듬는다",
     "derivedMeanings": [
       "감정 안정과 치유를 원하는 마음",
@@ -1812,7 +2415,10 @@
     "advice": "자신을 안정시키는 작은 루틴 하나를 실행해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "먹이를 준다",
     "derivedMeanings": [
       "관계에 에너지를 투자하는 시기",
@@ -1821,7 +2427,10 @@
     "advice": "도움을 주고 싶은 사람이 떠오른다면 작은 행동을 해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "떼로 모여 있다",
     "derivedMeanings": [
       "공동체·팀·관계의 조화가 중요한 시기",
@@ -1830,7 +2439,10 @@
     "advice": "속해 있는 팀이나 모임의 ‘요즘 분위기’를 점검해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "도망친다",
     "derivedMeanings": [
       "관계에서 거리감 또는 소심한 회피 심리",
@@ -1839,13 +2451,19 @@
     "advice": "당신이 피하고 있는 감정이나 대화를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "울음소리를 낸다",
     "derivedMeanings": ["감정 표현 욕구 상승", "속마음을 말하고 싶은 상황"],
     "advice": "전하고 싶은 진심 한 문장을 써보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "안기는 느낌이 든다",
     "derivedMeanings": [
       "정서적 안정·위로가 필요한 상태",
@@ -1854,7 +2472,10 @@
     "advice": "당신에게 안정감을 주는 사람을 떠올려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "몸을 부딪힌다",
     "derivedMeanings": [
       "작은 갈등 또는 감정적 민감함 증가",
@@ -1863,7 +2484,10 @@
     "advice": "최근 생긴 오해를 부드럽게 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "양",
+    "symbolMeanings": ["평온", "온유함", "배려", "관계 조화", "치유"],
     "action": "사라진다",
     "derivedMeanings": ["안정감의 일시적 감소", "정서적 거리감 확대"],
     "advice": "지금 잃고 있는 ‘평온’이 무엇인지 스스로 질문해보세요."
@@ -1873,7 +2497,6 @@
     "archetypeName": "동물",
     "symbol": "원숭이",
     "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "상황을 예리하게 분석하려는 마음",
@@ -1882,7 +2505,10 @@
     "advice": "지금 당신이 예민하게 느끼는 변화를 한 줄로 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "마주친다",
     "derivedMeanings": [
       "새로운 기회 또는 도전적인 인연이 다가오는 신호",
@@ -1891,7 +2517,10 @@
     "advice": "새롭게 다가오는 자극 속에서 배우고 싶은 점을 찾아보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "다가온다",
     "derivedMeanings": [
       "누군가 당신의 능력을 필요로 하거나 주목하는 상황",
@@ -1900,7 +2529,10 @@
     "advice": "지금 들어온 요청 중 성장 기회가 될 만한 것을 찾아보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "쫓아간다",
     "derivedMeanings": [
       "빠르게 변하는 흐름을 따라가려는 시도",
@@ -1909,7 +2541,10 @@
     "advice": "지금 추구하는 목표의 ‘핵심 동기’를 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "도망친다",
     "derivedMeanings": [
       "복잡한 상황을 피하고 싶은 심리",
@@ -1918,7 +2553,10 @@
     "advice": "지금 회피하고 있는 일이나 감정을 명확히 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "손을 뻗는다",
     "derivedMeanings": [
       "기회를 붙잡고 싶은 마음",
@@ -1927,7 +2565,10 @@
     "advice": "지금 관심 있는 주제 하나를 바로 탐구해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "붙잡는다",
     "derivedMeanings": [
       "중요한 통찰이나 사람을 놓치고 싶지 않은 상태",
@@ -1936,7 +2577,10 @@
     "advice": "당신이 ‘놓치고 싶지 않은 것’을 하나 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "장난을 친다",
     "derivedMeanings": [
       "가벼운 혼란, 유연한 사고, 예측 불가능한 흐름",
@@ -1945,7 +2589,10 @@
     "advice": "너무 진지하게 생각하고 있는 문제가 있다면 가볍게 바라보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "높은 곳에 오른다",
     "derivedMeanings": [
       "지위 상승, 인지도 상승, 새로운 시야 확보",
@@ -1954,7 +2601,10 @@
     "advice": "지금 당신의 성장 포인트를 한 줄로 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "무리를 이루고 있다",
     "derivedMeanings": [
       "사회적 관계가 활발해지는 시기",
@@ -1963,7 +2613,10 @@
     "advice": "속한 집단에서 당신이 기여할 수 있는 점을 생각해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "물건을 훔친다",
     "derivedMeanings": [
       "주의해야 할 경쟁자 또는 작은 방해 요소 존재",
@@ -1972,7 +2625,10 @@
     "advice": "지금 당신을 방해하는 요소가 무엇인지 점검하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "원숭이",
+    "symbolMeanings": ["재치", "지능", "기민함", "사회성", "변화", "장난기"],
     "action": "사라진다",
     "derivedMeanings": [
       "집중력 분산, 아이디어의 일시적 소멸",
@@ -1992,7 +2648,6 @@
       "새로운 시작",
       "시간의 신호"
     ],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "다가오는 변화나 소식을 직감하는 시기",
@@ -2001,7 +2656,17 @@
     "advice": "지금 촉이 오는 변화 하나를 메모해두세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "마주친다",
     "derivedMeanings": [
       "중요한 소식 또는 기회가 가까워지는 신호",
@@ -2010,7 +2675,17 @@
     "advice": "최근 들어온 연락이나 요청 중 기회를 찾아보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "울음을 듣는다",
     "derivedMeanings": [
       "새로운 시작을 알리는 징조",
@@ -2019,7 +2694,17 @@
     "advice": "지금 필요한 결정을 하나만 명확히 정하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "다투는 모습을 본다",
     "derivedMeanings": [
       "경쟁 상황 또는 의견 충돌 발생 가능성",
@@ -2028,7 +2713,17 @@
     "advice": "논쟁을 피할 수 없다면 사실 기반으로 차분히 정리해두세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "도망친다",
     "derivedMeanings": [
       "기회를 놓칠까 하는 불안",
@@ -2037,7 +2732,17 @@
     "advice": "지금 회피하고 있는 결정을 적어보고 우선순위로 다뤄보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "다가온다",
     "derivedMeanings": [
       "중요한 인연 또는 소식이 직접 다가오는 흐름",
@@ -2046,7 +2751,17 @@
     "advice": "지금 들어온 제안 중 성장 가능성이 큰 것을 선택하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "먹이를 준다",
     "derivedMeanings": [
       "작은 노력이 큰 결과로 이어지는 시기",
@@ -2055,7 +2770,17 @@
     "advice": "지금 투자 중인 것의 ‘핵심 성장 포인트’를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "키운다",
     "derivedMeanings": [
       "작은 기회가 점점 커지는 흐름",
@@ -2064,7 +2789,17 @@
     "advice": "지금 꾸준히 쌓아가고 있는 것을 해결 단위로 나눠 관리하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "날개를 푸덕인다",
     "derivedMeanings": [
       "경고 신호 또는 주의해야 할 변화",
@@ -2073,7 +2808,17 @@
     "advice": "최근 긴장되는 요소를 찾아 한 문장으로 정리해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "높은 곳에 올라가 있다",
     "derivedMeanings": [
       "명예 상승, 평가·인정·주목의 시기",
@@ -2082,7 +2827,17 @@
     "advice": "당신이 최근 성취한 일을 기록하며 자신감을 세우세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "집단으로 보인다",
     "derivedMeanings": [
       "사회적 관계가 활발해지거나 소식이 여러 방향에서 들어오는 시기",
@@ -2091,7 +2846,17 @@
     "advice": "들어오는 정보 중 우선순위가 높은 것 1개만 추려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "닭",
+    "symbolMeanings": [
+      "기회의 전조",
+      "소식",
+      "명예",
+      "경계심",
+      "새로운 시작",
+      "시간의 신호"
+    ],
     "action": "사라진다",
     "derivedMeanings": [
       "기회가 잠시 멀어진 상태",
@@ -2111,7 +2876,6 @@
       "인연",
       "본능적 직감"
     ],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "당신 주변의 관계나 상황을 직감적으로 살피는 시기",
@@ -2120,7 +2884,17 @@
     "advice": "요즘 본능적으로 신경 쓰이는 관계가 있다면 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "마주친다",
     "derivedMeanings": [
       "새로운 인연 또는 도움이 올 조짐",
@@ -2129,7 +2903,17 @@
     "advice": "최근 다가온 사람이 있다면 그 의미를 가볍게 관찰해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "짖는다",
     "derivedMeanings": [
       "주의 또는 경고 신호",
@@ -2138,7 +2922,17 @@
     "advice": "최근 불편했던 상황을 떠올리고 실제 위험 요소를 점검하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "따라온다",
     "derivedMeanings": [
       "신뢰할 만한 인연이 생기는 때",
@@ -2147,7 +2941,17 @@
     "advice": "지금 곁에 머무는 사람의 장점을 한 가지 떠올려보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "도망친다",
     "derivedMeanings": [
       "신뢰 관계에 대한 불안",
@@ -2156,7 +2960,17 @@
     "advice": "피하고 싶은 대화나 관계가 있다면 이유를 한 문장으로 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "쫓아간다",
     "derivedMeanings": [
       "무언가를 얻고 싶어 적극적으로 움직이려는 마음",
@@ -2165,7 +2979,17 @@
     "advice": "지금 좇고 있는 목표가 정말 내 것인지 잠시 점검해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "쓰다듬는다",
     "derivedMeanings": [
       "안정을 주거나 관계를 회복하려는 의지",
@@ -2174,7 +2998,17 @@
     "advice": "당신을 편안하게 하는 사람 또는 활동을 하나 선택해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "먹이를 준다",
     "derivedMeanings": [
       "정서적 교류가 활발해지는 시기",
@@ -2183,7 +3017,17 @@
     "advice": "지금 키우고 싶은 관계나 프로젝트에 작은 정성을 더해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "지켜본다",
     "derivedMeanings": [
       "보호받고 싶거나 반대로 누군가를 보호하려는 심리",
@@ -2192,7 +3036,17 @@
     "advice": "최근 보호 본능이 생긴 대상이 있다면 이유를 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "공격한다",
     "derivedMeanings": [
       "외부 갈등 또는 내부 압박이 커진 신호",
@@ -2201,7 +3055,17 @@
     "advice": "최근 당신을 압박하는 원인을 명확히 하나만 적어보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "잠잠히 앉아 있다",
     "derivedMeanings": [
       "당신이 상황을 잘 통제하고 있음을 의미",
@@ -2210,7 +3074,17 @@
     "advice": "현재 잘 하고 있는 점 한 가지를 인식하고 유지해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "여러 마리가 나타난다",
     "derivedMeanings": [
       "사회적 관계가 복잡해지는 흐름",
@@ -2219,7 +3093,17 @@
     "advice": "한 번에 많은 일을 안아들이지 말고 우선순위를 정하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "개",
+    "symbolMeanings": [
+      "충성",
+      "보호",
+      "위험 감지",
+      "의리",
+      "인연",
+      "본능적 직감"
+    ],
     "action": "사라진다",
     "derivedMeanings": [
       "지지나 보호에 대한 불안",
@@ -2232,7 +3116,6 @@
     "archetypeName": "동물",
     "symbol": "돼지",
     "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
-
     "action": "관찰한다",
     "derivedMeanings": [
       "경제적 상황이나 생활의 안정감을 점검하는 시기",
@@ -2241,7 +3124,10 @@
     "advice": "요즘 재정·생활에서 중요하게 보고 있는 포인트를 기록해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "마주친다",
     "derivedMeanings": [
       "뜻밖의 행운 또는 기회가 다가오는 조짐",
@@ -2250,7 +3136,10 @@
     "advice": "최근 들어온 기회나 제안을 가볍게 검토해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "다가온다",
     "derivedMeanings": [
       "행운·수익·보상이 눈앞에 다가오는 상징",
@@ -2259,7 +3148,10 @@
     "advice": "당신이 쌓아온 작은 노력을 돌아보고 마무리를 준비하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "도망친다",
     "derivedMeanings": [
       "기회를 놓칠까 하는 불안",
@@ -2268,7 +3160,10 @@
     "advice": "지금 미루고 있는 행동 하나를 바로 실행해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "쫓아간다",
     "derivedMeanings": [
       "재정적, 현실적 성과를 얻기 위해 적극적으로 움직이려는 마음",
@@ -2277,7 +3172,10 @@
     "advice": "욕심과 필요의 경계를 잘 점검해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "쓰다듬는다",
     "derivedMeanings": [
       "안정감·풍요·여유를 원하는 마음이 커진 상태",
@@ -2286,7 +3184,10 @@
     "advice": "당신을 편안하게 하는 환경적 요소를 강화해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "먹이를 준다",
     "derivedMeanings": [
       "현실적 성과를 키우고자 하는 노력",
@@ -2295,7 +3196,10 @@
     "advice": "당신이 지금 키우고 싶은 목표에 작은 자원을 투자해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "지켜본다",
     "derivedMeanings": [
       "현재 삶의 안정성과 여유를 유지하려는 마음",
@@ -2304,7 +3208,10 @@
     "advice": "지출·시간·에너지 사용에서 우선순위를 다시 잡아보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "여러 마리가 나타난다",
     "derivedMeanings": [
       "여러 기회·수익·축적의 조짐",
@@ -2313,7 +3220,10 @@
     "advice": "지금 들어오는 ‘작은 기회들’을 놓치지 말고 기록하세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "사라진다",
     "derivedMeanings": [
       "풍요나 안정에 대한 걱정",
@@ -2322,7 +3232,10 @@
     "advice": "당신의 에너지 누수가 어디서 일어나는지 한 가지 확인해보세요."
   },
   {
+    "archetypeId": "ANIMAL",
+    "archetypeName": "동물",
     "symbol": "돼지",
+    "symbolMeanings": ["부", "풍요", "행운", "식복", "현실적 욕망", "편안함"],
     "action": "잠잠히 앉아 있다",
     "derivedMeanings": [
       "당신의 생활기반이 안정적이라는 신호",
