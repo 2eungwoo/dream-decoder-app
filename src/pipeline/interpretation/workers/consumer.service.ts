@@ -5,8 +5,6 @@ import {
   OnModuleInit,
 } from "@nestjs/common";
 import { randomUUID } from "node:crypto";
-import { Redis } from "ioredis";
-import { RedisService } from "../../../infra/redis/redis.service";
 import {
   INTERPRETATION_WORKER_GROUP,
   INTERPRETATION_WORKER_IDLE_CLAIM_MS,
@@ -15,6 +13,7 @@ import { InterpretationMessageHandler } from "./message.handler";
 import { InterpretationMessageSerializer } from "../messages/message.serializer";
 import { InterpretationStreamReader } from "../streams/stream.reader";
 import { INTERPRETATION_STREAM_KEY } from "../config/storage.config";
+import { RedisStreamService } from "../../redis-stream.service";
 
 @Injectable()
 export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
@@ -27,18 +26,17 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
   private reclaimInterval?: NodeJS.Timeout;
 
   constructor(
-    private readonly redisService: RedisService,
+    private readonly redisStream: RedisStreamService,
     private readonly messageHandler: InterpretationMessageHandler,
     private readonly streamReader: InterpretationStreamReader,
     private readonly serializer: InterpretationMessageSerializer
   ) {}
 
-  private get client(): Redis {
-    return this.redisService.getClient();
-  }
-
   async onModuleInit() {
-    await this.ensureGroup();
+    await this.redisStream.ensureGroup(
+      INTERPRETATION_STREAM_KEY,
+      INTERPRETATION_WORKER_GROUP
+    );
     this.loopPromise = this.consumeLoop();
     this.reclaimInterval = setInterval(() => {
       void this.claimIdle();
@@ -53,23 +51,6 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
     }
     if (this.loopPromise) {
       await this.loopPromise;
-    }
-  }
-
-  private async ensureGroup() {
-    try {
-      await this.client.xgroup(
-        "CREATE",
-        INTERPRETATION_STREAM_KEY,
-        INTERPRETATION_WORKER_GROUP,
-        "0",
-        "MKSTREAM"
-      );
-    } catch (error) {
-      if (error instanceof Error && error.message.includes("BUSYGROUP")) {
-        return;
-      }
-      throw error;
     }
   }
 
@@ -115,7 +96,7 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
   private async handleEntry(id: string, fields: string[]) {
     const message = this.serializer.fromStreamFields(fields);
     if (!message) {
-      await this.client.xack(
+      await this.redisStream.ack(
         INTERPRETATION_STREAM_KEY,
         INTERPRETATION_WORKER_GROUP,
         id
@@ -138,7 +119,7 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
         }`
       );
     } finally {
-      await this.client.xack(
+      await this.redisStream.ack(
         INTERPRETATION_STREAM_KEY,
         INTERPRETATION_WORKER_GROUP,
         id
