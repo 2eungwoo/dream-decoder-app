@@ -1,6 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { Redis } from "ioredis";
-import { RedisService } from "../../../infra/redis/redis.service";
 import {
   INTERPRETATION_WORKER_BATCH_SIZE,
   INTERPRETATION_WORKER_BLOCK_MS,
@@ -8,51 +6,33 @@ import {
   INTERPRETATION_WORKER_IDLE_CLAIM_MS,
 } from "../config/worker.config";
 import { INTERPRETATION_STREAM_KEY } from "../config/storage.config";
+import { RedisStreamService } from "../../redis-stream.service";
 
 @Injectable()
 export class InterpretationStreamReader {
-  constructor(private readonly redisService: RedisService) {}
-
-  private get client(): Redis {
-    return this.redisService.getClient();
-  }
+  constructor(private readonly redisStream: RedisStreamService) {}
 
   public async readNext(
     consumerName: string
   ): Promise<Array<[string, string[]]> | null> {
-    const response = (await this.client.xreadgroup(
-      "GROUP",
-      INTERPRETATION_WORKER_GROUP,
-      consumerName,
-      "COUNT",
-      INTERPRETATION_WORKER_BATCH_SIZE,
-      "BLOCK",
-      INTERPRETATION_WORKER_BLOCK_MS,
-      "STREAMS",
-      INTERPRETATION_STREAM_KEY,
-      ">"
-    )) as [string, [string, string[]][]][] | null;
-
-    if (!response) {
-      return null;
-    }
-
-    return response[0][1];
+    return this.redisStream.readGroup({
+      stream: INTERPRETATION_STREAM_KEY,
+      group: INTERPRETATION_WORKER_GROUP,
+      consumer: consumerName,
+      count: INTERPRETATION_WORKER_BATCH_SIZE,
+      blockMs: INTERPRETATION_WORKER_BLOCK_MS,
+    });
   }
 
   public async claimIdle(
     consumerName: string
   ): Promise<Array<[string, string[]]>> {
-    const response = (await this.client.xautoclaim(
-      INTERPRETATION_STREAM_KEY,
-      INTERPRETATION_WORKER_GROUP,
-      consumerName,
-      INTERPRETATION_WORKER_IDLE_CLAIM_MS,
-      "0-0",
-      "COUNT",
-      INTERPRETATION_WORKER_BATCH_SIZE
-    )) as [string, [string, string[]][]];
-
-    return response[1];
+    return this.redisStream.claimIdle({
+      stream: INTERPRETATION_STREAM_KEY,
+      group: INTERPRETATION_WORKER_GROUP,
+      consumer: consumerName,
+      minIdleTime: INTERPRETATION_WORKER_IDLE_CLAIM_MS,
+      count: INTERPRETATION_WORKER_BATCH_SIZE,
+    });
   }
 }
