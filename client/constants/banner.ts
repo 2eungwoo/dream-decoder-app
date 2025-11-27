@@ -18,7 +18,7 @@ export const COMMANDS_BOX = `
 │ /register <username> <password> │ Create a new account.                           │
 │ /login    <username> <password> │ Sign in with your credentials.                  │
 │ /logout   <username> <password> │ Sign out of the current session.                │
-│ /deail    <id>                  │ View a saved interpretation detail.             │
+│ /detail    <id>                  │ View a saved interpretation detail.             │
 │ /list                           │ View saved interpretation IDs and previews.     │
 │ /chat                           │ Enter dream/emotions/MBTI for a full decoding.  │
 │ /status   <requestId>           │ Check the status/result of a dream request.     │
