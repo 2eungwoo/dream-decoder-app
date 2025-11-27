@@ -31,7 +31,7 @@ describe("InterpretationSymbolNormalizer", () => {
     // then
     expect(result.symbolMeanings).toEqual(["선택"]);
     expect(result.derivedMeanings).toEqual(["첫 번째"]);
-    expect(result.advice).toBe("긴 조언 문…"); // 잘린 advice
+    expect(result.advice).toBe("엄청나게 긴 adv…"); // 잘린 advice
   });
 
   it("필드가 비었으면 undefined/[] 반환하는지 테스트", () => {
