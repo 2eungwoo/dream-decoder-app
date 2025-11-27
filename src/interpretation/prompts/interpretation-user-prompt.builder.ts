@@ -41,7 +41,7 @@ export class InterpretationUserPromptBuilder {
     const parts = [
       `Dream narrative:\n${request.dream.trim()}`,
       this.optionalLine("Dreamer emotions", request.emotions?.join(", ")),
-      this.optionalLine("Dreamer MBTI", request.mbti?.toUpperCase()),
+      this.optionalLine("Preferred tone (MBTI)", request.mbti?.toUpperCase()),
       this.optionalLine("Additional context", request.extraContext?.trim()),
       "Symbol insights to weave into the response:",
       formattedSymbols || "No prior references found.",
