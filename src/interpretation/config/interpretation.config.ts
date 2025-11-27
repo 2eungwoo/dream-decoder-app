@@ -9,8 +9,8 @@ export const DEFAULT_INTERPRETATION_CONFIG = {
   },
   similarityWeights: {
     symbol: 0.5,
-    action: 0.3,
-    derived: 0.2,
+    action: 0.25,
+    derived: 0.25,
   },
 };
 
