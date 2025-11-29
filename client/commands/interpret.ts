@@ -14,6 +14,8 @@ import {
 import { Spinner } from "../ui/spinner";
 import { formatKeyValue, printPanel } from "../ui/layout";
 import { InterpretationStatusResponse } from "../types/interpretation-status";
+import { getRandomDreamWhisper } from "../constants/dream-whispers";
+import { cliTheme } from "../ui/theme";
 
 interface ApiInterpretResponse {
   requestId: string;
@@ -40,6 +42,8 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
   const extraContext = await promptExtraContext(ask);
 
   const spinner = new Spinner();
+  // const requestWhisper = cliTheme.whisper(getRandomDreamWhisper());
+  // spinner.start(requestWhisper);
   spinner.start("해몽 요청을 전송하는 중입니다...");
   try {
     const data = await postApi<ApiInterpretResponse>(
@@ -75,7 +79,8 @@ export async function handleInterpret(ask: QuestionFn, sessions: SessionStore) {
       },
     ]);
 
-    spinner.start("해몽을 생성하는 중입니다...");
+    const creationWhisper = cliTheme.whisper(getRandomDreamWhisper());
+    spinner.start(creationWhisper);
     const finalStatus = await pollInterpretationStatus(
       requestId,
       session.username,
