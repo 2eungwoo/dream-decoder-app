@@ -13,6 +13,7 @@ import {
 import { InterpretationRecordService } from "./interpretation-record.service";
 import { InterpretationRecord } from "./interpretation-record.entity";
 import { InterpretationRecordValidator } from "./exceptions/interpretation-record.validator";
+import { InterpretationRecordAlreadyExistsException } from "./exceptions/interpretation-record-already-exists.exception";
 
 describe("InterpretationRecordService", () => {
   const repository = mock<Repository<InterpretationRecord>>();
@@ -43,6 +44,7 @@ describe("InterpretationRecordService", () => {
     const entity = { id: recordId } as InterpretationRecord;
 
     // when
+    when(repository.findOne(anything())).thenResolve(null);
     when(repository.create(anything())).thenReturn(entity as any);
     when(repository.save(entity)).thenResolve(entity);
     const savedId = await service.saveRecord(userId, dto as any);
@@ -56,6 +58,38 @@ describe("InterpretationRecordService", () => {
       dream: dto.dream,
       interpretation: dto.interpretation,
     });
+    const [dupArgs] = capture(repository.findOne).last();
+    expect(dupArgs).toMatchObject({
+      where: {
+        userId,
+        dream: dto.dream,
+        interpretation: dto.interpretation,
+      },
+      select: ["id"],
+    });
+    verify(validator.ensureNotDuplicated(anything())).once();
+    const [validatorArg] = capture(validator.ensureNotDuplicated).last();
+    expect(validatorArg).toBeNull();
+  });
+  it("이미 같은 꿈과 해석이 저장돼 있으면 예외 발생", async () => {
+    // given
+    const dto = {
+      dream: "같은 꿈",
+      interpretation: "같은 해석",
+    };
+    const existing = { id: "exists" } as InterpretationRecord;
+
+    // when
+    when(repository.findOne(anything())).thenResolve(existing);
+    when(validator.ensureNotDuplicated(existing)).thenThrow(
+      new InterpretationRecordAlreadyExistsException()
+    );
+
+    // then
+    await expect(service.saveRecord(userId, dto as any)).rejects.toThrow(
+      InterpretationRecordAlreadyExistsException
+    );
+    verify(repository.save(anything())).never();
   });
 
   it("userId/recordId로 해몽 찾고 projection한 필드만 넣은 dto 반환", async () => {

@@ -19,16 +19,8 @@ export class InterpretationRecordService {
     userId: string,
     payload: SaveInterpretationRecordDto
   ) {
-    const record = this.recordsRepository.create({
-      userId,
-      dream: payload.dream,
-      emotions: payload.emotions,
-      mbti: payload.mbti,
-      extraContext: payload.extraContext,
-      interpretation: payload.interpretation,
-      userPrompt: payload.userPrompt,
-    });
-
+    await this.ensureNoDuplicateRecord(userId, payload);
+    const record = this.buildRecordEntity(userId, payload);
     const saved = await this.recordsRepository.save(record);
     return saved.id;
   }
@@ -61,5 +53,35 @@ export class InterpretationRecordService {
     return records.map((record) =>
       InterpretationRecordListDto.fromRecord(record)
     );
+  }
+
+  private async ensureNoDuplicateRecord(
+    userId: string,
+    payload: SaveInterpretationRecordDto
+  ) {
+    const existing = await this.recordsRepository.findOne({
+      where: {
+        userId,
+        dream: payload.dream,
+        interpretation: payload.interpretation,
+      },
+      select: ["id"],
+    });
+    this.recordValidator.ensureNotDuplicated(existing);
+  }
+
+  private buildRecordEntity(
+    userId: string,
+    payload: SaveInterpretationRecordDto
+  ) {
+    return this.recordsRepository.create({
+      userId,
+      dream: payload.dream,
+      emotions: payload.emotions,
+      mbti: payload.mbti,
+      extraContext: payload.extraContext,
+      interpretation: payload.interpretation,
+      userPrompt: payload.userPrompt,
+    });
   }
 }
