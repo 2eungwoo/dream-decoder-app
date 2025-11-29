@@ -1,18 +1,12 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Req,
-  UnauthorizedException,
-  UseGuards,
-} from "@nestjs/common";
-import type { Request } from "express";
+import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { ApiResponseFactory } from "../shared/dto/api-response.dto";
 import { InterpretAuthGuard } from "../interpretation/guards/interpret-auth.guard";
 import { SaveInterpretationRecordDto } from "./dto/save-interpretation-record.dto";
 import { InterpretationRecordService } from "./interpretation-record.service";
+import {
+  CurrentUser,
+  RequestUser,
+} from "../shared/decorators/current-user.decorator";
 
 @Controller()
 @UseGuards(InterpretAuthGuard)
@@ -24,14 +18,10 @@ export class InterpretationRecordController {
   @Post("interpret/logs")
   public async saveInterpretation(
     @Body() payload: SaveInterpretationRecordDto,
-    @Req() req: Request
+    @CurrentUser() user: RequestUser
   ) {
-    if (!req.user) {
-      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
-    }
-
     const savedId = await this.interpretationRecordService.saveRecord(
-      req.user.id,
+      user.id,
       payload
     );
     return ApiResponseFactory.success(
@@ -41,27 +31,18 @@ export class InterpretationRecordController {
   }
 
   @Get("interpret/logs")
-  public async listInterpretations(@Req() req: Request) {
-    if (!req.user) {
-      throw new UnauthorizedException(
-        "<!> 먼저 login 명령으로 로그인 해주세요."
-      );
-    }
-
-    const records = await this.interpretationRecordService.listRecords(
-      req.user.id
-    );
+  public async listInterpretations(@CurrentUser() user: RequestUser) {
+    const records = await this.interpretationRecordService.listRecords(user.id);
     return ApiResponseFactory.success(records);
   }
 
   @Get("interpret/logs/:id")
-  public async findDetail(@Param("id") id: string, @Req() req: Request) {
-    if (!req.user) {
-      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
-    }
-
+  public async findDetail(
+    @Param("id") id: string,
+    @CurrentUser() user: RequestUser
+  ) {
     const record = await this.interpretationRecordService.findRecord(
-      req.user.id,
+      user.id,
       id
     );
 

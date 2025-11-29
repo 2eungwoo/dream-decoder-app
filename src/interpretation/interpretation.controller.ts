@@ -1,14 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Req,
-  UnauthorizedException,
-  UseGuards,
-} from "@nestjs/common";
-import type { Request } from "express";
+import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { InterpretDreamRequestDto } from "./dto/interpret-dream-request.dto";
 import { InterpretAuthGuard } from "./guards/interpret-auth.guard";
 import { UseInterpretationSemaphore } from "./semaphore/InterpretationSemaphore.decorator";
@@ -16,6 +6,10 @@ import { ApiResponseFactory } from "../shared/dto/api-response.dto";
 import { InterpretationRequestPublisher } from "../pipeline/interpretation/publisher/request.publisher";
 import { InterpretationStatusStore } from "../pipeline/interpretation/status/status.store";
 import { InterpretationDlqService } from "../pipeline/interpretation/dlq/dlq.service";
+import {
+  CurrentUser,
+  RequestUser,
+} from "../shared/decorators/current-user.decorator";
 
 @Controller()
 @UseGuards(InterpretAuthGuard)
@@ -30,16 +24,9 @@ export class InterpretationController {
   @Post("interpret")
   public async interpret(
     @Body() payload: InterpretDreamRequestDto,
-    @Req() req: Request
+    @CurrentUser() user: RequestUser
   ) {
-    if (!req.user) {
-      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
-    }
-
-    const { requestId } = await this.requestPublisher.publish(
-      req.user,
-      payload
-    );
+    const { requestId } = await this.requestPublisher.publish(user, payload);
 
     return ApiResponseFactory.success(
       { requestId },
@@ -50,15 +37,11 @@ export class InterpretationController {
   @Get("interpret/status/:requestId")
   public async getStatus(
     @Param("requestId") requestId: string,
-    @Req() req: Request
+    @CurrentUser() user: RequestUser
   ) {
-    if (!req.user) {
-      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
-    }
-
     const status = await this.statusStore.findStatusByRequest(
       requestId,
-      req.user.id
+      user.id
     );
 
     return ApiResponseFactory.success({
@@ -75,11 +58,8 @@ export class InterpretationController {
   }
 
   @Get("interpret/failed")
-  public async getFailed(@Req() req: Request) {
-    if (!req.user) {
-      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
-    }
-    const entries = await this.dlqService.listByUser(req.user.id);
+  public async getFailed(@CurrentUser() user: RequestUser) {
+    const entries = await this.dlqService.listByUser(user.id);
     const data = entries.map((entry) => ({
       requestId: entry.requestId,
       failedAt: entry.failedAt,
@@ -92,14 +72,10 @@ export class InterpretationController {
   @Post("interpret/failed/:requestId/retry")
   public async retryFailed(
     @Param("requestId") requestId: string,
-    @Req() req: Request
+    @CurrentUser() user: RequestUser
   ) {
-    if (!req.user) {
-      throw new UnauthorizedException("<!> 사용자 인증이 필요합니다.");
-    }
-
     const newRequestId = await this.dlqService.retryEntry(
-      { id: req.user.id, username: req.user.username },
+      { id: user.id, username: user.username },
       requestId
     );
 
