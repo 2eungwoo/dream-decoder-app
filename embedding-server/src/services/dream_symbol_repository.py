@@ -38,11 +38,11 @@ class DreamSymbolRepository:
             self.conn.close()
             self.conn = None
 
-    def ensure_schema(self, dim: int):
+    def create_schema_if_not_exists(self, dim: int):
         if self.conn is None:
             raise RuntimeError("<!> [ERROR] Connection is not initialized")
 
-        logger.info("[==] dream_symbols 테이블 스키마 검사 (벡터 차원=%d)", dim)
+        logger.info("[==] dream_symbols 테이블 스키마 및 인덱스 확인/생성 (벡터 차원=%d)", dim)
 
         column_definitions = [
             "id UUID PRIMARY KEY",
@@ -58,10 +58,23 @@ class DreamSymbolRepository:
         create_table_sql = f"""
         CREATE TABLE IF NOT EXISTS dream_symbols ({', '.join(column_definitions)});
         """
+        create_index_sql = """
+        CREATE INDEX IF NOT EXISTS dream_symbols_embedding_idx ON dream_symbols USING hnsw (embedding vector_cosine_ops);
+        """
 
         with self.conn.cursor() as cur:
             cur.execute("CREATE EXTENSION IF NOT EXISTS vector;")
             cur.execute(create_table_sql)
+            cur.execute(create_index_sql)
+        self.conn.commit()
+        logger.info("[==] 스키마 및 인덱스 준비 완료")
+
+    def truncate_table(self):
+        if self.conn is None:
+            raise RuntimeError("<!> [ERROR] Connection is not initialized")
+
+        logger.info("[==] dream_symbols 테이블 데이터 삭제 (TRUNCATE)")
+        with self.conn.cursor() as cur:
             cur.execute("TRUNCATE TABLE dream_symbols;")
         self.conn.commit()
 

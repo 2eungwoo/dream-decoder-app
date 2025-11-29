@@ -42,7 +42,7 @@ class DreamSymbolIngestor:
 
     self.repository.connect()
     try:
-      self.repository.ensure_schema(len(vectors[0]))
+      self.repository.truncate_table()
       self.repository.insert_documents(docs, vectors)
       logger.info("[완료] dream_symbols 테이블에 %d건 적재 완료", len(docs))
     finally:
