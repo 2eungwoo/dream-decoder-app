@@ -1,9 +1,6 @@
-import {
-  ForbiddenException,
-  Injectable,
-  NotFoundException,
-} from "@nestjs/common";
+import { ForbiddenException, Injectable } from "@nestjs/common";
 import { FailedEntry } from "../interfaces/failed-entry.interface";
+import { FailedRequestNotFoundException } from "../exceptions/failed-request-not-found.exception";
 
 @Injectable()
 export class DlqValidator {
@@ -11,7 +8,7 @@ export class DlqValidator {
     entry?: FailedEntry | null
   ): asserts entry is FailedEntry {
     if (!entry) {
-      throw new NotFoundException("<!> 실패한 요청을 찾을 수 없습니다.");
+      throw new FailedRequestNotFoundException();
     }
   }
 
