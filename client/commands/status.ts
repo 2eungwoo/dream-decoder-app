@@ -53,7 +53,7 @@ export async function handleStatus(args: string[], sessions: SessionStore) {
     lines.push(
       "",
       formatBullet(
-        "해몽 결과가 준비되었습니다. CLI에서 본 내용을 다시 확인하려면 /detail 명령으로 불러와 주세요."
+        `해몽 결과가 준비되었습니다. /detail 명령으로 내용을 다시 보고, 저장하려면 /save ${status.requestId} 명령을 사용하세요.`
       )
     );
   }

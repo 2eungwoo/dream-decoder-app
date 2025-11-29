@@ -13,6 +13,7 @@ import { handleShowList } from "./commands/show-list";
 import { handleStatus } from "./commands/status";
 import { handleShowFailed } from "./commands/failed";
 import { handleRetryFailed } from "./commands/retry";
+import { handleSaveRequest } from "./commands/save";
 
 type PromptFn = (message: string) => Promise<string>;
 
@@ -92,6 +93,8 @@ async function dispatchCommand(
       return handleShowList(args, sessions);
     case "/status":
       return handleStatus(args, sessions);
+    case "/save":
+      return handleSaveRequest(args, sessions, ask);
     case "/failed":
       return handleShowFailed(args, sessions);
     case "/retry":

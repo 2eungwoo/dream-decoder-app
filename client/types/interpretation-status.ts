@@ -5,6 +5,7 @@ export type InterpretationStatusType =
   | "failed";
 
 export interface InterpretationStatusResponse {
+  [x: string]: any;
   requestId: string;
   status: InterpretationStatusType;
   interpretation?: string;

@@ -22,6 +22,7 @@ export const COMMANDS_BOX = `
 │ /list                           │ View saved interpretation IDs and previews.     │
 │ /chat                           │ Enter dream/emotions/MBTI for a full decoding.  │
 │ /status   <requestId>           │ Check the status/result of a dream request.     │
+│ /save     <requestId>           │ Manually save a completed interpretation.       │
 │ /retry    <requestId>           │ Retry a failed dream request.                   │
 │ /failed                         │ View failed requests that can be retried.       │
 │ /help                           │ Display this command summary again.             │
