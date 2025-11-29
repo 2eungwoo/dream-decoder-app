@@ -53,7 +53,7 @@ export async function handleStatus(args: string[], sessions: SessionStore) {
     lines.push(
       "",
       formatBullet(
-        `해몽 결과가 준비되었습니다. /detail 명령으로 내용을 다시 보고, 저장하려면 /save ${status.requestId} 명령을 사용하세요.`
+        `해몽 결과가 준비되었습니다. \n /detail 명령으로 내용을 다시 보거나, 저장하려면 /save ${status.requestId} 명령으로 저장할 수 있습니다.`
       )
     );
   }
@@ -112,7 +112,8 @@ function isStatusClearedMessage(message?: string) {
   if (!message) {
     return false;
   }
-  return ( // 이거 포함돼있으면 cleared 처리
+  return (
+    // 이거 포함돼있으면 cleared 처리
     message.includes("기록이 사라졌") ||
     message.includes("이미 저장되어") ||
     message.includes("찾을 수 없습니다")
