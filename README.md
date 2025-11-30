@@ -8,7 +8,7 @@
 > 3. `Generation` : LLM은 이 컨텍스트로 내용을 보강하여 응답을 생성합니다.
 
 # Demo
-gif
+<img src="https://github.com/user-attachments/assets/0aab3d44-d5ca-4b7b-b937-55dc31d59d76" width="500" />
 
 # 시작하기
 
@@ -52,8 +52,8 @@ PYTHONPATH=embedding-server python3 embedding-server/scripts/init_schema.py;
 PYTHONPATH=embedding-server python3 embedding-server/scripts/run_ingest.py;
 ```
 
-> 위 세팅이 마무리되면 스키마 상태는 다음과 같습니다.<br/>
-> ![img.png](img.png)<br/>
+> 위 **세팅이 마무리되면 스키마 상태**는 다음과 같습니다.<br/>
+> <img width="562" height="297" alt="image" src="https://github.com/user-attachments/assets/454c6b4c-3a82-4ec8-acc7-9f4a453c0010" /> <br/>
 > 아래 명령어로 확인할 수 있습니다.
 ```bash
 # container app cli
@@ -145,9 +145,9 @@ npm run cli
 > 꿈 해석 요청은 Redis Stream 큐에 등록됩니다.</br>
 
 > 시스템 일시 중단이나 사용자의 강제종료에도 ACK되지 않은 항목은 스트림에 남아</br>
-> 서비스가 복구되면 동일한 요청 ID로 자동 재처리, 최종 실패 요청은 DLQ에 적재하여 유실을 방지합니다.
+> 서비스가 복구되면 동일한 요청 ID로 자동 재처리, 최종 실패 요청은 DLQ에 적재하여 유실을 방지합니다.</br>
 
-![redis-stream-demo](docs/assets/redis-stream-resilience.gif)
+<img src="https://github.com/user-attachments/assets/a37ba55e-d06e-4b9e-b313-7f3f7ba6a5ea" width="500" />
 
 > 위 데모는 요청 접수 직후 CLI 및 서비스 강제 종료 후 재시작 시나리오입니다. <br/>
 > CLI에 재접속하여 요청 접수된 ID로 진행 상태 조회, 저장이 가능합니다.<br/>
