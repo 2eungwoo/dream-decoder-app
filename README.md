@@ -150,3 +150,5 @@ npm run cli
 ![redis-stream-demo](docs/assets/redis-stream-resilience.gif)
 
 > 위 데모는 요청 접수 직후 CLI 및 서비스 강제 종료 후 재시작 시나리오입니다. <br/>
+> CLI에 재접속하여 요청 접수된 ID로 진행 상태 조회, 저장이 가능합니다.<br/>
+> 서비스 장애 발생 경우, `/failed`로 처리중인 요청을 조회할 수 있으며 서비스 복구 이후 마찬가지로 재처리 및 저장이 가능합니다.
