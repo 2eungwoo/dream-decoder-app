@@ -10,9 +10,6 @@
 > - update the system/user prompts to English (`src/interpretation/prompts/*`).
 
 # Dream Decoder
-> Dreams are a complex psychological phenomenon created as the unconscious mind reorganizes memories, emotions, and experiences. <br/>
-> Some people encounter their past or future within dreams, while others reunite with someone they have long missed. <br/>
-
 > This project is a service that combines psychological dream interpretation with LLM-based analysis. <br/>
 > It analyzes symbolic representations arising from the user’s free dream association and provides personalized interpretations that incorporate emotional and contextual nuances.
 
