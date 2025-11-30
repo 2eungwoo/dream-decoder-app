@@ -10,64 +10,7 @@
 # Demo
 gif
 
-
-
-## 데이터셋 구조
-> RAG 에서 사용하는 자체적인 데이터셋 입니다.<br/>
-> 단순 문장 혹은 키워드 목록이 아닌, `상징`과 `행동`이 조합된 구조입니다.
-
-```json
-[
-  {
-    "archetypeId": "FRUIT",
-    "archetypeName": "과일",
-    "symbol": "사과",
-    "symbolMeanings": ["선택", "지식", "새로운 시작"],
-    "action": "본다",
-    "derivedMeanings": [
-      "선택지를 관찰하는 마음",
-      "새로운 기회를 해석하려는 상태"
-    ],
-    "advice": "결정 전 비교 기준을 하나만 정해보세요."
-  },
-  {
-    "archetypeId": "FRUIT",
-    "archetypeName": "과일",
-    "symbol": "사과",
-    "symbolMeanings": ["선택", "지식", "새로운 시작"],
-    "action": "먹는다",
-    "derivedMeanings": [
-      "에너지를 흡수하고 싶음",
-      "새로운 시작을 적극적으로 받아들이려는 의지"
-    ],
-    "advice": "가장 중요하게 생각하는 가치를 기준으로 선택하세요."
-  }
-]
-```
-> 꿈에 등장한 상징 요소와 꿈에서의 행동이 `해석의 기준`이 됩니다. <br/>
-> 각각 다른 의미로 해석하고 이에 맞는 조언을 제시하도록 구성했습니다.
-
-### 가중치 반영 알고리즘
-> RAG 과정에서 단순히 최근접한 상징/행동만 고려한다면 다음 문제가 발생할 수 있습니다.</br>
-> '호랑이가 사과를 먹는 꿈' 에서, ''호랑이'가 우선시된 해석을 제공하게 될 수 있습니다.</br>
-> 사용자 꿈의 핵심인 '사과','먹는다'가 우선 검색되지 않을 수 있습니다.
-
-> 1. 의미적으로 유사한 상징을 폭넓게 찾아 '후보군'을 만듭니다.</br>
-> 2. 추출한 후보군 내에서 사용자의 꿈에서 실제로 등장한 키워드와 일치하는 상징에 가중치를 부여합니다.</br>
-> 이 접근은 해석의 semantic/lexical 모두를 확보하는 것을 목표로 합니다.</br>
-> 데이터셋에서 사용자 꿈과 가장 밀접한 정보를 LLM에게 제공하여 엉뚱한 응답을 생성하지 않도록 합니다.
-
-'호랑이가 사과를 먹는다'
-
-| 후보 (상징, 행동)       | 꿈 속 키워드 매칭                              | 최종 점수 (가중치 적용) |
-| ----------------------- | ---------------------------------------------- | ----------------------- |
-| **`(호랑이, 본다)`**    | `호랑이`(symbol), `봤어요`(action)             | **높음 (2개 매칭)**     |
-| **`(사과, 먹는다)`**    | `사과`(symbol), `먹는`(action)                 | **높음 (2개 매칭)**     |
-| `(사과, 본다)`          | `사과`(symbol), `봤어요`(action)               | 높음 (2개 매칭)         |
-| `(호랑이, 사냥한다)`    | `호랑이`(symbol)                               | 낮음 (1개 매칭)         |
-
-
-## 시작하기
+# 시작하기
 
 ### 필요
 > - Docker 및 Docker Compose</br>
@@ -109,8 +52,101 @@ PYTHONPATH=embedding-server python3 embedding-server/scripts/init_schema.py;
 PYTHONPATH=embedding-server python3 embedding-server/scripts/run_ingest.py;
 ```
 
+> 완성된 스키마 상태는 다음과 같습니다.<br/>
+> ![img.png](img.png)<br/>
+> 아래 명령어로 확인할 수 있습니다.
+```bash
+# container app cli
+docker-compose exec dd-postgresql psql -U postgres -d dream_decoder
+
+# container postgresql cli
+\d dream_symbols
+```
 ```bash
 # app 실행
 npm run cli
 ```
 
+
+## 데이터셋 구조
+> RAG 에서 사용하는 자체적인 데이터셋 입니다.<br/>
+> 단순 문장 혹은 키워드 목록이 아닌, `상징`과 `행동`이 조합된 구조입니다.
+
+```json
+[
+  {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
+    "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
+    "action": "본다",
+    "derivedMeanings": [
+      "선택지를 관찰하는 마음",
+      "새로운 기회를 해석하려는 상태"
+    ],
+    "advice": "결정 전 비교 기준을 하나만 정해보세요."
+  },
+  {
+    "archetypeId": "FRUIT",
+    "archetypeName": "과일",
+    "symbol": "사과",
+    "symbolMeanings": ["선택", "지식", "새로운 시작"],
+    "action": "먹는다",
+    "derivedMeanings": [
+      "에너지를 흡수하고 싶음",
+      "새로운 시작을 적극적으로 받아들이려는 의지"
+    ],
+    "advice": "가장 중요하게 생각하는 가치를 기준으로 선택하세요."
+  }
+]
+```
+> 꿈에 등장한 상징 요소와 꿈에서의 행동이 `해석의 기준`이 됩니다. <br/>
+> 각각 다른 의미로 해석하고 이에 맞는 조언을 제시하도록 구성했습니다.
+
+## 가중치 반영 알고리즘
+> 임베딩 검색만 사용하면 상징은 맞지만 행동이 다른 레코드가 먼저 잡히는 경우가 있습니다.</br>
+> ex) “황금 사과를 한입 베어 물었다”라는 꿈에서 모델이 `사과` 의미에 집중하면,</br>
+> `사과/본다`, `사과/고른다`처럼 행동이 다른 레코드가 우선순위에 오를 수 있습니다.</br>
+> 이러면 사용자가 실제로 강조한 “먹는다” 컨텍스트가 LLM에 전달되지 않아 엉뚱한 해석이 나올 수 있습니다.
+
+> 1. **임베딩 검색**: `pgvector`의 `<=>` 연산으로 임베딩 비교, 상징/행동 후보군을 추출합니다.</br>
+> 2. **가중치 정렬**: 후보군을 사용자의 텍스트에 등장한 상징,행동,파생 의미와 매칭해 가중치를 부여합니다.</br>
+> 이 과정은 semantic/lexical 모두 보정하여 문맥에 가장 가까운 정보를 LLM에 전달하도록 제어합니다.
+
+> </br>'황금 사과를 한입 베어 물었다' 시나리오
+
+| 후보 (상징, 행동)     | 꿈 속 키워드 매칭 | 가중치 점수  |
+|-----------------|-----------|---------------|
+| `(사과, 본다)`      | `사과` 일치   | 중간 (1개 매칭)    |
+| **`(사과, 먹는다)`** | `사과`, `먹는다` 일치 | **높음 (2개 매칭)** |
+| `(사과, 고른다)`     | `사과` 일치   | 중간 (1개 매칭)    |
+
+> **가중치 구성**:
+> 위치: `src/interpretation/config/interpretation.config.ts` <br/>
+> `similarityWeights` : `symbol: 0.5`, `action: 0.25`, `derived: 0.25`로 설정돼 있습니다.</br>
+> 상징이 절반의 점수를 가져가기 때문에, 행동/파생의미가 동시에 맞는 경우에만 1위로 올라옵니다.</br>
+> 행동 중요도를 높이고 싶다면 해당 파일에서 비중을 조절하면 됩니다.
+
+### 현재 RAG 구성 변수
+> `컨텍스트 수 제한` : 임베딩 문서 쿼리의 `topN`이 현재 2라서, 세 번째 이후 상징은 프롬프트에서 누락됩니다.<br/>
+> `데이터셋 커버리지` : `data/dream_symbols.json`에 없는 상징/행동은 검색 자체가 어렵습니다. 일반적인 LLM 추론으로 넘어갑니다.<br/>
+> `표현 다양성 제어` : 동일 행위를 다른 표현으로 쓰면 lexical 매칭을 놓칠 수 있습니다. 이 경우 임베딩 순위만으로 결정됩니다.<br/>
+> `응답 변동 가능성` : 같은 컨텍스트라도 위의 변수 조정에 따라 해석 품질이 변할 수 있습니다.<br/>
+> 따라서 위의 한계를 벗어나는 튜닝을 마음껏 시도해보셔도 됩니다.
+
+### RAG 튜닝 포인트
+> `DEFAULT_INTERPRETATION_CONFIG` (`src/interpretation/config/interpretation.config.ts`) : `topN`, `similarityWeights`, `promptLimits`(symbol/advice 길이 등) 조정.
+> `INTERPRETATION_SYSTEM_PROMPT` (`src/interpretation/prompts/interpretation-system.prompt.ts`) : LLM에게 주입하는 system 지침 수정.
+> `InterpretationUserPromptBuilder` / `INTERPRETATION_USER_GUIDANCE` (`src/interpretation/prompts/interpretation-user-prompt.builder.ts`, `.guidance.ts`) : 사용자 입력과 컨텍스트 구성 방식을 재정의.
+> `EmbeddingInputFactory` (`src/interpretation/factories/embedding-input.factory.ts`) : 임베딩에 투입되는 텍스트 구성 로직 튜닝.
+> `InterpretationSimilarityEvaluator` + 전략 클래스(`SymbolMatchStrategy`, `ActionMatchStrategy`, `DerivedMatchStrategy`) (`src/interpretation/rankings/...`) : 재랭킹 로직/가중치 커스터마이징.
+
+## 장애 대응 (Redis Stream Queue)
+> 꿈 해석 요청은 Redis Stream 큐에 등록됩니다.</br>
+> 시스템이 일시적으로 중단되더라도 ACK되지 않은 항목은 스트림에 남아</br>
+> 서비스가 복구되면 동일한 요청 ID로 자동 재처리됩니다.
+
+![redis-stream-demo](docs/assets/redis-stream-resilience.gif)
+
+> 위 데모는 워커를 강제 종료했다 재시작해도 `/status`로 동일 요청이 완료되는 과정을 보여줍니다.</br>
+> Redis Stream의 pending entry 목록을 주기적으로 폴링하여 유실 없는 비동기 파이프라인을 유지합니다.
