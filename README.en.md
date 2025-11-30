@@ -1,5 +1,10 @@
 [한국어](./README.md) | [English](./README.en.md)
 
+> [!NOTE] The service, embeddings, and dataset are currently Korean-only. This README is provided in English purely for explanation. To run everything in English you must:
+> - swap the embedding server model (`ko-sroberta-nli`) for an English or multilingual model;
+> - prepare an English version of `data/dream_symbols.json` and rerun `run_ingest.py`;
+> - update the system/user prompts to English (`src/interpretation/prompts/*`).
+
 # Dream Decoder
 > Dream interpretation service powered by Retrieval-Augmented Generation (RAG)
 >
