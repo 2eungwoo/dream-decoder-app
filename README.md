@@ -52,7 +52,7 @@ PYTHONPATH=embedding-server python3 embedding-server/scripts/init_schema.py;
 PYTHONPATH=embedding-server python3 embedding-server/scripts/run_ingest.py;
 ```
 
-> 완성된 스키마 상태는 다음과 같습니다.<br/>
+> 위 세팅이 마무리되면 스키마 상태는 다음과 같습니다.<br/>
 > ![img.png](img.png)<br/>
 > 아래 명령어로 확인할 수 있습니다.
 ```bash
@@ -137,15 +137,15 @@ npm run cli
 
 ### RAG 튜닝 포인트
 > **데이터셋 확장** : `/data/dream_symbols.json` <br/>
-> **가중치 비율 조정** : `interpretation/config` (symbol 0.5 / action 0.25 / derived 0.25) <br/>
-> **system/user 프롬프트 지침** : `prompts/interpretation-*`
+> **가중치 비율 조정** : `interpretation/config/interpretation.config.ts`  <br/>
+> **프롬프트 지침** : `prompts/interpretation-system.prompt.ts`
 
 ## 장애 대응 (Redis Stream Queue)
+> 사용자의 요청은 장애 상황에도 유실되지 않고 시스템에서 처리합니다.
 > 꿈 해석 요청은 Redis Stream 큐에 등록됩니다.</br>
 > 시스템이 일시적으로 중단되더라도 ACK되지 않은 항목은 스트림에 남아</br>
 > 서비스가 복구되면 동일한 요청 ID로 자동 재처리됩니다.
 
 ![redis-stream-demo](docs/assets/redis-stream-resilience.gif)
 
-> 위 데모는 워커를 강제 종료했다 재시작해도 `/status`로 동일 요청이 완료되는 과정을 보여줍니다.</br>
-> Redis Stream의 pending entry 목록을 주기적으로 폴링하여 유실 없는 비동기 파이프라인을 유지합니다.
+> 위 데모는 요청 접수 직후 CLI 및 서비스 강제 종료 후 재시작 시나리오입니다. <br/>
