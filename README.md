@@ -111,9 +111,9 @@ npm run cli
 
 > 1. **임베딩 검색**: `pgvector`의 `<=>` 연산으로 임베딩 비교, 상징/행동 후보군을 추출합니다.</br>
 > 2. **가중치 정렬**: 후보군을 사용자의 텍스트에 등장한 상징,행동,파생 의미와 매칭해 가중치를 부여합니다.</br>
-> 이 과정은 semantic/lexical 모두 보정하여 문맥에 가장 가까운 정보를 LLM에 전달하도록 제어합니다.
+> 이 과정은 semantic/lexical 모두 보정하여 문맥에 가장 가까운 정보를 LLM에 전달하도록 제어합니다.</br>
 
-> </br>'황금 사과를 한입 베어 물었다' 시나리오
+> '황금 사과를 한입 베어 물었다' 시나리오
 
 | 후보 (상징, 행동)     | 꿈 속 키워드 매칭 | 가중치 점수  |
 |-----------------|-----------|---------------|
@@ -121,25 +121,24 @@ npm run cli
 | **`(사과, 먹는다)`** | `사과`, `먹는다` 일치 | **높음 (2개 매칭)** |
 | `(사과, 고른다)`     | `사과` 일치   | 중간 (1개 매칭)    |
 
-> **가중치 구성**:
+> **가중치 구성**<br/>
 > 위치: `src/interpretation/config/interpretation.config.ts` <br/>
 > `similarityWeights` : `symbol: 0.5`, `action: 0.25`, `derived: 0.25`로 설정돼 있습니다.</br>
 > 상징이 절반의 점수를 가져가기 때문에, 행동/파생의미가 동시에 맞는 경우에만 1위로 올라옵니다.</br>
 > 행동 중요도를 높이고 싶다면 해당 파일에서 비중을 조절하면 됩니다.
 
-### 현재 RAG 구성 변수
-> `컨텍스트 수 제한` : 임베딩 문서 쿼리의 `topN`이 현재 2라서, 세 번째 이후 상징은 프롬프트에서 누락됩니다.<br/>
-> `데이터셋 커버리지` : `data/dream_symbols.json`에 없는 상징/행동은 검색 자체가 어렵습니다. 일반적인 LLM 추론으로 넘어갑니다.<br/>
-> `표현 다양성 제어` : 동일 행위를 다른 표현으로 쓰면 lexical 매칭을 놓칠 수 있습니다. 이 경우 임베딩 순위만으로 결정됩니다.<br/>
-> `응답 변동 가능성` : 같은 컨텍스트라도 위의 변수 조정에 따라 해석 품질이 변할 수 있습니다.<br/>
+### 현재 RAG 구성 한계
+> **컨텍스트 수 제한** : 임베딩 문서 쿼리의 `topN`이 현재 2라서, 세 번째 이후 상징은 프롬프트에서 누락됩니다.<br/>
+> **데이터셋 커버리지** : 데이터셋에 없는 상징/행동은 검색 자체가 어렵습니다. 일반적인 LLM 추론으로 넘어갑니다.<br/>
+> **표현 다양성 제어** : 동일 행위를 다른 표현으로 쓰면 lexical 매칭을 놓칠 수 있습니다. 임베딩 순위만으로 결정됩니다.<br/>
+> **응답 변동 가능성** : 같은 컨텍스트라도 위의 변수 조정에 따라 해석 품질이 변할 수 있습니다.<br/>
+
 > 따라서 위의 한계를 벗어나는 튜닝을 마음껏 시도해보셔도 됩니다.
 
 ### RAG 튜닝 포인트
-> `DEFAULT_INTERPRETATION_CONFIG` (`src/interpretation/config/interpretation.config.ts`) : `topN`, `similarityWeights`, `promptLimits`(symbol/advice 길이 등) 조정.
-> `INTERPRETATION_SYSTEM_PROMPT` (`src/interpretation/prompts/interpretation-system.prompt.ts`) : LLM에게 주입하는 system 지침 수정.
-> `InterpretationUserPromptBuilder` / `INTERPRETATION_USER_GUIDANCE` (`src/interpretation/prompts/interpretation-user-prompt.builder.ts`, `.guidance.ts`) : 사용자 입력과 컨텍스트 구성 방식을 재정의.
-> `EmbeddingInputFactory` (`src/interpretation/factories/embedding-input.factory.ts`) : 임베딩에 투입되는 텍스트 구성 로직 튜닝.
-> `InterpretationSimilarityEvaluator` + 전략 클래스(`SymbolMatchStrategy`, `ActionMatchStrategy`, `DerivedMatchStrategy`) (`src/interpretation/rankings/...`) : 재랭킹 로직/가중치 커스터마이징.
+> **데이터셋 확장** : `/data/dream_symbols.json` <br/>
+> **가중치 비율 조정** : `interpretation/config` (symbol 0.5 / action 0.25 / derived 0.25) <br/>
+> **system/user 프롬프트 지침** : `prompts/interpretation-*`
 
 ## 장애 대응 (Redis Stream Queue)
 > 꿈 해석 요청은 Redis Stream 큐에 등록됩니다.</br>
