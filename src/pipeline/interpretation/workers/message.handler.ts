@@ -7,6 +7,7 @@ import { InterpretationMessage } from "../messages/interfaces/message.types";
 import { InterpretationMessageFactory } from "../messages/message.factory";
 import { INTERPRETATION_WORKER_MAX_RETRY } from "../config/worker.config";
 import { InterpretationStreamLogService } from "../logging/stream-log.service";
+import { InterpretationFailureArchiveService } from "../dlq/interpretation-failure-archive.service";
 
 @Injectable()
 export class InterpretationMessageHandler {
@@ -17,6 +18,7 @@ export class InterpretationMessageHandler {
     private readonly processor: InterpretationProcessor,
     private readonly streamWriter: InterpretationStreamWriter,
     private readonly dlqWriter: InterpretationDlqWriter,
+    private readonly failureArchive: InterpretationFailureArchiveService,
     private readonly messageFactory: InterpretationMessageFactory,
     private readonly streamLogger: InterpretationStreamLogService
   ) {}
@@ -47,6 +49,7 @@ export class InterpretationMessageHandler {
     if (nextRetry > INTERPRETATION_WORKER_MAX_RETRY) {
       await this.statusStore.markFailed(message.requestId, reason);
       await this.dlqWriter.write(message, reason);
+      await this.failureArchive.save(message, reason);
       this.streamLogger.error(
         this.component,
         `${message.requestId} 요청은 ${nextRetry} 시도 후 최종 실패하여 DLQ로 이동 (/failed 명령으로 확인 가능)`
