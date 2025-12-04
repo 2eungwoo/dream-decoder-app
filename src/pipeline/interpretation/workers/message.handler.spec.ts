@@ -6,8 +6,8 @@ import { InterpretationStreamWriter } from "../streams/stream.writer";
 import { InterpretationDlqWriter } from "../dlq/dlq.writer";
 import { InterpretationMessageFactory } from "../messages/message.factory";
 import { InterpretationStreamLogService } from "../logging/stream-log.service";
-import { InterpretationFailureArchiveService } from "../dlq/interpretation-failure-archive.service";
-import { InterpretationRequestArchiveService } from "../dlq/interpretation-request-archive.service";
+import { FailureArchiveStore } from "../archive/failure-archive.store";
+import { RequestBackupStore } from "../archive/request-backup.store";
 import { InterpretationMessage } from "../messages/interfaces/message.types";
 import { INTERPRETATION_WORKER_MAX_RETRY } from "../config/worker.config";
 
@@ -38,9 +38,9 @@ describe("InterpretationMessageHandler", () => {
     error: jest.fn(),
   } as unknown as InterpretationStreamLogService;
   const failureArchive = {
-    save: jest.fn(),
+    saveFailure: jest.fn(),
   };
-  const requestArchive = {
+  const requestBackupStore = {
     delete: jest.fn(),
   };
 
@@ -65,8 +65,8 @@ describe("InterpretationMessageHandler", () => {
       processor as unknown as InterpretationProcessor,
       streamWriter as unknown as InterpretationStreamWriter,
       dlqWriter as unknown as InterpretationDlqWriter,
-      failureArchive as unknown as InterpretationFailureArchiveService,
-      requestArchive as unknown as InterpretationRequestArchiveService,
+      failureArchive as unknown as FailureArchiveStore,
+      requestBackupStore as unknown as RequestBackupStore,
       messageFactory as unknown as InterpretationMessageFactory,
       logger
     );
@@ -81,7 +81,7 @@ describe("InterpretationMessageHandler", () => {
 
     await handler.handle(message);
 
-    expect(failureArchive.save).toHaveBeenCalledWith(
+    expect(failureArchive.saveFailure).toHaveBeenCalledWith(
       message,
       "LLM fail"
     );
@@ -90,6 +90,6 @@ describe("InterpretationMessageHandler", () => {
       message.requestId,
       "LLM fail"
     );
-    expect(requestArchive.delete).toHaveBeenCalledWith(message.requestId);
+    expect(requestBackupStore.delete).toHaveBeenCalledWith(message.requestId);
   });
 });
