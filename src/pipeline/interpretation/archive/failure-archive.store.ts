@@ -4,21 +4,13 @@ import { MongoTtlManager } from "../../../infra/mongo/mongo-ttl.manager";
 import { InterpretationMessage } from "../messages/interfaces/message.types";
 import { FailedEntry } from "../dlq/interfaces/failed-entry.interface";
 import { interpretationArchiveConfig } from "../config/archive.config";
-
-interface FailureArchiveDocument {
-  requestId: string;
-  userId: string;
-  username: string;
-  payload: string;
-  failedAt: string;
-  errorMessage: string;
-  storedAt: string;
-}
+import {FailureArchiveFallback} from "./failure-archive-fallback";
+import {FailureArchiveDocument} from "./failure-archive-document";
 
 @Injectable()
 export class FailureArchiveStore {
   private readonly logger = new Logger(FailureArchiveStore.name);
-  private readonly fallbackStore = new Map<string, FailureArchiveDocument>();
+  private readonly fallback = new FailureArchiveFallback();
   private readonly collectionName = "interpretation_failures";
   private readonly ttlSeconds: number;
 
@@ -31,19 +23,19 @@ export class FailureArchiveStore {
   }
 
   public async saveFailure(message: InterpretationMessage, reason: string) {
-    const entry: FailureArchiveDocument = {
+    const entry = this.fallback.toDocument({
+      streamId: "", // redis stream id를 컨슈머에서 리턴안했으므로 공백 임시값
       requestId: message.requestId,
       userId: message.userId,
       username: message.username,
-      payload: JSON.stringify(message.payload),
+      payload: message.payload,
       failedAt: new Date().toISOString(),
       errorMessage: reason,
-      storedAt: new Date().toISOString(),
-    };
+    });
 
     const collection = await this.getCollectionWithTtl();
     if (!collection) {
-      this.storeFallback(entry);
+      this.fallback.save(entry);
       return;
     }
 
@@ -58,50 +50,52 @@ export class FailureArchiveStore {
         `[FailureArchiveStore] 요청 ${entry.requestId} 저장 실패 – fallback 저장`,
         (error as Error)?.message
       );
-      this.storeFallback(entry);
+      this.fallback.save(entry);
     }
   }
 
   public async listByUser(userId: string, limit: number): Promise<FailedEntry[]> {
     const collection = await this.getCollectionWithTtl();
     if (!collection) {
-      return this.listFromFallback(userId, limit);
+      return this.fallback.listByUser(userId, limit);
     }
 
     try {
-      const docs: FailureArchiveDocument[] = await collection
+      const docs = (await collection
         .find({ userId })
         .sort({ failedAt: -1 })
         .limit(limit)
-        .toArray();
-      return docs.map((doc) => this.toFailedEntry(doc));
+        .toArray()) as FailureArchiveDocument[];
+      return docs.map((doc) => this.fallback.toFailedEntry(doc));
     } catch (error) {
       this.logger.error(
         "[FailureArchiveStore] MongoDB 조회 실패 – fallback 사용",
         (error as Error)?.message
       );
-      return this.listFromFallback(userId, limit);
+      return this.fallback.listByUser(userId, limit);
     }
   }
 
   public async findByRequestId(requestId: string): Promise<FailedEntry | undefined> {
     const collection = await this.getCollectionWithTtl();
     if (!collection) {
-      return this.fromFallback(requestId);
+      return this.fallback.findByRequestId(requestId);
     }
 
     try {
-      const doc = (await collection.findOne({ requestId })) as | FailureArchiveDocument | null;
+      const doc = (await collection.findOne({
+        requestId,
+      })) as FailureArchiveDocument | null;
       if (!doc) {
-        return this.fromFallback(requestId);
+        return this.fallback.findByRequestId(requestId);
       }
-      return this.toFailedEntry(doc);
+      return this.fallback.toFailedEntry(doc);
     } catch (error) {
       this.logger.error(
         `[FailureArchiveStore] MongoDB 조회 실패 (requestId=${requestId})`,
         (error as Error)?.message
       );
-      return this.fromFallback(requestId);
+      return this.fallback.findByRequestId(requestId);
     }
   }
 
@@ -109,14 +103,14 @@ export class FailureArchiveStore {
     const collection = await this.getCollectionWithTtl();
     try {
       if (collection) {
-        await collection.deleteOne({ requestId });
+      await collection.deleteOne({ requestId });
       }
     } catch (error) {
       this.logger.error(
         `[FailureArchiveStore] MongoDB 삭제 실패 (requestId=${requestId})`
       );
     } finally {
-      this.fallbackStore.delete(requestId);
+      this.fallback.delete(requestId);
     }
   }
 
@@ -129,36 +123,4 @@ export class FailureArchiveStore {
     return collection;
   }
 
-  // mongo 조차 안될때를 위한 fallback : 메모리 저장
-  private storeFallback(entry: FailureArchiveDocument) {
-    this.fallbackStore.set(entry.requestId, entry);
-  }
-
-  private listFromFallback(userId: string, limit: number): FailedEntry[] {
-    return [...this.fallbackStore.values()]
-      .filter((entry) => entry.userId === userId)
-      .sort(
-        (a, b) =>
-          new Date(b.failedAt).getTime() - new Date(a.failedAt).getTime()
-      )
-      .slice(0, limit)
-      .map((entry) => this.toFailedEntry(entry));
-  }
-
-  private fromFallback(requestId: string): FailedEntry | undefined {
-    const entry = this.fallbackStore.get(requestId);
-    return entry ? this.toFailedEntry(entry) : undefined;
-  }
-
-  private toFailedEntry(doc: FailureArchiveDocument): FailedEntry {
-    return {
-      streamId: `archive:${doc.requestId}`,
-      requestId: doc.requestId,
-      userId: doc.userId,
-      username: doc.username,
-      errorMessage: doc.errorMessage,
-      failedAt: doc.failedAt,
-      payload: JSON.parse(doc.payload),
-    };
-  }
 }
