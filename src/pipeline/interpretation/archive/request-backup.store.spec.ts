@@ -48,7 +48,7 @@ describe("RequestBackupStore", () => {
     } as any;
 
     // then
-    await store.saveBackup(payload);
+    await store.savePendingRequest(payload);
     verify(ttlManagerMock.ensureIndex(collectionMock as any, "storedAt", anything())).once();
     expect(collectionMock.updateOne).toHaveBeenCalledTimes(1);
   });
@@ -83,7 +83,7 @@ describe("RequestBackupStore", () => {
     // when
     when(mongoServiceMock.getCollection("interpretation_requests")).thenReturn(null);
 
-    await store.saveBackup({
+    await store.savePendingRequest({
       requestId: "req-3",
       userId: "user",
       username: "tester",

@@ -20,7 +20,7 @@ export class InterpretationRequestPublisher {
   public async publish(user: InterpretationUserContext, payload: InterpretationPayload) {
     const message = this.messageFactory.create(user, payload);
     await this.statusStore.initialize(message.requestId, user, payload);
-    await this.requestBackupStore.saveBackup(message);
+    await this.requestBackupStore.savePendingRequest(message);
 
     try {
       await this.streamWriter.write(message);

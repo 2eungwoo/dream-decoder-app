@@ -1,58 +1,36 @@
-import {
-  Injectable,
-  Logger,
-  OnModuleDestroy,
-  OnModuleInit,
-} from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
+import { Cron } from "@nestjs/schedule";
 import { RequestBackupStore } from "../archive/request-backup.store";
 import { InterpretationStreamWriter } from "../streams/stream.writer";
 import { interpretationRecoveryConfig } from "../config/archive.config";
 
+const DEFAULT_RECOVERY_INTERVAL_MS = 10_000;
+const RECOVERY_INTERVAL_MS =
+  interpretationRecoveryConfig.intervalMs > 0
+    ? interpretationRecoveryConfig.intervalMs
+    : DEFAULT_RECOVERY_INTERVAL_MS;
+const RECOVERY_CRON = `*/${Math.max(
+  Math.floor(RECOVERY_INTERVAL_MS / 1000),
+  1
+)} * * * * *`;
+
 @Injectable()
-export class RequestRecoveryWorker implements OnModuleInit, OnModuleDestroy {
+export class RequestRecoveryWorker {
   private readonly logger = new Logger(RequestRecoveryWorker.name);
-  private timer?: NodeJS.Timeout;
 
   constructor(
     private readonly backupStore: RequestBackupStore,
     private readonly streamWriter: InterpretationStreamWriter
   ) {}
 
-  onModuleInit() {
-    const interval = interpretationRecoveryConfig.intervalMs;
-    if (interval <= 0) {
-      this.logger.warn(
-        "[RequestRecovery] intervalMs >= 0 이므로 자동 복구 워커 비활성화"
-      );
+  @Cron(RECOVERY_CRON)
+  public async handleRecoveryTick(): Promise<void> {
+    if (interpretationRecoveryConfig.intervalMs <= 0) {
       return;
     }
 
-    this.timer = setInterval(() => {
-      void this.recoverBackloggedRequests().catch((error) => {
-        this.logger.error(
-          "[RequestRecovery] 자동 복구 중 오류 발생",
-          (error as Error)?.message
-        );
-      });
-    }, interval);
-    this.timer.unref();
-    this.logger.log(`[RequestRecovery] ${interval}ms 간격으로 자동 복구 활성화`);
-  }
-
-  onModuleDestroy() {
-    if (this.timer) {
-      clearInterval(this.timer);
-    }
-  }
-
-  public async recoverBackloggedRequests(
-    limit = interpretationRecoveryConfig.batchLimit
-  ): Promise<void> {
-    if (limit <= 0) {
-      return;
-    }
-
-    const backlogEntries = await this.backupStore.listBacklog(limit);
+    const batchLimit = Math.max(interpretationRecoveryConfig.batchLimit, 1);
+    const backlogEntries = await this.backupStore.listBacklog(batchLimit);
     if (!backlogEntries.length) {
       return;
     }

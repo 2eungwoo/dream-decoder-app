@@ -33,7 +33,7 @@ export class RequestBackupStore {
     this.ttlSeconds = ttlDays > 0 ? ttlDays * 24 * 60 * 60 : 0;
   }
 
-  public async saveBackup(message: InterpretationMessage) {
+  public async savePendingRequest(message: InterpretationMessage) {
     const collection = this.mongoService.getCollection(this.collectionName);
     if (!collection) {
       this.logger.warn(
