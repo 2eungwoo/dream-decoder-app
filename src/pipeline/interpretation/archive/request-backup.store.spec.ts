@@ -6,26 +6,32 @@ import { RequestBackupStore } from "./request-backup.store";
 
 describe("RequestBackupStore", () => {
   let store: RequestBackupStore;
+
   const mongoServiceMock = mock(MongoService);
   const ttlManagerMock = mock(MongoTtlManager);
+
   const collectionMock = {
     updateOne: jest.fn(),
     deleteOne: jest.fn(),
-    find: jest.fn(),
+    find: jest.fn().mockReturnValue({
+      sort: () => ({
+        limit: () => ({
+          toArray: () => [],
+        }),
+      }),
+    }),
   };
 
-  // 공용 given : mongo available
-  const givenMongoAvailable = () => {
-    when(mongoServiceMock.getCollection("interpretation_requests")).thenReturn(
-      collectionMock as any
+  const initStore = () => {
+    store = new RequestBackupStore(
+        instance(mongoServiceMock),
+        instance(ttlManagerMock)
     );
   };
 
-  // 공용 given : injects 생성용 모킹 di
-  const initStore = () => {
-    store = new RequestBackupStore(
-      instance(mongoServiceMock),
-      instance(ttlManagerMock)
+  const givenMongoAvailable = () => {
+    when(mongoServiceMock.getCollection("interpretation_requests")).thenReturn(
+        collectionMock as any
     );
   };
 
@@ -37,50 +43,56 @@ describe("RequestBackupStore", () => {
   });
 
   it("mongo available이면 archive save 호출", async () => {
-    // when
-    const payload = {
+    const payload: any = {
       requestId: "req-1",
       userId: "user",
       username: "tester",
       payload: { dream: "테스트" },
       createdAt: "2025-01-01",
       retryCount: 0,
-    } as any;
+    };
 
-    // then
     await store.savePendingRequest(payload);
+
     verify(ttlManagerMock.ensureIndex(collectionMock as any, "storedAt", anything())).once();
     expect(collectionMock.updateOne).toHaveBeenCalledTimes(1);
   });
 
-  it("backlog 마크하면 status, reason 저장", async () => {
-    // when
-    await store.markBacklog("req-1", "redis down");
+  it("backlog 마크하면 status, reason, nextRetryAt 저장", async () => {
+    const nextRetryAt = new Date();
+    await store.markBacklog(
+      "req-1",
+      "redis down",
+      "redis_unavailable" as any,
+      nextRetryAt,
+      3
+    );
 
-    // then
     expect(collectionMock.updateOne).toHaveBeenCalledWith(
       { requestId: "req-1" },
       expect.objectContaining({
-        $set: expect.objectContaining({ status: "backlog" }),
+        $set: expect.objectContaining({
+          status: "backlog",
+          lastErrorMessage: "redis down",
+          nextRetryAt: nextRetryAt.toISOString(),
+          retryCount: 3,
+        }),
       })
     );
   });
 
   it("requeued 되면 status -> pending", async () => {
-    // when
     await store.markRequeued("req-2");
 
-    // then
     expect(collectionMock.updateOne).toHaveBeenCalledWith(
-      { requestId: "req-2" },
-      expect.objectContaining({
-        $set: expect.objectContaining({ status: "pending" }),
-      })
+        { requestId: "req-2" },
+        expect.objectContaining({
+          $set: expect.objectContaining({ status: "pending" }),
+        })
     );
   });
 
-  it("mongo unavailable이면 archive update 호출 안됨", async () => {
-    // when
+  it("mongo unavailable이면 savePendingRequest updateOne 미호출", async () => {
     when(mongoServiceMock.getCollection("interpretation_requests")).thenReturn(null);
 
     await store.savePendingRequest({
@@ -92,7 +104,6 @@ describe("RequestBackupStore", () => {
       retryCount: 0,
     } as any);
 
-    // then
     expect(collectionMock.updateOne).not.toHaveBeenCalled();
   });
 });
