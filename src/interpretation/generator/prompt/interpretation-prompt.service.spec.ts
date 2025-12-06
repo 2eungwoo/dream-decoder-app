@@ -4,8 +4,8 @@ import { beforeEach, describe, expect, it } from "@jest/globals";
 import { instance, mock, reset, verify, when } from "ts-mockito";
 
 import { InterpretationPromptService } from "./interpretation-prompt.service";
-import { InterpretationUserPromptBuilder } from "../prompts/interpretation-user-prompt.builder";
-import { INTERPRETATION_SYSTEM_PROMPT } from "../prompts/interpretation-system.prompt";
+import { InterpretationUserPromptBuilder } from "../../prompts/interpretation-user-prompt.builder";
+import { INTERPRETATION_SYSTEM_PROMPT } from "../../prompts/interpretation-system.prompt";
 
 describe("InterpretationPromptService", () => {
   let service: InterpretationPromptService;

@@ -5,8 +5,8 @@ import { anything, instance, mock, reset, verify, when } from "ts-mockito";
 import { InternalServerErrorException } from "@nestjs/common";
 
 import { InterpretationEmbeddingService } from "./interpretation-embedding.service";
-import { EmbeddingInputFactory } from "../factories/embedding-input.factory";
-import { EmbeddingClient } from "../../external/embedding/embedding.client";
+import { EmbeddingInputFactory } from "../../factories/embedding-input.factory";
+import { EmbeddingClient } from "../../../external/embedding/embedding.client";
 
 describe("InterpretationEmbeddingService", () => {
   let service: InterpretationEmbeddingService;

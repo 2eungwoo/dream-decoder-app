@@ -21,9 +21,9 @@ import { InterpretationMessageHandler } from "../pipeline/interpretation/workers
 import { InterpretationLockService } from "./lock/interpretation-lock.service";
 import { InterpretationLockInterceptor } from "./lock/interpretation-lock.interceptor";
 import { InterpretationGenerator } from "./generator/interpretation.generator";
-import { InterpretationEmbeddingService } from "./generator/interpretation-embedding.service";
-import { InterpretationSymbolRankingService } from "./generator/interpretation-symbol-ranking.service";
-import { InterpretationPromptService } from "./generator/interpretation-prompt.service";
+import { InterpretationEmbeddingService } from "./generator/embedding/interpretation-embedding.service";
+import { InterpretationSymbolRankingService } from "./generator/processing/interpretation-symbol-ranking.service";
+import { InterpretationPromptService } from "./generator/prompt/interpretation-prompt.service";
 import { InterpretationLlmService } from "./generator/interpretation-llm.service";
 @Module({
   imports: [

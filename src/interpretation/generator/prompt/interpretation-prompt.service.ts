@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { InterpretationUserPromptBuilder } from "../prompts/interpretation-user-prompt.builder";
-import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
-import { DreamSymbolDto } from "../types/dream-symbol.dto";
-import { INTERPRETATION_SYSTEM_PROMPT } from "../prompts/interpretation-system.prompt";
-import { OpenAIMessage } from "../../external/openai/types/openai.types";
+import { InterpretationUserPromptBuilder } from "../../prompts/interpretation-user-prompt.builder";
+import { InterpretDreamRequestDto } from "../../dto/interpret-dream-request.dto";
+import { DreamSymbolDto } from "../../types/dream-symbol.dto";
+import { INTERPRETATION_SYSTEM_PROMPT } from "../../prompts/interpretation-system.prompt";
+import { OpenAIMessage } from "../../../external/openai/types/openai.types";
 
 @Injectable()
 export class InterpretationPromptService {

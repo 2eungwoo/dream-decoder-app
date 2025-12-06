@@ -1,13 +1,13 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { DreamSymbolRepository } from "../datasources/dream-symbol.repository";
-import { InterpretationSimilarityEvaluator } from "../rankings/interpretation-similarity.evaluator";
+import { DreamSymbolRepository } from "../../datasources/dream-symbol.repository";
+import { InterpretationSimilarityEvaluator } from "../../rankings/interpretation-similarity.evaluator";
 import {
   DEFAULT_INTERPRETATION_CONFIG,
   interpretationConfig,
-} from "../config/interpretation.config";
+} from "../../config/interpretation.config";
 import { ConfigType } from "@nestjs/config";
-import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
-import { DreamSymbolDto } from "../types/dream-symbol.dto";
+import { InterpretDreamRequestDto } from "../../dto/interpret-dream-request.dto";
+import { DreamSymbolDto } from "../../types/dream-symbol.dto";
 
 @Injectable()
 export class InterpretationSymbolRankingService {

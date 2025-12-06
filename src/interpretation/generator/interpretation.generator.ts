@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
-import { InterpretationEmbeddingService } from "./interpretation-embedding.service";
-import { InterpretationSymbolRankingService } from "./interpretation-symbol-ranking.service";
-import { InterpretationPromptService } from "./interpretation-prompt.service";
+import { InterpretationEmbeddingService } from "./embedding/interpretation-embedding.service";
+import { InterpretationSymbolRankingService } from "./processing/interpretation-symbol-ranking.service";
+import { InterpretationPromptService } from "./prompt/interpretation-prompt.service";
 import { InterpretationLlmService } from "./interpretation-llm.service";
 
 @Injectable()

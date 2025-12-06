@@ -4,12 +4,12 @@ import { beforeEach, describe, expect, it } from "@jest/globals";
 import { instance, mock, reset, verify, when } from "ts-mockito";
 
 import { InterpretationSymbolRankingService } from "./interpretation-symbol-ranking.service";
-import { DreamSymbolRepository } from "../datasources/dream-symbol.repository";
-import { InterpretationSimilarityEvaluator } from "../rankings/interpretation-similarity.evaluator";
+import { DreamSymbolRepository } from "../../datasources/dream-symbol.repository";
+import { InterpretationSimilarityEvaluator } from "../../rankings/interpretation-similarity.evaluator";
 import {
   interpretationConfig,
   DEFAULT_INTERPRETATION_CONFIG,
-} from "../config/interpretation.config";
+} from "../../config/interpretation.config";
 
 describe("InterpretationSymbolRankingService", () => {
   let service: InterpretationSymbolRankingService;

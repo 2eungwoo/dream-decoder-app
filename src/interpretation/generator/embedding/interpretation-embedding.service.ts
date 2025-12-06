@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
-import { EmbeddingInputFactory } from "../factories/embedding-input.factory";
-import { EmbeddingClient } from "../../external/embedding/embedding.client";
-import { InterpretDreamRequestDto } from "../dto/interpret-dream-request.dto";
+import { EmbeddingInputFactory } from "../../factories/embedding-input.factory";
+import { EmbeddingClient } from "../../../external/embedding/embedding.client";
+import { InterpretDreamRequestDto } from "../../dto/interpret-dream-request.dto";
 
 @Injectable()
 export class InterpretationEmbeddingService {
