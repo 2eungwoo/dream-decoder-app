@@ -68,6 +68,7 @@ docker-compose exec dd-postgresql psql -U postgres -d dream_decoder
 ```
 ```bash
 # app 실행
+npm i
 npm run cli
 ```
 
