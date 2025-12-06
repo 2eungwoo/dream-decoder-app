@@ -19,19 +19,13 @@ import {
   DEFAULT_INTERPRETATION_CONFIG,
   interpretationConfig,
 } from "./config/interpretation.config";
+import {InterpretationGenerator} from "./interpretation.generator";
 
 @Injectable()
 export class InterpretationService {
   constructor(
-    private readonly embeddingInputFactory: EmbeddingInputFactory,
-    private readonly embeddingClient: EmbeddingClient,
-    private readonly symbolRepository: DreamSymbolRepository,
-    private readonly promptBuilder: InterpretationUserPromptBuilder,
-    private readonly openAIClient: OpenAIClient,
     private readonly cacheService: InterpretationCacheService,
-    private readonly similarityEvaluator: InterpretationSimilarityEvaluator,
-    @Inject(interpretationConfig.KEY)
-    private readonly interpretConfig: ConfigType<typeof interpretationConfig> = DEFAULT_INTERPRETATION_CONFIG
+    private readonly generator: InterpretationGenerator,
   ) {}
 
   public async generateInterpretation(request: InterpretDreamRequestDto) {
@@ -48,35 +42,12 @@ export class InterpretationService {
       };
     }
 
-    const embeddingInput =
-      this.embeddingInputFactory.createFromRequest(request);
-    const embeddings = await this.embeddingClient.embed([embeddingInput]);
-    if (!embeddings.length) {
-      throw new InternalServerErrorException("<!> 임베딩 생성에 실패했습니다.");
-    }
+    // generator : 임베딩 -> 전처리 -> ai호출
+    const generatedInterpretation = await this.generator.generate(request);
 
-    const relatedSymbols: DreamSymbolDto[] =
-      await this.symbolRepository.findNearestByEmbedding(
-        embeddings[0],
-        this.interpretConfig?.topN ?? DEFAULT_INTERPRETATION_CONFIG.topN
-      );
-    const ranked = this.similarityEvaluator.rank(request, relatedSymbols);
-
-    const prompt = this.promptBuilder.buildUserPrompt(request, ranked);
-    const interpretation = await this.openAIClient.generateFromMessages([
-      {
-        role: "system",
-        content: INTERPRETATION_SYSTEM_PROMPT,
-      },
-      {
-        role: "user",
-        content: prompt, // INTERPRETATION_USER_PROMPT
-      },
-    ]);
-
-    this.cacheService.set(cacheKey, interpretation);
+    this.cacheService.set(cacheKey, generatedInterpretation);
     return {
-      interpretation,
+      interpretation: generatedInterpretation,
       fromCache: false,
     };
   }

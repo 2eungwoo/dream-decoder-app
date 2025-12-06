@@ -20,6 +20,7 @@ import { InterpretationConsumer } from "../pipeline/interpretation/workers/consu
 import { InterpretationMessageHandler } from "../pipeline/interpretation/workers/message.handler";
 import { InterpretationLockService } from "./lock/interpretation-lock.service";
 import { InterpretationLockInterceptor } from "./lock/interpretation-lock.interceptor";
+import {InterpretationGenerator} from "./interpretation.generator";
 @Module({
   imports: [
     EmbeddingModule,
@@ -44,6 +45,7 @@ import { InterpretationLockInterceptor } from "./lock/interpretation-lock.interc
     InterpretationProcessor,
     InterpretationMessageHandler,
     InterpretationConsumer,
+    InterpretationGenerator,
   ],
 })
 export class InterpretationModule {}

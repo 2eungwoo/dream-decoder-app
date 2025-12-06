@@ -1,133 +1,59 @@
 import "reflect-metadata";
 import { Test, TestingModule } from "@nestjs/testing";
-import { mock, instance, when, verify, anything, reset } from "ts-mockito";
 import { beforeEach, describe, expect, it } from "@jest/globals";
+import { anything, instance, mock, reset, verify, when } from "ts-mockito";
 
 import { InterpretationService } from "./interpretation.service";
-import { EmbeddingInputFactory } from "./factories/embedding-input.factory";
-import { EmbeddingClient } from "../external/embedding/embedding.client";
-import { DreamSymbolRepository } from "./datasources/dream-symbol.repository";
-import { InterpretationUserPromptBuilder } from "./prompts/interpretation-user-prompt.builder";
-import { OpenAIClient } from "../external/openai/openai.client";
-import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
 import { InterpretationCacheService } from "./cache/interpretation-cache.service";
-import { InterpretationSimilarityEvaluator } from "./rankings/interpretation-similarity.evaluator";
-import { interpretationConfig } from "./config/interpretation.config";
+import { InvalidDreamException } from "./exceptions/invalid-dream.exception";
+import { InterpretationGenerator } from "./interpretation.generator";
 
 describe("InterpretationService (ts-mockito)", () => {
   let service: InterpretationService;
 
-  const embeddingInputFactoryMock = mock(EmbeddingInputFactory);
-  const embeddingClientMock = mock(EmbeddingClient);
-  const symbolRepositoryMock = mock(DreamSymbolRepository);
-  const promptBuilderMock = mock(InterpretationUserPromptBuilder);
-  const openAIClientMock = mock(OpenAIClient);
   const cacheServiceMock = mock(InterpretationCacheService);
-  const similarityEvaluatorMock = mock(InterpretationSimilarityEvaluator);
+  const generatorMock = mock(InterpretationGenerator);
 
   const CACHE_KEY = "cache-key";
-  const FORMATTED_PROMPT = "formatted prompt";
-  const MOCK_EMBEDDING = [[0.1, 0.2, 0.3]];
-  const VECTOR_SEARCH_RESULT = [{ symbol: "끝없는 복도를 걷는 꿈" } as never];
-
   const REQUEST = {
     dream: "이상한 복도를 걸어다녔어요",
     emotions: ["혼란"],
     mbti: "INFJ",
     extraContext: "새 직장 준비 중",
   };
-
-  const RESPONSE = "해몽 결과는 어쩌구 저쩌구 입니다";
+  const GENERATED_RESPONSE = "해몽 결과는 어쩌구 저쩌구 입니다";
 
   beforeEach(async () => {
-    // 테스트마다 모킹상태를 reset해서 각 테스트마다 독립 컨텍스트로 실행되는 환경으로 해줘야함
-    reset(embeddingInputFactoryMock);
-    reset(embeddingClientMock);
-    reset(symbolRepositoryMock);
-    reset(promptBuilderMock);
-    reset(openAIClientMock);
+    // 테스트마다 모킹상태 reset해서
+    // 각 테스트마다 독립 컨텍스트로 실행되는 환경으로 해주기
     reset(cacheServiceMock);
-    reset(similarityEvaluatorMock);
+    reset(generatorMock);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        InterpretationService, // 얘만 실제 객체 하위는 싹다 모킹
-        {
-          provide: interpretationConfig.KEY,
-          useValue: interpretationConfig(),
-        },
-        {
-          provide: EmbeddingInputFactory,
-          useValue: instance(embeddingInputFactoryMock),
-        },
-        {
-          provide: EmbeddingClient,
-          useValue: instance(embeddingClientMock),
-        },
-        {
-          provide: DreamSymbolRepository,
-          useValue: instance(symbolRepositoryMock),
-        },
-        {
-          provide: InterpretationUserPromptBuilder,
-          useValue: instance(promptBuilderMock),
-        },
-        { provide: OpenAIClient, useValue: instance(openAIClientMock) },
+        InterpretationService,
         {
           provide: InterpretationCacheService,
           useValue: instance(cacheServiceMock),
         },
-        {
-          provide: InterpretationSimilarityEvaluator,
-          useValue: instance(similarityEvaluatorMock),
-        },
+        { provide: InterpretationGenerator, useValue: instance(generatorMock) },
       ],
     }).compile();
 
     service = module.get(InterpretationService);
   });
 
-  it("사용자 요청 embedding + vectordb 검색 + LLM 호출 오케스트레이션이 이루어져야함", async () => {
+  it("캐시 미스 시 generator가 실행되고 캐시에 저장된다", async () => {
     // given & when
     when(cacheServiceMock.createKey(REQUEST as any)).thenReturn(CACHE_KEY);
     when(cacheServiceMock.get(CACHE_KEY)).thenReturn(null);
-
-    when(
-      embeddingInputFactoryMock.createFromRequest(REQUEST as any)
-    ).thenReturn("embedding-input");
-
-    when(embeddingClientMock.embed(anything())).thenResolve(MOCK_EMBEDDING);
-    when(
-      symbolRepositoryMock.findNearestByEmbedding(anything(), anything())
-    ).thenResolve(VECTOR_SEARCH_RESULT);
-    when(
-      similarityEvaluatorMock.rank(anything(), anything())
-    ).thenReturn(VECTOR_SEARCH_RESULT);
-
-    when(promptBuilderMock.buildUserPrompt(anything(), anything())).thenReturn(
-      FORMATTED_PROMPT
-    );
-
-    when(openAIClientMock.generateFromMessages(anything())).thenResolve(
-      RESPONSE
-    );
-
-    // then
+    when(generatorMock.generate(REQUEST as any)).thenResolve(GENERATED_RESPONSE);
     const response = await service.generateInterpretation(REQUEST as never);
 
-    verify(cacheServiceMock.createKey(REQUEST as any)).once();
-    verify(cacheServiceMock.get(CACHE_KEY)).once();
-    verify(embeddingInputFactoryMock.createFromRequest(REQUEST as any)).once();
-    verify(embeddingClientMock.embed(anything())).once();
-    verify(
-      symbolRepositoryMock.findNearestByEmbedding(anything(), anything())
-    ).once();
-    verify(similarityEvaluatorMock.rank(anything(), anything())).once();
-    verify(promptBuilderMock.buildUserPrompt(anything(), anything())).once();
-    verify(openAIClientMock.generateFromMessages(anything())).once();
-    verify(cacheServiceMock.set(CACHE_KEY, RESPONSE)).once();
-
-    expect(response.interpretation).toBe(RESPONSE);
+    // then
+    verify(generatorMock.generate(REQUEST as any)).once();
+    verify(cacheServiceMock.set(CACHE_KEY, GENERATED_RESPONSE)).once();
+    expect(response.interpretation).toBe(GENERATED_RESPONSE);
     expect(response.fromCache).toBe(false);
   });
 
@@ -141,17 +67,16 @@ describe("InterpretationService (ts-mockito)", () => {
     ).rejects.toBeInstanceOf(InvalidDreamException);
   });
 
-  it("캐시된거 있으면 embed, pgvector, LLM 호출 안나가야함", async () => {
+  it("캐시된 데이터가 있으면 generator 호출 없이 바로 반환한다", async () => {
     // given & when
     const CACHED = "CACHED!";
     when(cacheServiceMock.createKey(REQUEST as any)).thenReturn(CACHE_KEY);
     when(cacheServiceMock.get(CACHE_KEY)).thenReturn(CACHED);
-
-    // then
     const response = await service.generateInterpretation(REQUEST as never);
 
+    // then
     expect(response.interpretation).toBe(CACHED);
     expect(response.fromCache).toBe(true);
-    verify(embeddingClientMock.embed(anything())).never();
+    verify(generatorMock.generate(anything())).never();
   });
 });
