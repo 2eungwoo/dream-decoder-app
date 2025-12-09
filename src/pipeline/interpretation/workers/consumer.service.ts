@@ -113,18 +113,17 @@ export class InterpretationConsumer implements OnModuleInit, OnModuleDestroy {
         this.component,
         `요청ID ${message.requestId} 담당 컨슈머 : [${this.consumerName}] `
       );
+      await this.redisStream.ack(
+        INTERPRETATION_STREAM_KEY,
+        INTERPRETATION_WORKER_GROUP,
+        id
+      );
     } catch (error) {
       this.streamLogger.error(
         this.component,
         `요청 메세지 컨슈밍 중 에러 발생, 요청ID: ${message.requestId}: ${
           (error as Error)?.message
         }`
-      );
-    } finally {
-      await this.redisStream.ack(
-        INTERPRETATION_STREAM_KEY,
-        INTERPRETATION_WORKER_GROUP,
-        id
       );
     }
   }
