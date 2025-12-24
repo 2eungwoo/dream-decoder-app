@@ -9,6 +9,7 @@ import { InterpretationMessageFactory } from "../messages/message.factory";
 import { RequestBackupStore } from "../archive/request-backup.store";
 import { RecoveryFailureCode } from "../recovery/recovery.types";
 import { StreamWriterFailedException } from "../exceptions/stream-writer-failed.exception";
+import { MetricsService } from "../../../monitoring/metrics.service";
 
 @Injectable()
 export class InterpretationRequestPublisher {
@@ -16,7 +17,8 @@ export class InterpretationRequestPublisher {
     private readonly statusStore: InterpretationStatusStore,
     private readonly messageFactory: InterpretationMessageFactory,
     private readonly streamWriter: InterpretationStreamWriter,
-    private readonly requestBackupStore: RequestBackupStore
+    private readonly requestBackupStore: RequestBackupStore,
+    private readonly metricsService: MetricsService
   ) {}
 
   public async publish(user: InterpretationUserContext, payload: InterpretationPayload) {
@@ -26,7 +28,9 @@ export class InterpretationRequestPublisher {
 
     try {
       await this.streamWriter.write(message);
+      this.metricsService.incrementInterpretationRequestPublished();
     } catch (error) {
+      this.metricsService.incrementInterpretationRequestFailed();
       const failureMessage =
         (error as Error)?.message ??
         "<!> Redis Stream 쓰기 실패 -> backup store로 적재함 (mongo)";
